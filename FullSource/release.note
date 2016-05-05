@@ -1,0 +1,760 @@
+*-----------------------------------------------------------------------------*
+| Filename: release.note                                                      |
+|                                                                             |
+|         Log file for Net-UART                                               |
+|                                                                             |
+*-----------------------------------------------------------------------------*
+
+                        ***********************
+                        ***[History summary]***
+                        ***********************
+Git
+version        descriptions
+----------------------------------------------------------------------
+[v1.44.4]
+[2012/07/30]
+		1.Modify NetUART control protocol.
+		2.Modify RI and DCD controlled by GPIO.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.44.3]
+[2012/05/09]
+		1.v144.3_RC3 → v144.3
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.44.3_RC3]
+[2012/05/07]
+		1.Modify delimiter problem in UDP mode.
+
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.44.3_RC2]
+[2012/04/27]
+		1.Modify Firmware Update and Bootload Update for support EN29LV400AB Flash.
+		2.Add auto detect link speed and full duplex function to set IP210 Link status.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.44.3_RC1]
+[2012/04/23]
+
+		1.Modify MAC Rx Filter enable My MAC, Multicast, Broadcast and Pause Packet.
+
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.44.2]
+[2011/12/16]
+		1.v144.2_RC2 → v144.2
+
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.44.2_RC2]
+[2011/12/05]
+		1.Modify MACdriver.c
+			a)Change PHY mode to internal PHY.
+			b)Fix Register 0x8000 value to 0x87.
+
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.44.2]
+[2011/11/25]
+		1.Modify uip_arp.c. 
+			IP210 can't get DNS mac address in arp packet when gateway address and DNS address are the same.
+		2.Modify UIP&MUIP function
+			IP210 send data with two packet: uip data & muip data.
+			IP210 will retransmit this two packet, if IP210 do not receive ACK any one of them.
+		3.Modify MP Process
+			Do LoadDefault before MP Process.
+
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.44.1]
+[2011/11/01]
+		1.Modify Delimit silent read point bug.
+		2.Modify SetIP.htm javascript for DNS IP Address.
+		3.Modify
+			cram_md5.c
+				Line44: _cram_md5(&_cram_md5_param); to cram_md5(&_cram_md5_param);
+				Line53: _cram_md5(&_cram_md5_param); to cram_md5(&_cram_md5_param);
+			net_cmd.c
+				Line237: if(uip_conn->lport==NetCmdData.TCmdData->Port) to 
+					 if(uip_conn->lport==NetCmdData.TCmdData.Port)
+				Line509: SearchAckOP->tcmd_port=NetCmdData.TCmdData->Port; to
+					 SearchAckOP->tcmd_port=NetCmdData.TCmdData.Port;
+			telnet.c
+				mark Line25 #include <conin.h>
+			uip_arp.c
+				Line375: memcpy(gateway_mac, BUF->shwaddr->addr, 6); to
+					 memcpy(gateway_mac, BUF->shwaddr.addr, 6);
+		4.Add two project for 1M and 2M flash.
+
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.44]
+[2011/06/029]
+		1.v1.43f → v1.44
+		2.FirmwareUpdate and FUU update to 40K size.
+		3.Modify SMTP function, Subject and Message use type UTF-8 and encode by base64.
+		4.Modify DIDO GPIO from 8 pins to 6 pins.
+		5.Add nu_flashapp.bin file to support version v143.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.43f]
+[2010/11/26]
+		1.Modify RS485 Tx control Pin.control by IP210 register 0x8807.6
+		2.Modify Muip transmit function.
+		3.Modify Muip send buf depend on window size.
+		4.Fix Firmware Update, update data fail in google Chrome.
+		5.Modify UDP Telnet ARP issue.
+		  In UDP Mode, if any data in UART Buff, 210 will send to ethernet IP which
+		  is set in UDP_Telnet.htm. If the IP isn't in 210 ARP Table, 210 will try to
+		  send ARP Packet and then send data again.
+		  210 send ARP request maximum time, 500ms.After 500ms 210 will send next date to other IP.
+		6.Modify CLI udp command. Add two new UPD command "udp listen/ udp normal"
+		  Add CLI against dull design.
+		7.Modify Cookie range form 0x41~0x7F, Safari browser issue.
+		8.Modify SMTP Server IP address can't type SPACE.
+		9.Modify UART Send/Recive File error when SMTP Send Mail and UDP SearchDevice.
+		10.Modify DHCP option 54.
+		11.Fix if user use domain name IP in telnet IP address, 210 will try to get DNS IP,\
+		  no matter DHCP is enable or disable.
+		12.Modify TCP/UDP VLAN issue.
+		13.Modify when uip receive FIN_ACK, it will just send FIN command to the application.
+		14.Modify Telnet function, check CTS GPIO pin for Hardware Flowcontrol.
+		15.Modify UIP.c, when uip_stop send ack with window size 0.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.43e]
+[2010/04/13]
+		1.Add Reflash button in dido web page.
+		2.Modify DIDO web page input read function.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.43d]
+[2010/04/09]
+		1.Modify DHCP function.
+		2.Modify DIDO function, push high before read dido pin.
+
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.43c]
+[2010/04/01]
+		1.Add check link status, if unlink push P3.4=High else P3.4=Low.
+
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.43b]
+[2010/03/30]
+		1.Add speed LED by P3.4 for 210T, read phy address 0x1f and register0
+		  if nulink push P3.4=HIGH.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.43a]
+[2010/03/15]
+		1.Add speed LED by P3.4 for 210T, read phy address 0x1f and register0
+		  if bit13=1 push P3.4=LOW else P3.4=HIGH.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.43]
+[2010/01/21]
+		1. v1.42l → v1.43
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.42l]
+[2009/12/24]
+		1.Remove Ringbuff initial when telnet new connection.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.42k]
+[2009/12/15]
+		1.Add HW loopback mode for NetCmd.
+		2.Modify UDP Telnet can't send more than two IP Address.
+		3.Remove Ringbuff initial when uip_close().
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.42j]
+[2009/10/28]
+		1.Use new Cod2C.exe
+		2.Add gateway mac arp request.
+		3.Fix 210T web page about Administrator.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.42i]
+[2009/10/09]
+		1.Modify UDP Telnet for send File.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.42h]
+[2009/10/05]
+		1.turn off the dhcp test flag.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.42g]
+[2009/10/05]
+		1.Add new option "VLAN Tag" and "Version Info" about Net-Cmd Search Device.
+		2.Modify RingBuff star address 0x3950, txbuff size 0xBB8.
+
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.42f]
+[2009/09/23]
+		1.Modify eeprom struct about udp telnet.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.42e]
+[2009/09/21]
+		1.Modify DIDO function add four Pin (D5~D8) and move dido.c to bank5.
+		2.Add UDP function support demo name and listen/normal mode.
+		  udp_telCbk.c move to bank5.
+		3.Add Vlan Tag function and telnet start address change to 0x3900
+		  checkSum.c move to bank5.
+		4.Modify NetCmd Search Device for UDP and move NetCmd.c to bank5.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.42d]
+[2009/09/09]
+		1.Add two mode for udp : listen/normal mode.(210S)
+		2.Modify CLI opmode command for 210S.
+		  opmode:udp → udp listen / udp normal
+		3.CommandLine.c change bank to bank6.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.42c]
+[2009/09/01]
+		1.Modify UDP Ring Buff Size Define.
+		2.TCP Control Port Number防呆.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.42b]
+[2009/08/20]
+		1.Modify httpd_server for Multi Packet.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.42a]
+[2009/08/12]
+		1.修改SMTP message bady max length and reset wdt.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.42]
+[2009/07/29]
+		1.v141e → v142
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.41e]
+[2009/07/24]
+		1.修改SMTP網頁錯誤字元.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.41d]
+[2009/07/23]
+		1.Modify Delimiter Drop Len，因muip封包發送的data剛好為
+		  Drop字元，造成送出的packet無data而收不到ACK.
+		2.增加網頁變數陣列大小，由40增加至70.
+		3.修改RS485造成LoadDefault問題.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.41c]
+[2009/07/20]
+		1.Modify web page about firmware update 不主動 erase.
+		2.Fix udp telnet can't send packet about different LAN.
+		3.修改開機loadDefault和RS485 pin4_5的關係
+		4.解決SMTP問題keil C build由Favor Size改為Favor Speed
+		  TelnetCbk / UartCbk由bank1移至bank2.
+		  CommandLine.c由bank2移至bank3.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.41b]
+[2009/07/09]
+		1.Modify CLI Mode can't open web page.
+		2.firmware update不主動erase.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.41a]
+[2009/06/30]
+		1.Fix SMTP can't send mail.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.41]  
+[2009/06/19]
+		1.v1.40b定版v1.41
+		2.Add new project - 64k CLI mode
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.40b]  
+[2009/06/11]
+		
+		1.改修DHCP Debug Message改避免影響Telnet Data傳輸
+		2.210主動檢查是否發送Packet時間由10ms修改為1ms
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.40a]  
+[2009/06/06]
+		1.改修muip機制所造成smtp & tcp server client問題
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.40]  
+[2009/06/01]
+		1.修改UDP網頁防呆，使其Port number可設為0.
+		2.修改Telnet連線時，210主動檢查是否有packet發送的時間由100ms改為2ms
+		3.修改muip ack機制
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.39f]  
+[2009/05/26]
+		1.修改UDP網頁防呆，使其Port number可設為0.
+		2.修改Telnet連線時，210主動檢查是否有packet發送的時間由100ms改為2ms
+		3.修改muip ack機制
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.39e]  
+[2009/05/13]
+		1.Save control protocol to EEPRom.
+		2.修改DHCP續約時若發送ARP，則重新發送Request.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.39d]  
+[2009/04/30]
+		1.修改Telnet傳送封包方式，使其總是傳送兩筆封包.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.39c]  
+[2009/04/28]
+		1.Remove Aministrator reset device selection.
+		2.Modify key word for bloot loader upgrade.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.39b]  
+[2009/04/21]
+		1.Add Net-Cmd Search Device encryption.		
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.39a]  
+[2009/04/16]
+		1.Modify Net-Cmd Search Device for boradcast & unitcast & different LAN and check DA.
+		2.Modify baudrate for 230400 from Real to Vcom.
+		3.增加IP210S各網頁防呆功能
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.39]  
+[2009/03/25]
+		1.gen library commandLine.c & uip.c
+		2.Modify function CHECK_210( ).
+		3.Modify 64K RS485 load default module_image define.
+version        descriptions
+----------------------------------------------------------------------
+[v1.38f]  
+[2009/03/20]
+		1.Fix 210T for RS485 P3.2.
+version        descriptions
+----------------------------------------------------------------------
+[v1.38e]  
+[2009/03/19]
+		1.Fix IP210 will load default when reset it in RS422/485 mode.
+		2.Modify NetCmd search device Control Port request just for IP210S
+		3.Add function CHECK_210( ). If it's IP210W function will reset.
+version        descriptions
+----------------------------------------------------------------------
+[v1.38d]  
+[2009/03/04]
+		1.Enable Firmware Update watchdogtimer.
+version        descriptions
+----------------------------------------------------------------------
+[v1.38c]  
+[2009/02/23]
+		1.Fix HW loadDefault button.
+		2.Modify smtp poll will send "login" or "mail to" request when mail server without send "250 OK" after EHLO.
+version        descriptions
+----------------------------------------------------------------------
+[v1.38b]  
+[2009/02/18]
+		1.SMTP start command change to EHLO modify from HELO.
+		2.Modify in mode RS485 some baudrate will keep P4.0 high.
+version        descriptions
+----------------------------------------------------------------------
+[v1.38a]  
+[2009/02/12]
+		1.Debug for udp telnet from Uart to Vcom will send wrong arp packet.
+		2.Debug when enable drop len and character word is UartRxbuff first word will hold enthersend can't send packet.
+		3.Debug CLI Mode when console send "\n", CLI will decide ERROR
+version        descriptions
+----------------------------------------------------------------------
+[v1.38]  
+[2008/12/31]
+		1.Modify firmware update.htm & boot loader.htm in firefox & ie can't find web page.
+version        descriptions
+----------------------------------------------------------------------
+[v1.37p]  
+[2008/12/24]
+		1.Add Note in status.htm & setpass.htm.
+		2.Fix left.htm for ie by javascript.
+		3.Modify findcookie functoin for when find two cookies.
+		4.Modify Firmware update & Boot loader upgrade when pass through the Router.
+		5.Fix after reset device will not found web page and the same question for pass through teh Router.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.37o]  
+[2008/12/08]
+		1.Modify Telnet.htm
+		2.Debug when turn on the protocol RFC2217.Don't detect Signal if the device isn't support.
+		3.Remove Heart_beat in Control Protocol.
+version        descriptions
+----------------------------------------------------------------------
+[v1.37n]  
+[2008/11/28]
+		1.Add when in CLI Mode key in "+++" will show the "OK" or "0".
+		2.Remove CLI command "udp status" and modify "at+set tcp" to "at+set opmode".
+		3.Debug check udp ip/port list when udp remote ip/port is change.
+		4.Modify UDP SearchDevice for different LAN.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.37m]  
+[2008/11/20]
+		1.Add RI & DCD Signal detect for rfc2217 when the vcom not support.
+		2.Modify CheckPktSend for UDP search device.
+		3.Debug 64k cna't read & write EEPRom.
+		4.Modify DHCP mode. If cna't get dhcp IP in NetCmd search device will use default IP.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.37l]  
+[2008/11/11]
+		1.Modify cli function for UDP.
+		2.Modify UDP Telnet
+		  (a)when receive packet source ip isn't in UDP list , we will drop.
+		  (b)if UDP list port is " 0 ", we will learning the packet from this IP source port.
+		3.Add NetCMD portocol for reset device.
+		4.remove standard 64k adc function.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.37k]  
+[2008/11/06]
+		1.Fix telnet can't not work. (initial ring buff)
+version        descriptions
+----------------------------------------------------------------------
+[v1.37j]  
+[2008/11/06]
+		1.Modify ECHO Command : 
+		   ate0: disable echo
+		   ate1: enable echo
+		   ate2: disable CMD>
+		   ate3: enable CMD>
+		2.Modify when in CLI Mode TCP in Server Mode also can listen.
+		   add cli connamd "ATS8"
+		3.Debug router question: Fix login2.htm
+		4.Debug when in IE5 web can't reset IP210.
+		5.Undefine CLI 
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.37i]  
+[2008/10/30]
+		1.Add RS485 & Fiber issue for IP210S & IP210T 
+		2.Add one select in TCP Mode.htm for enable CLI Mode
+		3. Modify when in cli mode , TCP mode change to "server".
+		4.Add at&k? to check flow control
+		5.Add new command "at"
+		6.Modify command "ath" can  not use when connection is not established.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.37h]  
+[2008/10/28]
+		1.Add NetCmd option for searchdevice.
+		2.Modify delimiter key word.	
+		3.Modify tcp timeout change to server protect timeout from 1-98.   0: always can replace  , 99:can't replace
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.37g]  
+[2008/10/23]
+		1. When TCP/IP is no connection, enter CLI mode.
+		2. "+++" is effective only TCP/IP connection is established, and "ATO" is as well.
+		3. When CLI mode is selected, IP210 will enter CLI mode automatically while power on, 
+		    and the UART baud rate will be set to default value. The default value only can be changed from web config.
+		4.Add NetCmd Portocol EEPRom Read & Write.
+		5.Modify CLI mode when reset. Baudrate will change to 57600.
+		
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.37f]  
+[2008/10/17]
+		1.Modify 64K CLI mode when reset. Baudrate will change to 57600
+		2.Debug at command for set ip & subnet & gateway & dns
+		3.Increase Delimiter & tcp timoout command.
+----------------------------------------------------------------------
+[v1.37e]  
+[2008/10/15]
+		1.Modify Command line protocal from UART port to CLI.
+		2.Modify Silent Time for Delimiter mode from 1sec to 200ms.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.37d]  
+[2008/10/07]
+		1.Enable watchdogtime.
+version        descriptions
+----------------------------------------------------------------------
+[v1.37c]  
+[2008/10/07]
+		1.Modify telnet.htm support protocol increase rfc2217.
+		2.Fix rfc2217 for dtr rts signal change.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.37b]  
+[2008/09/25]
+		1.Fix TCP Server & Client connected when in new connecting close old connected.
+		2.Fix channel range.
+		3.Fix OngpioRequest().
+		4.Fix TCP Timeout Default for EEPRom.(9/26)
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.37a]  
+[2008/09/17]
+		1.TCP Server & Client connected.
+		2.Command line protocol.
+		3.RFC2217
+		4.boot loader upgrade.
+version        descriptions
+----------------------------------------------------------------------
+[v1.36e]  
+[2008/08/01]
+		1.Add UDP NetCmd can SearchDevice from different LAN.
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.36d]  
+[2008/07/25]
+		1.Add Net_Cmd Protocol GPIO & CHANNEL.
+   
+version        descriptions
+----------------------------------------------------------------------
+[v1.36c_db02]  
+[2008/07/07]   
+version        descriptions
+		1.Debug in modul_image for include DIDO define.
+		2.Add NetCmd on UDP Process.
+----------------------------------------------------------------------
+[v1.36]     	a:
+[2007/06/09]  (1)Fix Httpd bug for not clear appstate (firefork login
+[Jesse]          problem)
+              b:
+              (1)dhcp problem request least time
+              (2)router login fail          
+              (3)modify Login.cgi from POST GET for opera and firefox
+              (4)firmware update for firefox3
+----------------------------------------------------------------------
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.35]     	a:
+[2007/05/05]  (1)RFC2877 like support
+[Jesse]       (2)NetUart support CTS/RTS signal transmit
+              (3)ADC
+              (4)Firmware update in DHCP environment
+              (5)Suport DIDO
+              b:
+              (5)All version use same address of EEPROM
+              (6)DHCPC support information in ACK packet
+              (7)Support DIDO for 64k OTP (ADC version)
+              c:
+              (8)Update MAC driver for lost packet problem
+              d:
+              (9)Fix Firmware update will cause reboot
+----------------------------------------------------------------------
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.34]     	a:
+[2007/04/17]  (1)EEPROM use 24c16
+[Jesse]       (2)telnet to uart support 115200 (not support for SMTP-otp)
+              (3)support MP
+              (4)Modify SMTP MailTo field
+              (5)DHCP use Unicast to get extend
+              b:
+              (6)Fix UART.htm bug
+              (7)Support loginxxx.xxx file not need cookie
+              (8)Support customer information tool
+              (9)Support customer project(tysso)
+              c:
+              (10)muip to lib
+              (11)add search device to firmware update project
+              (12)solve two left.htm bug after push reset button 
+                  without close IE.
+              (13)Uart baudrate from 300 to 230400
+              d:
+              (14)add uart rx interrupt for more than 128 bytes
+              (15)fiber cover
+              (16)Fix RS485 cause load default and crash bug.
+              e:
+              (17)User define TCP protocol in SDK
+              f:
+              (18)User can modify cookie timeout in SDK              
+----------------------------------------------------------------------                                      
+version        descriptions
+----------------------------------------------------------------------
+[v1.33]     	a:
+[2007/01/04]  (1)SMTP retry DNS period(one arp packet per second,  
+[Jesse]          abort when ten times)
+              (2)parity mode support delimiter
+              (3)Solve silent delimiter bug when overflow
+              (4)RS485 in flash version
+              b:
+              (5)solve RS485 interrupt problem
+              c:
+              (6)Add RS422 for flash512 version
+              d:
+              (7)Solve Parity Error
+              (8)Solve RS485 with flowcontrol
+              (9)Fix RS232 P4_0 signal
+----------------------------------------------------------------------
+                        
+version        descriptions
+----------------------------------------------------------------------
+[v1.32]     	(1)Release some UART-RX-buf to Eth-Rx-buf for speed up 
+[2007/12/26]	   COM-Tx speed in TCP-telnet mode
+[Jesse]       (2)ADC auto build batch
+              (3)UDP multi-destination bug
+              (4)Support Delimiter mode
+              (5)Correct timer parameter
+----------------------------------------------------------------------
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.31]     	(1)Add UDP to RS232
+[2007/12/06]	
+[Jesse]       
+----------------------------------------------------------------------
+                        
+version        descriptions
+----------------------------------------------------------------------
+[v1.30]     	(1)Add web page firmware update function.
+[2007/11/22]	   (from 20071112_IP210SDK2_v2.3.zip)
+[Jesse]          (add doc\firmware_updata_porting.txt)
+----------------------------------------------------------------------
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.29]     	(1)Add reset device function.
+[2007/11/15]	   
+[Jesse]       
+----------------------------------------------------------------------
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.23]     	(1)add IC_PACKAGE_128_PIN
+[2007/08/01]	   
+[Jesse]       
+----------------------------------------------------------------------
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.22]     	(1)Fix NO_EX_FUNC will cause cgi and http problem
+[2007/07/24]	   
+[Jesse]       
+----------------------------------------------------------------------
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.21]     	(1)Enable Mac Driver Led
+[2007/07/24]	   
+[Jesse]       
+----------------------------------------------------------------------
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.20]     	(1)Fix Telnet client setting will be reset when reboot
+[2007/07/24]	   
+[Jesse]       
+----------------------------------------------------------------------
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.19]     	(1)Add "UART Memory Overflow" and "UART FIFO Overflow"
+[2007/07/07]	   in UART.htm.
+[Jesse]       (2)Press 'd' to Load Default EEPROM when booting...
+----------------------------------------------------------------------
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.18]     	(1)Updata WatchDogTimerReset()
+[2007/06/06]	
+[Jesse]        					
+----------------------------------------------------------------------
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.17]     	(1)Updata Mac driver for to reset when Mac had trouble.
+[2007/06/06]	
+[Jesse]        					
+----------------------------------------------------------------------
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.14]     	(1)Release library
+[2007/05/08]	
+[Jesse]        					
+----------------------------------------------------------------------
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.13]     	(1)modify filesystem
+[2007/05/07]	
+[Jesse]        					
+----------------------------------------------------------------------
+
+version        descriptions
+----------------------------------------------------------------------
+[v1.12]     	(1)remove timeout.htm, and use login.htm for time out.
+[2007/04/30]	
+[Jesse]        					
+----------------------------------------------------------------------
