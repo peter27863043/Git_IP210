@@ -1,0 +1,16 @@
+<html>
+<head>
+<title>OK</title>
+</head>
+<body>
+<center>
+OK!<br><br><input type=button disabled=true id="fu" name="fu" onclick="top.location='http://[CGI_FUC_IP1].[CGI_FUC_IP2].[CGI_FUC_IP3].[CGI_FUC_IP4]'">
+</center>
+</body>
+<script>
+i=5
+function g()
+{a=document.getElementById('fu');i--;if(i<1){a.value="Continue";a.disabled=false;}else{a.value=i;setTimeout('g()',1000)}}
+g()
+</script>
+</html>

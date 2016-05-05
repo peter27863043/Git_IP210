@@ -1,0 +1,1 @@
+c:\keil\uv2\uv2 %1 FUU.Uv2 -r

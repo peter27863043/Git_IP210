@@ -1,0 +1,23 @@
+
+// Tag file is generated from udp_tel.htm by cod2c.exe v3.04 
+[udp_tel.htm]  
+CGI_TEL_UDP_LIS    0
+CGI_TEL_UDP_NOR    1
+CGI_TEL_UDP_DIS    2
+CGI_UDP_TEL_LPORT    3
+CGI_UDP_CHECK    4
+CGI_UDP_IP    5
+CGI_UDP_NUM0    6
+CGI_UDP_TEL_IP1    7
+CGI_UDP_NUM1    8
+CGI_UDP_TEL_IP2    9
+CGI_UDP_NUM2    10
+CGI_UDP_TEL_IP3    11
+CGI_UDP_NUM3    12
+CGI_UDP_TEL_IP4    13
+CGI_UDP_DEMO    14
+CGI_UDP_NUM4    15
+CGI_UDP_TEL_DEMO    16
+CGI_UDP_NUM5    17
+CGI_UDP_TEL_RPORT    18
+C_TAGSIZE		24    //TagArray 

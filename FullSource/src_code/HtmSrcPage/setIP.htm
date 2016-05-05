@@ -1,0 +1,14 @@
+<HTML><BODY><p><H2>System IP Configuration</H2><HR><FORM ACTION="/cgi/setting_ip.cgi" METHOD="GET">
+<TABLE cellSpacing=0 width=100% border=1 cellpadding=5><TR align="center">
+<TD ALIGN="center">Setting</TD><TD ALIGN="center">Value</TD></TR><?CGI_SET_STATUS?><TR>
+<TD ALIGN="center">IP Address</TD><TD ALIGN="center"><INPUT TYPE="TEXT" NAME="IP" value=[CGI_SET_IP1] size=2>.
+<INPUT TYPE="TEXT" NAME="IP" value=[CGI_SET_IP2] size=2>.<INPUT TYPE="TEXT" NAME="IP" value=[CGI_SET_IP3] size=2>.
+<INPUT TYPE="TEXT" NAME="IP" value=[CGI_SET_IP4] size=2></TD></TR><TR><TD ALIGN="center">Subnet Mask</TD>
+<TD ALIGN="center"><INPUT TYPE="TEXT" NAME="SM" value=[CGI_SET_SM1] size=2>.<INPUT TYPE="TEXT" NAME="SM" value=[CGI_SET_SM2] size=2>.
+<INPUT TYPE="TEXT" NAME="SM" value=[CGI_SET_SM3] size=2>.<INPUT TYPE="TEXT" NAME="SM" value=[CGI_SET_SM4] size=2>
+</TD></TR><TR><TD ALIGN="center">Gateway</TD><TD ALIGN="center">
+<INPUT TYPE="TEXT" NAME="GW" value=[CGI_SET_GW1] size=2>.<INPUT TYPE="TEXT" NAME="GW" value=[CGI_SET_GW2] size=2>.
+<INPUT TYPE="TEXT" NAME="GW" value=[CGI_SET_GW3] size=2>.<INPUT TYPE="TEXT" NAME="GW" value=[CGI_SET_GW4] size=2>
+</TD></TR><TR><TD ALIGN="center">IP Configure</TD><TD ALIGN="center"><input type="radio" value="ip_static" name="ip_from" [CGI_IP_STATIC]>Static
+<input type="radio" value="ip_dhcp" name="ip_from" [CGI_IP_DHCP]>DHCP</TD></TR><?CGI_END?>
+<TR><TD ALIGN="center" COLSPAN="2" ><P ALIGN="center"><INPUT TYPE="Submit" NAME="Modify" VALUE="Update"></P></TD></TR></TABLE></FORM></BODY></HTML>

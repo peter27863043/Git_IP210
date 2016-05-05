@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+<script language="JavaScript">
+function CheckPORT(form)
+{
+	var numericExpression=/^[0-9]+$/;
+	var ID="Address"+0;
+	var Schk=document.getElementById("ServerCHK").value;
+	
+  if(Schk.charAt(0)==" " || Schk.charAt(Schk.length-1)==" "){
+		alert("Server IP Address valid, can not use 'Space'");
+		return false;
+	}
+	obj=document.getElementById(ID);
+	if(!obj.value.match(numericExpression))
+	{
+		alert("Please enter valid numeric!");
+		return false;
+	}
+	else if((obj.value>65535)||(obj.value<1))
+	{
+		alert("Please enter valid numeric!");
+		return false;
+	}
+}
+function disableText(dst)
+{
+	dst.readOnly=true;
+	dst.style.background="#CCCCCC";
+}
+function enableText(dst)
+{
+	dst.readOnly=false;
+	dst.style.background="#FFFFFF";
+}
+function smtpcheck()
+{
+	if(Status.smtp_enable.checked==true)
+	{
+		enableText(Status.smtp_port);enableText(Status.smtp_srv);
+		enableText(Status.mail_to);enableText(Status.mail_from);
+		enableText(Status.gpio_sub0);enableText(Status.gpio_sub1);
+		enableText(Status.gpio_sub2);enableText(Status.gpio_body0);
+		enableText(Status.gpio_body1);enableText(Status.gpio_body2);		
+	}
+	else
+	{
+		disableText(Status.smtp_port);disableText(Status.smtp_srv);
+		disableText(Status.mail_to);disableText(Status.mail_from);
+		disableText(Status.gpio_sub0);disableText(Status.gpio_sub1);
+		disableText(Status.gpio_sub2);disableText(Status.gpio_body0);
+		disableText(Status.gpio_body1);disableText(Status.gpio_body2);
+	}
+	if(Status.login_enable.checked==true)
+	{	enableText(Status.login_id);enableText(Status.login_pw); }
+	else
+	{	disableText(Status.login_id);disableText(Status.login_pw); }
+}
+if(typeof window.addEventListener != "undefined")
+	window.addEventListener("load",smtpcheck,false);
+else
+	window.attachEvent("onload",smtpcheck);
+</script>
+</HEAD>
+<BODY><h2>SMTP setup</h2><BR><?CGI_SET_STATUS?>
+<FORM name="Status" ACTION="/cgi/smtp.cgi" onSubmit="return CheckPORT(this);" METHOD="GET">
+<TABLE cellSpacing=0 width=100% border=1 cellpadding=5><TR><TD>Enable SMTP</TD>
+<TD><input type="checkbox" name="smtp_enable" value="ON" onClick="smtpcheck()" [CGI_SMTP_ENABLE]>Enable,Port: <input type="text" name="smtp_port" ID="Address0" maxlength=5 size="20" value="[CGI_SMTP_PORT]"></TD></TR>
+<tr><TD>SMTP server address</TD><TD><input type="text" name="smtp_srv" ID="ServerCHK" size="58" maxlength=60 value="[CGI_SMTP_SERVER]"></TD></tr>
+<TR><TD>SMTP Login Information</TD><TD><input type="checkbox" name="login_enable" value="ON" onClick="smtpcheck()" [CGI_LOGIN_ENABLE]>Enable
+<p>Username: <input type="text" name="login_id" maxlength=30 value="[CGI_LOGIN_ID]">,Password:
+<input type="password" name="login_pw" maxlength=30 value="[CGI_LOGIN_PW]"></TD></TR>
+<TR><TD>Mail to</TD><TD><textarea onkeyup="this.value = this.value.substring(0, 200)" rows="4" name="mail_to" cols="50" style="overflow-y:hidden">[CGI_SMTP_MAILT]</textarea>max: 200
+<TR><TD>Mail from</TD><TD><input type="text" name="mail_from" maxlength=60 size="58" value="[CGI_SMTP_MAILFROM]"></TD>
+</TR></TABLE><p></p><?CGI_TB1_START?><TABLE cellSpacing=0 width=100% border=1 cellpadding=5>
+<TR><TD>GPIO [CGI_SMTP_TITLE] Warning</TD><TD>&nbsp;</TD></TR><TR><TD>Subject</TD>
+<TD><input type="text" name="gpio_sub[CGI_SMTP_NUM0]" maxlength=60 size="58" value="[CGI_SMTP_SUB]"></TD></TR><TR><TD>Message Body</TD>
+<TD><textarea onkeyup="this.value = this.value.substring(0, 100)" rows="2" name="gpio_body[CGI_SMTP_NUM1]" cols="50" style="overflow-y:hidden">[CGI_SMTP_BODY]</textarea>max: 100</TD></TR></TABLE><p></p><?CGI_TB1_END?><p align="center"><input type="submit" value="update" name="B1"></p></FORM><p><?CGI_END?></p></BODY></HTML>

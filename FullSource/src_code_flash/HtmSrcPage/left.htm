@@ -1,0 +1,95 @@
+<HTML>
+<HEAD base target="main">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=">
+<TITLE>Site Map</TITLE>
+</HEAD>
+<body topmargin=0 leftmargin=0 bgcolor=#ffffff marginwidth="0" marginheight="0">
+<script language="javascript">
+oColor='141A54';
+newColor='FF3300';	
+if(document.onmouseover)
+{
+  if(window.event.toElement.tagName == 'A')
+  {
+     	window.event.toElement.style.color = newColor;
+			window.event.toElement.style.fontWeight ='normal';
+  }
+}
+if(document.onmouseout)
+{
+   	if(window.event.fromElement.tagName == 'A')
+   	{
+   	   window.event.fromElement.style.color = oColor;
+	   	 window.event.fromElement.style.fontWeight ='normal';
+   	}
+}
+function ToggleDisplay(heading,imgs)
+{
+  if(document.getElementById(heading).style.display =='none')
+  {
+		document.getElementById(heading).style.display='';
+  }
+	else
+	{
+		document.getElementById(heading).style.display='none';
+	}
+}
+</script>
+<br>
+<div ID="Main1" onmouseup="ToggleDisplay('Submenu1','Btn1')" style="width: 160; height: 25;cursor:hand">
+<b>Administrator</b></div>
+<div ID="Submenu1">
+<script>
+document.getElementById("Submenu1").style.display='none';
+</script>
+    <table border="0" cellpadding="2" cellspacing="2" width="150" align="center">
+    <tr>
+        <td><a href="setPASS.htm" target="main">Authentication Configuration</a></td>
+    </tr>
+    <tr>
+        <td><a href="setIP.htm" target="main">System IP Configuration</a></td>
+    </tr> 
+    <tr>
+        <td><a href="Status.htm" target="main">System Status</a></td>
+    </tr>
+    <tr>
+        <td><a href="setDef.htm" target="main">Load default setting</a></td>
+    </tr>
+    <tr>
+        <td><a href="fw_up.htm" target="main">Firmware update</a></td>
+    </tr>
+    <tr>
+        <td><a href="fu_up.htm" target="main">Boot Loader upgrade</a></td>
+    </tr>  
+  </table>  
+</div>
+
+<div ID="Main4" style="width: 160; height: 25;cursor:hand">
+&nbsp;
+ <b><a href="telnet.htm" target="main"><font color="000000">TCP Mode</font></a></b>
+</div>
+<div ID="Main5" style="width: 160; height: 25;cursor:hand">&nbsp;
+<b><a href="udp_tel.htm" target="main"><font color="000000">UDP Mode</font></a></b></div>
+<div ID="Main6" style="width: 160; height: 25;cursor:hand">
+&nbsp;
+ <b><a href="uart.htm" target="main"><font color="000000">UART</font></a></b>
+</div>
+<div ID="Main7" style="width: 160; height: 25;cursor:hand">
+&nbsp;
+ <b><a href="smtp.htm" target="main"><font color="000000">SMTP</font></a></b>
+</div>
+<div ID="Main8" style="width: 160; height: 25;cursor:hand">
+&nbsp;
+ <b><a href="adc.htm" target="main"><font color="000000">ADC</font></a></b>
+</div>
+<!--
+<div ID="Main9" style="width: 160; height: 25;cursor:hand">
+&nbsp;
+ <b><a href="dido.htm" target="main"><font color="000000">DIDO</font></a></b>
+</div>
+-->
+<div ID="Main10" style="width: 160; height: 25;cursor:hand">&nbsp;
+<b><a href="cgi/reset.cgi" target="main"><font color="000000">Reset Device</font></a></b>
+</div>
+</BODY>
+</HTML>

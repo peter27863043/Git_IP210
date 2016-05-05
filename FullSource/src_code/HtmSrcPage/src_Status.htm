@@ -1,0 +1,5 @@
+<HTML><HEAD><BODY><H2>System Status</H2><HR><?CGI_SET_STATUS?><FORM ACTION="/cgi/status.cgi" METHOD="GET">
+<TABLE cellSpacing=0 width=100% border=1 cellpadding=5><TR><TD>Kernel Version</TD><TD >[CGI_K_VER]</TD></TR>
+<TR><TD>MAC Address</TD><TD>[CGI_SET_MAC]</TD></TR><TR><TD>Nickname</TD>
+<TD><INPUT TYPE="tex" NAME="comment" VALUE="[CGI_NICKNAME]" maxlength=12 size="20"> <INPUT TYPE="Submit" NAME="Modify" VALUE="Update"></TD></TR>
+</TABLE></FORM><?CGI_END?></BODY>Note:<BR>&nbsp &nbsp &nbsp Comment name only can use  &quot;0-9&quot;,&quot;a-z&quot;,&quot;A-Z&quot;,&quot;_&quot;,&quot;-&quot;</HTML>

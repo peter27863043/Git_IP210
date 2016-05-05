@@ -1,0 +1,1 @@
+call b_all.bat -r

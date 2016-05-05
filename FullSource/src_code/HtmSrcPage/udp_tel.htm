@@ -1,0 +1,16 @@
+<html><body><p><b><h2>UDP</h2></b></p><HR><BR><FORM ACTION="/cgi/udp_tel.cgi" METHOD="GET"><?CGI_UDP_TEL?>
+<TABLE cellSpacing=0 width=100% border=1 cellpadding=5><TR align="center" ><TD ALIGN="center">Item</TD>
+<TD align="center" colspan="2">Value</TD></TR><tr><TD ALIGN="center">Status</TD>
+<TD align="center" colspan="2"><input type="radio" value="udp_en" name="en_radio" [CGI_TEL_UDP_EN]>Enable 
+<input type="radio" value="udp_dis" name="en_radio" [CGI_TEL_UDP_DIS]>Disable</TD></tr>
+<TR><TD ALIGN="center">Local Port</TD><TD align="center" colspan="2">
+<input type="text" name="LPORT" size="20" value="[CGI_UDP_TEL_LPORT]"></TD></TR>
+<tr><TD ALIGN="center" rowspan="11">Remote Address</TD>
+<TD align="center">IP</TD><TD align="center">Port</TD></tr><?CGI_TB1_START?><tr><TD align="center">
+<input type="text" name="A" size="3" value="[CGI_UDP_TEL_IP1]">.
+<input type="text" name="B" size="3" value="[CGI_UDP_TEL_IP2]">.
+<input type="text" name="C" size="3" value="[CGI_UDP_TEL_IP3]">.
+<input type="text" name="D" size="3" value="[CGI_UDP_TEL_IP4]"></TD><TD align="center">
+<input type="text" name="P" size="5" value="[CGI_UDP_TEL_RPORT]"></TD></tr><?CGI_TB1_END?>
+<TR><TD ALIGN="center" COLSPAN="3"><P ALIGN="center"><INPUT TYPE="Submit" NAME="Modify" VALUE="Update"></P></TD></TR></TABLE>
+<?CGI_UDP_TEL_END?></p></FORM></body></html>

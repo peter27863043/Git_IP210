@@ -1,0 +1,126 @@
+<html>
+<body>
+<script type="text/javascript">
+<!--
+var flag=0;
+function CheckAdd()
+{
+	var numericExpression=/^[0-9]+$/;
+	for(k=0;k<4;k++)
+	{
+		var AID="Address"+k;
+		aobj=document.getElementById(AID);
+		if(aobj.value!=0){ flag=1; }
+	}
+	if(flag==0)
+	{ return true; }
+	for(i=0;i<5;i++)
+	{
+		var ID="Address"+i;
+		obj=document.getElementById(ID);
+		if(!obj.value.match(numericExpression))
+		{ return false; }
+		else if(i==4)
+		{
+				if((obj.value>65535)||(obj.value<=0)) return false;
+	  }
+		else if((obj.value>255)||(obj.value<0)) return false;
+	}
+	var CP="cport";
+	cobj=document.getElementById(CP);
+	if(!cobj.value.match(numericExpression)) return false;
+	else if( (cobj.value>65535)||(cobj.value<=0) ) return false;
+	return true;
+}
+function CheckIP(form)
+{
+	if(!CheckAdd())
+	{
+		alert("Please enter valid numeric!");
+		return false;	
+	}
+	else if(flag==0)
+	{ return true; }
+	else if(form.IP3.value==255)
+	{
+		alert("Invalid IP Address, '255' is a Broadcast Address!");
+		return false;
+	}
+	else if(form.IP3.value==0)
+	{
+		alert("Invalid IP Address, '0' is a Net Address!");
+		return false;
+	}
+	else
+	{	return true; }
+}
+
+function disable(dst){
+dst.disabled=true;
+if (dst.type=="text")
+{
+	dst.style.background="#CCCCCC";
+}
+else
+	dst.checked=false;
+}
+function enable(dst){
+dst.disabled=false;
+if (dst.type=="text")
+	dst.style.background="#FFFFFF";
+}
+function check(src){
+	switch(src.id)
+	{
+		case "RF":
+			disable(document.getElementById("cport"));
+		break;	
+		case "CT":
+			enable(document.getElementById("cport"));
+		break;
+		case "RTO":
+			disable(document.getElementById("RF"));
+		break;
+		case "RTF":
+			enable(document.getElementById("RF"));
+		break;
+	}
+}
+if(typeof window.addEventListener != "undefined")
+	window.addEventListener("load",check,false);
+else
+	window.attachEvent("onload",check);
+-->
+</script>
+<p><h2>TCP Control</h2><HR><BR>
+<FORM ACTION="/cgi/telnet.cgi" onSubmit="return CheckIP(this);" METHOD="GET"><?CGI_TELNET?>
+<TABLE cellSpacing=0 width=100% border=1 cellpadding=5><TR align="center"><TD ALIGN="center">Item</TD>
+<TD align="center">Value</TD></TR><TR align="center">
+<TD ALIGN="center">Telnet Server/Client</TD><TD align="center">
+<input type="radio" value="server" name="sc_radio" [CGI_TELNET_CHK_S]>Server <input type="radio" value="client" name="sc_radio" [CGI_TELNET_CHK_C]>Client<input type="radio" value="disable" name="sc_radio" [CGI_TELNET_CHK_D]>Disable</TD></TR>
+<TR><TD ALIGN="center">Reverse Telnet</TD><TD align="center"><input type="radio" name="t1" id="RTO" onFocus="check(this)" value="1" [CGI_T1CHK]>On<input type="radio" id="RTF" onFocus="check(this)" name="t1" value="0" [CGI_T1CHKR]>Off</TD></TR>
+[CGI_CLI_L]<TR><TD ALIGN="center">CLI Mode</TD><TD ALIGN="center"><input type="checkbox" name="CLI" [CGI_TELNET_CLI]>Enable</TD>[CGI_CLI_R]
+<TR><TD ALIGN="center">Data Port Number</TD>
+	<TD align="center">
+		<input type="text" name="port" ID="Address4" MAXLENGTH=5 size="20" value="[CGI_TELNET_PORT]">
+	</TD>
+</TR>
+<TR><TD ALIGN="center">Control Protocol</TD><TD align="center">
+<input type="radio" name="t2" id="RF" onFocus="check(this)" value="2"  [CGI_T2CHK]>RFC2217
+<input type="radio" name="t2" id="CT" onFocus="check(this)" value="1" [CGI_T2CHKR]>Port Number : 
+<input type="text" name="cport" id="cport" size="20" MAXLENGTH=5 value="[CGI_TELNET_CPORT]" [CGI_CTR_DIS]></TD></TR>
+<tr><TD ALIGN="center">Remote Server IP Address</TD>
+<TD align="center">
+<input type="radio" name="ip_demo" value="s_ip" [CGI_IP]>IP
+<input type="text" name="IP0" ID="Address0" size="3" maxlength=3 value="[CGI_TELNET_IP0]">.
+<input type="text" name="IP1" ID="Address1" size="3" maxlength=3 value="[CGI_TELNET_IP1]">.
+<input type="text" name="IP2" ID="Address2" size="3" maxlength=3 value="[CGI_TELNET_IP2]">.
+<input type="text" name="IP3" ID="Address3" size="3" maxlength=3 value="[CGI_TELNET_IP3]">
+<input type="radio" name="ip_demo" value="s_demo" [CGI_DEMO]>Domain Name
+<input type="text" name="demo" size=21% maxlength=30 value="[CGI_TELNET_DEMO]">
+</TD></TR>
+<TR><TD ALIGN="center">Client mode inactive timeout</TD><TD align="center">
+<input type="text" name="c_timeout" size="5" MAXLENGTH=2 onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"  onkeyup="value=value.replace(/[^\d]/g,'')" style="ime-mode:disabled" value="[CGI_TELNET_TIMEOUT]"> minute (1~99,0=Disable)</TD></TR>
+<TR><TD ALIGN="center">Server mode protect timeout</TD><TD align="center">
+<input type="text" name="t_timeout" size="5" MAXLENGTH=2 onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"  onkeyup="value=value.replace(/[^\d]/g,'')" style="ime-mode:disabled" value="[CGI_TCP_TIMEOUT]"> minute (1~98,0=Disable,99=Can't replace)</TD></TR>
+<TR><TD ALIGN="center" COLSPAN="2"><P ALIGN="center"><INPUT TYPE="Submit" NAME="Modify" VALUE="Update"></P></TD></TR></TABLE><?CGI_END?></FORM></body></html>

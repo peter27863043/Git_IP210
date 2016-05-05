@@ -1,0 +1,143 @@
+<html><HEAD>
+<script language="JavaScript">
+<!--
+function CheckIP(form)
+{
+var numericExpression=/^[0-9]+$/;
+var flag;
+var count;
+		for(i=0;i<11;i++)
+		{
+			flag=1;
+			count=0;
+			for(j=0;j<6;j++)
+			{
+					var AID="Address"+(6*i+j);
+					obj=document.getElementById(AID);
+					if(j!=4)
+					{ if(!obj.value.match(numericExpression)){obj.focus();alert("Please enter valid numeric!");return false;} }
+					if(j==0)
+					{	  
+							for(k=0;k<6;k++)
+						  {
+						  	var AD="Address"+(6*i+k); 
+						  	aobj=document.getElementById(AD);
+						  	if(k==4){continue;}
+						  	if(k==5)
+								{
+						  		if((aobj.value >65535) || (aobj.value <0))
+						  		{ alert("Invalid Port number !!"); return false; }
+						  	}
+						  	else
+								{ 
+									if( (aobj.value!=0)&&(aobj.value!=255) ){count=1; }
+								}
+							}
+							if(count==0){flag=0;}
+					}
+					if(flag==1)
+					{
+						if(j<=3)
+							{
+							if(j==3)
+							{ 
+								if(obj.value==255)
+								{
+									alert("Invalid IP Address, '255' is a Broadcast Address!");
+									return false;
+								}
+								if(obj.value==0)
+								{
+									alert("Invalid IP Address, '0' is a Net Address!");
+									return false;
+								}
+							}
+							else if((obj.value>255)||(obj.value<0))
+							{obj.focus();alert("Please enter valid IP numeric!");return false;}
+					}
+			}
+		}
+		}
+		return true;
+}
+
+function disable(dst)
+{
+	dst.readOnly=true;
+	dst.style.background="#CCCCCC";
+}
+function enable(dst)
+{
+	dst.readOnly=false;
+	dst.style.background="#FFFFFF";
+}
+function udpcheck()
+{
+	objs=document.getElementsByName("en_radio");
+	if(objs[0].checked==true)
+	{ 
+		for(l=0;l<60;l++)
+		{
+			var BID="Address"+l;
+			obj=document.getElementById(BID);
+			disable(obj);
+		}
+		enable(udpstatus.LPORT);
+	}
+	else if(objs[1].checked==true)
+	{ 
+		for(l=0;l<60;l++)
+		{
+			var BID="Address"+l;
+			obj=document.getElementById(BID);
+			enable(obj);
+		}
+		enable(udpstatus.LPORT);
+	}
+	else if(objs[2].checked==true)
+	{
+		for(l=0;l<60;l++)
+		{
+			var BID="Address"+l;
+			obj=document.getElementById(BID);
+			disable(obj);
+		}	
+		disable(udpstatus.LPORT);
+	}
+}
+if(typeof window.addEventListener != "undefined")
+	window.addEventListener("load",udpcheck,false);
+else
+	window.attachEvent("onload",udpcheck);
+-->
+</script>
+</HEAD><body><p><b><h2>UDP</h2></b></p><HR><BR>
+<FORM name="udpstatus" ACTION="/cgi/udp_tel.cgi" onSubmit="return CheckIP(this);" METHOD="GET"><?CGI_UDP_TEL?>
+<TABLE cellSpacing=0 width=100% border=1 cellpadding=5><TR align="center" ><TD ALIGN="center">Item</TD>
+<TD align="center" colspan="2">Value</TD></TR><tr><TD ALIGN="center">Mode</TD>
+<TD align="center" colspan="2">
+<input type="radio" value="udp_lis" name="en_radio" onClick="udpcheck()" [CGI_TEL_UDP_LIS]>Listen
+<input type="radio" value="udp_nor" name="en_radio" onClick="udpcheck()" [CGI_TEL_UDP_NOR]>Normal
+<input type="radio" value="udp_dis" name="en_radio" onClick="udpcheck()" [CGI_TEL_UDP_DIS]>Disable
+</TD></tr>
+<TR><TD ALIGN="center">Local Port</TD><TD align="center" colspan="2">
+<input type="text" name="LPORT" ID="Address60" maxlength=5 size="20" value="[CGI_UDP_TEL_LPORT]"></TD></TR>
+<TR>
+<TD ALIGN="center" rowspan="11">Remote Address</TD>
+<TD align="center">IP</TD><TD align="center">Port</TD>
+</TR>
+<?CGI_TB1_START?>
+<TR><TD align="left"><input type="radio" value="s_ip" name="ip_demo[CGI_UDP_CHECK]" [CGI_UDP_IP]>
+<input type="text" ID="Address[CGI_UDP_NUM0]" name="A" maxlength=3 size="3" value="[CGI_UDP_TEL_IP1]">.
+<input type="text" ID="Address[CGI_UDP_NUM1]" name="B" maxlength=3 size="3" value="[CGI_UDP_TEL_IP2]">.
+<input type="text" ID="Address[CGI_UDP_NUM2]" name="C" maxlength=3 size="3" value="[CGI_UDP_TEL_IP3]">.
+<input type="text" ID="Address[CGI_UDP_NUM3]" name="D" maxlength=3 size="3" value="[CGI_UDP_TEL_IP4]">IP
+<BR>
+<input type="radio" value="s_demo" name="ip_demo[CGI_UDP_CHECK]" [CGI_UDP_DEMO]>
+<input type="text" ID="Address[CGI_UDP_NUM4]" name="E" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\w\_\-\.]/g,''))"  onkeyup="value=value.replace(/[^\w\_\-\.]/g,'')" style="ime-mode:disabled" maxlength=30 size="21%" value="[CGI_UDP_TEL_DEMO]">Domain Name</TD>
+</TD>
+<TD align="center">
+<input type="text" ID="Address[CGI_UDP_NUM5]" name="P" maxlength=5 size="5" value="[CGI_UDP_TEL_RPORT]"></TD></TR>
+<?CGI_TB1_END?>
+<TR><TD ALIGN="center" COLSPAN="3"><P ALIGN="center"><INPUT TYPE="Submit" NAME="Modify" VALUE="Update"></P></TD></TR></TABLE>
+<?CGI_UDP_TEL_END?></p></FORM></body></html>

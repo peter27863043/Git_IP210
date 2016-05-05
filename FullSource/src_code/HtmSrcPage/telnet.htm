@@ -1,0 +1,13 @@
+<html><body><p><h2>TCP Control</h2><HR><BR><FORM ACTION="/cgi/telnet.cgi" METHOD="GET"><?CGI_TELNET?>
+<TABLE cellSpacing=0 width=100% border=1 cellpadding=5><TR align="center"><TD ALIGN="center">Item</TD>
+<TD align="center">Value</TD></TR><TR align="center">
+<TD ALIGN="center">Telnet Server/Client</TD><TD align="center">
+<input type="radio" value="server" name="sc_radio" [CGI_TELNET_CHK_S]>Server <input type="radio" value="client" name="sc_radio" [CGI_TELNET_CHK_C]>Client<input type="radio" value="disable" name="sc_radio" [CGI_TELNET_CHK_D]>Disable</TD></TR>
+<TR><TD ALIGN="center">Port Number</TD><TD align="center"><input type="text" name="port" size="20" value="[CGI_TELNET_PORT]"></TD></TR>
+<tr><TD ALIGN="center">Remote Server IP Address</TD><TD align="center">
+<input type="text" name="IP0" size="3" value="[CGI_TELNET_IP0]">.<input type="text" name="IP1" size="3" value="[CGI_TELNET_IP1]">.<input type="text" name="IP2" size="3" value="[CGI_TELNET_IP2]">.<input type="text" name="IP3" size="3" value="[CGI_TELNET_IP3]"></TD></tr>
+<TR><TD ALIGN="center">Client mode inactive timeout</TD><TD align="center">
+<input type="text" name="c_timeout" size="5" MAXLENGTH=2 value="[CGI_TELNET_TIMEOUT]"> minute (1~99,0=Disable)</TD></TR>
+<TR><TD ALIGN="center">Server mode protect timeout</TD><TD align="center">
+<input type="text" name="t_timeout" size="5" MAXLENGTH=2 value="[CGI_TCP_TIMEOUT]"> minute (1~98,0=Disable,99=Can't replace)</TD></TR>
+<TR><TD ALIGN="center" COLSPAN="2"><P ALIGN="center"><INPUT TYPE="Submit" NAME="Modify" VALUE="Update"></P></TD></TR></TABLE><?CGI_END?></FORM></body></html>

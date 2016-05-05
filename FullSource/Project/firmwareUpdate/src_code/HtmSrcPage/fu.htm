@@ -1,0 +1,77 @@
+<html>
+<head>
+<script>
+var ne,j=1;
+var or="Uploading";
+function wa()
+{
+	 ne =""
+	if( j > 6) 
+	{
+		 j = 1 
+    }	
+    for(i = 0 ; i < 6; i++)
+    {
+    	  if(i<j)
+    	  {
+    	  	if(i == 0)
+    	  	{
+    	  		ne = ne + "<font color='#0000FF'>>"
+    	  	}
+    	    else
+    {
+    	  	ne = ne + ">" 
+    }
+    	  }
+    	  else
+    	  {
+    	  	ne = ne + "<font color='#000000'>>"
+    	  }	
+    }
+    ne = ne + "</font>"
+	j++
+    document.getElementById("upm").innerHTML=or + ne
+    setTimeout("wa()", 1000);
+}
+function fu()
+{
+    if (document.upload.file.value == "") {
+        alert("Please select a file to upload!");
+    }	
+    else
+  	{
+        document.getElementById("upm").style.display = "";
+        document.getElementById("upl").style.display  = "none";
+        document.upload.submit(); 
+        j=1
+        ne="¡´"
+        setTimeout("wa()", 1000);
+  	}
+}
+</script>
+</head>
+<body onload=wa()>
+<div id="upl">	
+<FORM enctype=multipart/form-data NAME="upload"  ACTION="/cgi/FUpdate.cgi" METHOD="POST">
+<center>
+<TABLE  width=60% border=1>
+<tr  ALIGN="center">
+<td>F/W</td>
+</tr>
+<tr>
+<td>
+Select the image file: <input  size=60 type=file name=file> <img align=center style="cursor: pointer" src="/sb.gif" onclick="fu()">
+<br>
+<A href="http://[CGI_FUF_IP1].[CGI_FUF_IP2].[CGI_FUF_IP3].[CGI_FUF_IP4]">http://[CGI_FUF_IP1].[CGI_FUF_IP2].[CGI_FUF_IP3].[CGI_FUF_IP4]</A> 
+</td>
+</tr>
+</table>
+</form>
+
+</div>
+<div id="upm" style="display: none">
+Uploading
+</div>
+</center>
+</body>
+</html>

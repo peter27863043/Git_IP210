@@ -1,0 +1,114 @@
+### uVision2 Project, (C) Keil Software
+### Do not modify !
+
+ cExt (*.c)
+ aExt (*.s*; *.src; *.a*)
+ oExt (*.obj)
+ lExt (*.lib)
+ tExt (*.txt; *.h; *.inc)
+ pExt (*.plm)
+ CppX (*.cpp)
+ DaveTm { 0,0,0,0,0,0,0,0 }
+
+Target (WebCtrl), 0x0000 // Tools: 'MCS-51'
+GRPOPT 1,(Main),1,0,0
+GRPOPT 2,(Sys),0,0,0
+GRPOPT 3,(FileSys),0,0,0
+GRPOPT 4,(uIP),0,0,0
+GRPOPT 5,(HttpServer),1,0,0
+GRPOPT 6,(cbkfunc),0,0,0
+GRPOPT 7,(utility),0,0,0
+GRPOPT 8,(net_uart),1,0,0
+GRPOPT 9,(NetCmd),0,0,0
+GRPOPT 10,(smtp),0,0,0
+GRPOPT 11,(snmp_trap),0,0,0
+
+OPTFFF 1,1,1,134217728,0,0,0,0,<..\..\src_code\main\main.c><main.c> 
+OPTFFF 1,2,2,0,0,0,0,0,<..\..\src_code\main\patch_info.a51><patch_info.a51> 
+OPTFFF 1,3,1,0,0,0,0,0,<..\..\src_code\main\ee_process.c><ee_process.c> 
+OPTFFF 1,4,1,0,0,0,0,0,<..\..\src_code_flash\main\firmware_rev.c><firmware_rev.c> 
+OPTFFF 1,5,2,905969664,0,0,0,0,<..\..\src_code_flash\main\L51_BANK.A51><L51_BANK.A51> 
+OPTFFF 1,6,2,0,0,219,219,0,<..\..\src_code_flash\main\STARTUP.A51><STARTUP.A51> { 44,0,0,0,0,0,0,0,1,0,0,0,255,255,255,255,255,255,255,255,248,255,255,255,226,255,255,255,25,0,0,0,25,0,0,0,142,3,0,0,71,1,0,0 }
+OPTFFF 1,7,1,0,0,0,0,0,<..\..\src_code\main\ee_default.c><ee_default.c> 
+OPTFFF 2,8,1,0,0,0,0,0,<..\..\src_code\Sys\dma.c><dma.c> 
+OPTFFF 2,9,1,0,0,0,0,0,<..\..\src_code\Sys\eeprom.c><eeprom.c> 
+OPTFFF 2,10,1,268435456,0,0,0,0,<..\..\src_code\Sys\serial.c><serial.c> 
+OPTFFF 2,11,1,67108864,0,0,0,0,<..\..\src_code\Sys\MACdriver.c><MACdriver.c> 
+OPTFFF 2,12,1,402653184,0,0,0,0,<..\..\src_code\Sys\timer.c><timer.c> 
+OPTFFF 2,13,1,486539264,0,0,0,0,<..\..\src_code\Sys\uart.c><uart.c> 
+OPTFFF 2,14,1,855638016,0,0,0,0,<..\..\src_code\Sys\MDC_MDIO.c><MDC_MDIO.c> 
+OPTFFF 2,15,1,0,0,0,0,0,<..\..\src_code\Sys\os_cbk.c><os_cbk.c> 
+OPTFFF 2,16,1,0,0,0,0,0,<..\..\src_code\Sys\vtag.c><vtag.c> 
+OPTFFF 3,17,1,318767104,0,0,0,0,<..\..\src_code\FileSys\fs.c><fs.c> 
+OPTFFF 3,18,1,369098752,0,0,0,0,<..\..\src_code_flash\FileSys\htmfiles0.c><htmfiles0.c> 
+OPTFFF 3,19,1,0,0,0,0,0,<..\..\src_code_flash\FileSys\htmfiles1.c><htmfiles1.c> 
+OPTFFF 3,20,1,0,0,0,0,0,<..\..\src_code_flash\FileSys\htmfiles2.c><htmfiles2.c> 
+OPTFFF 3,21,1,805306368,0,0,0,0,<..\..\src_code\FileSys\htmfiles3.c><htmfiles3.c> 
+OPTFFF 3,22,1,50331648,0,0,0,0,<..\..\src_code_flash\FileSys\htmfiles4.c><htmfiles4.c> 
+OPTFFF 3,23,1,0,0,0,0,0,<..\..\src_code_flash\FileSys\htmfiles5.c><htmfiles5.c> 
+OPTFFF 3,24,1,0,0,0,0,0,<..\..\src_code_flash\FileSys\htmfiles6.c><htmfiles6.c> 
+OPTFFF 3,25,1,0,0,0,0,0,<..\..\src_code_flash\FileSys\htmfiles7.c><htmfiles7.c> 
+OPTFFF 4,26,1,184549376,0,0,0,0,<..\..\src_code\uIP\uip.c><uip.c> 
+OPTFFF 4,27,1,0,0,0,0,0,<..\..\src_code\uIP\uip_arp.c><uip_arp.c> 
+OPTFFF 4,28,1,352321536,0,0,0,0,<..\..\src_code\uIP\muip.c><muip.c> 
+OPTFFF 5,29,1,268435456,0,0,0,0,<..\..\src_code\HttpServer\cgi.c><cgi.c> 
+OPTFFF 5,30,1,0,0,0,0,0,<..\..\src_code\HttpServer\cgiutil.c><cgiutil.c> 
+OPTFFF 5,31,1,0,0,0,0,0,<..\..\src_code\HttpServer\challenge.c><challenge.c> 
+OPTFFF 5,32,1,419430400,0,0,0,0,<..\..\src_code\HttpServer\cookie.c><cookie.c> 
+OPTFFF 5,33,1,318767106,0,41,47,0,<..\..\src_code\HttpServer\httpd.c><httpd.c> { 44,0,0,0,2,0,0,0,3,0,0,0,255,255,255,255,255,255,255,255,252,255,255,255,226,255,255,255,27,0,0,0,35,0,0,0,190,2,0,0,240,0,0,0 }
+OPTFFF 5,34,1,721420288,0,289,293,0,<..\..\src_code\HttpServer\application.c><application.c> { 44,0,0,0,0,0,0,0,1,0,0,0,255,255,255,255,255,255,255,255,248,255,255,255,226,255,255,255,125,0,0,0,125,0,0,0,238,3,0,0,179,1,0,0 }
+OPTFFF 5,35,1,352321536,0,0,0,0,<..\..\src_code\HttpServer\httpd_app.c><httpd_app.c> 
+OPTFFF 5,36,1,0,0,0,0,0,<..\..\src_code\HttpServer\checksum.c><checksum.c> 
+OPTFFF 6,37,1,251658240,0,0,0,0,<..\..\src_code\cbkfunc\loginCbk.c><loginCbk.c> 
+OPTFFF 6,38,1,0,0,0,0,0,<..\..\src_code\cbkfunc\errormsgCbk.c><errormsgCbk.c> 
+OPTFFF 6,39,1,0,0,304,314,0,<..\..\src_code\cbkfunc\uartCbk.c><uartCbk.c> { 44,0,0,0,0,0,0,0,1,0,0,0,255,255,255,255,255,255,255,255,248,255,255,255,226,255,255,255,0,0,0,0,0,0,0,0,117,3,0,0,37,1,0,0 }
+OPTFFF 6,40,1,100663296,0,288,300,0,<..\..\src_code\cbkfunc\telnetCbk.c><telnetCbk.c> { 44,0,0,0,0,0,0,0,1,0,0,0,255,255,255,255,255,255,255,255,248,255,255,255,226,255,255,255,100,0,0,0,100,0,0,0,217,3,0,0,137,1,0,0 }
+OPTFFF 6,41,1,0,0,0,0,0,<..\..\src_code\cbkfunc\setDefCbk.c><setDefCbk.c> 
+OPTFFF 6,42,1,150994944,0,0,0,0,<..\..\src_code\cbkfunc\setIPCbk.c><setIPCbk.c> 
+OPTFFF 6,43,1,335544320,0,0,0,0,<..\..\src_code\cbkfunc\setPASSCbk.c><setPASSCbk.c> 
+OPTFFF 6,44,1,0,0,0,0,0,<..\..\src_code\cbkfunc\statusCbk.c><statusCbk.c> 
+OPTFFF 6,45,1,218103808,0,0,0,0,<..\..\src_code\cbkfunc\smtpCbk.c><smtpCbk.c> 
+OPTFFF 6,46,1,100663296,0,0,0,0,<..\..\src_code_flash\cbkfunc\fw_upCbk.c><fw_upCbk.c> 
+OPTFFF 6,47,1,0,0,0,0,0,<..\..\src_code_flash\cbkfunc\adcCbk.c><adcCbk.c> 
+OPTFFF 6,48,1,0,0,0,0,0,<..\..\src_code\cbkfunc\udp_telCbk.c><udp_telCbk.c> 
+OPTFFF 6,49,1,0,0,0,0,0,<..\..\src_code\cbkfunc\didoCbk.c><didoCbk.c> 
+OPTFFF 6,50,1,0,0,0,0,0,<..\..\src_code\cbkfunc\CommandLine.c><CommandLine.c> 
+OPTFFF 7,51,1,0,0,0,0,0,<..\..\src_code\utility\utility.c><utility.c> 
+OPTFFF 8,52,1,83886080,0,0,0,0,<..\..\src_code\net_uart\telnet.c><telnet.c> 
+OPTFFF 8,53,1,50331648,0,0,0,0,<..\..\src_code\net_uart\udp.c><udp.c> 
+OPTFFF 8,54,1,687865856,0,0,0,0,<..\..\src_code\net_uart\dhcpc.c><dhcpc.c> 
+OPTFFF 8,55,1,1442840576,0,0,0,0,<..\..\src_code\net_uart\net_uart.c><net_uart.c> 
+OPTFFF 8,56,1,0,0,0,0,0,<..\..\src_code\net_uart\gpio.c><gpio.c> 
+OPTFFF 8,57,1,0,0,0,0,0,<..\..\src_code\net_uart\dns.c><dns.c> 
+OPTFFF 8,58,1,268435456,0,0,0,0,<..\..\src_code\net_uart\wdg.c><wdg.c> 
+OPTFFF 8,59,1,402653184,0,0,0,0,<..\..\src_code\net_uart\udp_tel.c><udp_tel.c> 
+OPTFFF 8,60,1,251658240,0,76,88,0,<..\..\src_code\net_uart\netuart_ctrl.c><netuart_ctrl.c> { 44,0,0,0,0,0,0,0,1,0,0,0,255,255,255,255,255,255,255,255,248,255,255,255,226,255,255,255,125,0,0,0,125,0,0,0,242,3,0,0,162,1,0,0 }
+OPTFFF 8,61,1,0,0,0,0,0,<..\..\src_code\net_uart\dido.c><dido.c> 
+OPTFFF 9,62,1,268435456,0,0,0,0,<..\..\src_code\NetCmd\net_cmd.c><net_cmd.c> 
+OPTFFF 10,63,1,0,0,0,0,0,<..\..\src_code\smtp\smtp.c><smtp.c> 
+OPTFFF 10,64,1,738197504,0,0,0,0,<..\..\src_code\smtp\base64.c><base64.c> 
+OPTFFF 10,65,1,452984832,0,0,0,0,<..\..\src_code\smtp\cram_md5.c><cram_md5.c> 
+OPTFFF 11,66,1,0,0,0,0,0,<..\..\src_code\snmp_trap\snmp_trap.c><snmp_trap.c> 
+
+
+TARGOPT 1, (WebCtrl)
+ CLK51=44200000
+  OPTTT 1,0,1,0
+  OPTHX 0,65535,0,0,0
+  OPTLX 120,65,8,<.\>
+  OPTOX 16
+  OPTLT 0,0,1,0,1,1,0,1,0,0,0,0
+  OPTXL 1,1,1,1,1,1,1,0,0
+  OPTFL 1,0,1
+  OPTBL 0,(Add on databooks)<DATASHTS\ADDBOOKS.PDF>
+  OPTBL 1,(MCS 51 Instruction Set)<DATASHTS\INTEL\ISM51.PDF>
+  OPTDL (S8051.DLL)()(DP51.DLL)(-p52)(S8051.DLL)()(TP51.DLL)(-p52)
+  OPTDBG 44029,-1,()()()()()()()()()() (BIN\MON51.DLL)()()()
+  OPTKEY 0,(DLGDP51)((98=150,94,483,355,0)(82=-1,-1,-1,-1,0)(83=-1,-1,-1,-1,0)(84=-1,-1,-1,-1,0)(85=-1,-1,-1,-1,0)(99=-1,-1,-1,-1,0)(91=820,185,1020,431,0)(92=-1,-1,-1,-1,0)(93=-1,-1,-1,-1,0))
+  OPTBB 0,0,1371,1,0,0,0,0,0,0,<telnet.c>()()
+  OPTBB 1,0,345,1,0,0,0,0,0,0,<httpd.c>()()
+  OPTDF 0x86
+  OPTLE <>
+  OPTLC <>
+EndOpt
+

@@ -1,0 +1,76 @@
+<html>
+<HEAD>
+<script language="JavaScript">
+function CheckIP(form)
+{
+	var numericExpression=/^[0-9]+$/;
+	var ID="Address"+0;
+	obj=document.getElementById(ID);
+	if(!obj.value.match(numericExpression))
+	{
+		alert("Please enter valid numeric!");
+		return false;
+	}
+	else if((obj.value>255)||(obj.value<1))
+	{
+		alert("Please enter valid numeric!");
+		return false;
+	}
+}
+function disableText(dst)
+{
+	dst.readOnly=true;
+	dst.style.background="#CCCCCC";
+}
+function enableText(dst)
+{
+	dst.readOnly=false;
+	dst.style.background="#FFFFFF";
+}
+
+function enablecheck()
+{
+	if(uart.D1.checked==true)
+	{	enableText(uart.D1V); }
+	else
+	{	disableText(uart.D1V);	}
+	if(uart.D2.checked==true)
+	{	enableText(uart.D2V); }
+	else
+	{	disableText(uart.D2V);	}
+	if(uart.D3.checked==true)
+	{	enableText(uart.D3V); }
+	else
+	{	disableText(uart.D3V);	}
+}
+if(typeof window.addEventListener != "undefined")
+	window.addEventListener("load",enablecheck,false);
+else
+	window.attachEvent("onload",enablecheck);
+</script>
+</HEAD>
+<body><p><h2>UART Control</h2><HR><BR>
+<FORM name="uart" ACTION="/cgi/uart.cgi" onSubmit="return CheckIP(this);" METHOD="GET">
+<?CGI_UART?><TABLE cellSpacing=0 border=1 cellpadding=5>
+<TR align="center"><TD ALIGN="center">Item</TD><TD ALIGN="center">Setting</TD></TR>
+<TR align="center"><TD ALIGN="center">Mode</TD><TD ALIGN="center"><select size="1" name="mode"><?CGI_TB1_START?><option value="[CGI_MD1]"[CGI_MDS]>[CGI_MD2]</option><?CGI_TB1_END?></select></TD><tr><TD ALIGN="center">Baudrate</TD>
+<TD ALIGN="center"><select size="1" name="set_baudrate"><?CGI_TB1_START?><option value="[CGI_BR1]"[CGI_SELECT]>[CGI_BR2]</option><?CGI_TB1_END?></select></TD></tr><TR><TD ALIGN="center">Character Bits</TD><TD ALIGN="center"><select size="1" name="set_cb"><?CGI_TB1_START?><option value="[CGI_CB1]" [CGI_CBS]>[CGI_CB2]</option><?CGI_TB1_END?></select></TD></TR><TR><TD ALIGN="center">Parity Type</TD><TD ALIGN="center"><select size="1" name="set_pt"><?CGI_TB1_START?><option value="[CGI_PR1]" [CGI_PRS]>[CGI_PR2]</option><?CGI_TB1_END?></select></TD></TR><TR><TD ALIGN="center">Stop Bit</TD><TD ALIGN="center"><select size="1" name="set_sb"><?CGI_TB1_START?><option value="[CGI_SB1]" [CGI_SBS]>[CGI_SB2]</option><?CGI_TB1_END?></select></TD></TR>
+<TR><TD ALIGN="center">Hardware Flow Control</TD><TD ALIGN="center"><select size="1" name="set_hf">
+<?CGI_TB1_START?><option value="[CGI_FC1]" [CGI_FCS]>[CGI_FC2]</option><?CGI_TB1_END?></select>
+<TR>
+	<TD ALIGN="center">RI,DCD</TD>
+	<TD ALIGN="center">
+		<input type="radio" value="INPUT" name="inout" [CGI_INCHK]>Input
+		<input type="radio" value="OUTPUT" name="inout" [CGI_OUTCHK]>Output
+	</TD>
+</TR>
+</TD></TR><tr><TD ALIGN="center">Uart Memory Overflow count</TD><TD ALIGN="center" colspan="2">[CGI_UART_MEM_OF_M]M,[CGI_UART_MEM_OF_K]K,[CGI_UART_MEM_OF_B]Byte</TD></tr>
+<tr><TD ALIGN="center">Uart FIFO Overflow count</TD><TD ALIGN="center" colspan="2">[CGI_UART_FIFO_OF]times</TD></tr>
+<tr><TD ALIGN="center">Delimiter</TD><TD ALIGN="center" colspan="2"><p align="left">
+<input type="checkbox" name="D1" [CGI_D1CHK] onClick="enablecheck()">Character 1:
+<input type="text" name="D1V" size="2" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\w]/g,''))"  onkeyup="value=value.replace(/[^\w]/g,'')" style="ime-mode:disabled" MAXLENGTH=2 value="[CGI_D1DATA]">,
+<input type="checkbox" name="D2" [CGI_D2CHK] onClick="enablecheck()">Character 2:
+<input type="text" name="D2V" size="2" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\w]/g,''))"  onkeyup="value=value.replace(/[^\w]/g,'')" style="ime-mode:disabled" MAXLENGTH=2 value="[CGI_D2DATA]">&nbsp;&nbsp;</p><p align="left">
+<input type="checkbox" name="D3" [CGI_D3CHK] onClick="enablecheck()">Silent time:
+<input type="text" name="D3V" size="2" ID="Address0" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"  onkeyup="value=value.replace(/[^\d]/g,'')" style="ime-mode:disabled" MAXLENGTH=3 value="[CGI_D3DATA]"> (1~255)*200ms&nbsp;&nbsp;</p><p align="left">
+<input type="checkbox" name="D4" [CGI_D4CHK]>Drop Character</TD></tr><TR><TD ALIGN="center" COLSPAN="3"><P ALIGN="center"><INPUT TYPE="Submit" NAME="Modify" VALUE="Update"></P></TD></TR></TABLE><?CGI_END?></FORM></body></html>
