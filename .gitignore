@@ -11,3 +11,9 @@
 *.rar
 *.tar
 *.zip
+
+/FullSource/exe
+/FullSource/Project/WebCtrl/exe
+/FullSource/Project/WebCtrl_flash/exe
+/FullSource/Project/WebCtrl_flash_1M/exe
+/FullSource/Project/WebCtrl_flash_2M/exe
