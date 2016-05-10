@@ -1,0 +1,49 @@
+<html>
+<head>
+<script>
+function send(P_NO)
+{
+
+}
+</script>
+</head>
+<body>
+<center>
+<?CGI_NOSERVICE_3?>
+<FORM id="AutoReload" ACTION="/uart.htm" METHOD="GET">
+<table>
+<tr>
+<td><table ALIGN="center" CELLPADDING="10">
+<tr BGCOLOR="#00FF33">
+<td>
+<div ALIGN="center">
+[CGI_NS3_TITLE1]<br>
+[CGI_NS3_TITLE2]
+</div>
+</td>
+</tr>
+</table>
+<p ALIGN="center">
+<input TYPE="Submit" id="TryAgain" disabled=true NAME="back" VALUE="BACK" onclick="send('1')">
+</p>
+</table>
+</center>
+<?CGI_END?>
+<script>
+i=3
+function g()
+{ a=document.getElementById('TryAgain');
+  i--;
+	if(i<1){
+		a.value="0";document.getElementById('AutoReload').submit();
+		}
+		else{
+			a.value=i;setTimeout('g()',1000)
+	}
+}
+g()
+</script>
+
+
+</body>
+</html>

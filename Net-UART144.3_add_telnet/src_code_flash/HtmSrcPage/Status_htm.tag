@@ -1,0 +1,29 @@
+
+// Tag file is generated from Status.htm by cod2c.exe v3.04 
+[Status.htm]  
+CGI_STA_MODE    0
+CGI_STA_SN    1
+CGI_STA_PWR    2
+CGI_STA_SRC    3
+CGI_STA_IP1    4
+CGI_STA_IP2    5
+CGI_STA_IP3    6
+CGI_STA_IP4    7
+CGI_STA_SM1    8
+CGI_STA_SM2    9
+CGI_STA_SM3    10
+CGI_STA_SM4    11
+CGI_STA_GW1    12
+CGI_STA_GW2    13
+CGI_STA_GW3    14
+CGI_STA_GW4    15
+CGI_STA_DNS1    16
+CGI_STA_DNS2    17
+CGI_STA_DNS3    18
+CGI_STA_DNS4    19
+CGI_SET_MAC    20
+CGI_STA_FW_VER    21
+CGI_K_VER    22
+CGI_STA_OP_TIME_H    23
+CGI_STA_OP_TIME_L    24
+C_TAGSIZE		27    //TagArray 

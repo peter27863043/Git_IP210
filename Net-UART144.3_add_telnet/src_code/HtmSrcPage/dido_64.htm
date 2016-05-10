@@ -1,0 +1,10 @@
+<html><head><body><h2>DIDO</h2><hr>
+<?cgi_dido?><form action="/cgi/dido.cgi" method="get">
+<p align="center">
+<table cellspacing="0" cellpadding="3" width="100%" align="center" border="1">
+<tr><td><p align="center">PIN</p></td><td><p align="center">Value(0 or 1)</p></td><td>
+<p align="center">Direction</p></td></tr><tr><td><p align="center">D0</p></td><td><p align="center"><input name="d0v" value=[CGI_D0V]></p></td>
+<td><p align="center"><select size="1" name="d0d"><option value="in" [CGI_D0D1]>in</option><option value="out"[CGI_D0D2]>out</option>
+</select></p></td></tr><tr><td><p align="center">D1</p></td><td><p align="center"><input name="d1v" value=[CGI_D1V]></p></td><td>
+<p align="center"><select size="1" name="d1d"><option value="in" [CGI_D1D1]>in</option> <option value="out" [CGI_D1D2]>out</option>
+</select></p></td></tr></table><input type="submit" name="Modify" value="Update"></p></form><?cgi_end?></body></html>

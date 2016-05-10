@@ -1,0 +1,48 @@
+<html><head><body>
+	<script type="text/javascript">
+<!--
+function CheckAdd()
+{
+	var numericExpression=/^[0-9]+$/;
+	var numeric=/^[0-9a-zA-Z_-]+$/;
+	for(i=0;i<3;i++)
+	{
+		var ID="Address"+i;
+		obj=document.getElementById(ID);
+		if(i==0)
+		{if(!obj.value.match(numeric)) return false; }
+		if(i==1 || i==2)
+		{if(!obj.value.match(numericExpression)) return false; }
+	}
+	return true;
+}
+function CheckIP(form)
+{
+	if(!CheckAdd())
+	{
+		alert("Please enter valid value!");
+		return false;	
+	}
+	else
+		return true;
+}
+-->
+</script>
+<h2>DIDO</h2><hr>
+<?cgi_dido?><form action="/cgi/dido.cgi" method="get" onSubmit="return CheckIP(this);">
+<p align="center">
+<table cellspacing="0" cellpadding="3" width="100%" align="center" border="1">
+<tr><td><p align="center">Port</p></td>
+<td colspan=2><p align="center" ><input ID="Address2" name="port" MAXLENGTH=5 value=[CGI_DIDO_PORT]></p></td>
+<td align=center><input type="submit" name="Submit" value="Submit"></td>
+</tr>
+<tr><td><p align="center">PIN</p></td>
+<td><p align="center">Name</p></td>
+<td><p align="center">Value(0 or 1)</p></td><td>
+<p align="center">Direction</p></td></tr>
+<?CGI_TB1_START?>
+<tr><td><p align="center">[CGI_PIN]</p></td>
+<td><p align="center" ><input ID="Address0" name="name" MAXLENGTH=5 value=[CGI_DIDO_NAME]></p></td>
+<td><p align="center"><input ID="Address1" name="d0v" MAXLENGTH=1 value=[CGI_D0V]></p></td>
+<td><p align="center"><select size="1" name="inout"><option value="in" [CGI_D0D1]>in</option><option value="out"[CGI_D0D2]>out</option>
+</select><?CGI_TB1_END?></p></td></tr></table><input type="submit" name="Modify" value="Update">&nbsp;<input type="submit" name="Reflash" value="Reflash"></p></form><?cgi_end?></body></html>

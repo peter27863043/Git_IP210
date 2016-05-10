@@ -1,0 +1,122 @@
+<HTML>
+<style type='text/css'>
+form {
+  margin:0px; 
+  padding: 0 5px;
+}
+
+td.tdc1{
+	width:20px;
+	text-align:left;
+}
+
+td.tdc2{
+	width:180px;
+	text-align:left;
+}
+
+d.tdc3{
+	width:540px;
+	text-align:left;
+}
+</style>
+
+<BODY>
+<?CGI_SET_STATUS?>
+<div>
+<p><h2>Information</h2>
+</div>
+<TABLE>
+<TR>
+<TD><b>Display</b></TD>
+</TR>
+</TABLE>
+<TABLE>
+<TR>
+<TD class="tdc1"></TD>
+<TD class="tdc2">Mode Name</TD>
+<TD class="tdc3">[CGI_STA_MODE]</TD>
+</TR>
+<TR>
+<TD class="tdc1"></TD>
+<TD class="tdc2">Serial Number</TD>
+<TD class="tdc3">[CGI_STA_SN]</TD>
+</TR>
+</TABLE>
+<TABLE>
+<TR>
+<TD><b>Status</b></TD>
+</TR>
+</TABLE>
+<TABLE>
+<TR>
+<TD class="tdc1"></TD>
+<TD class="tdc2">Power Status</TD>
+<TD class="tdc3">[CGI_STA_PWR]</TD>
+</TR>
+<TR>
+<TD class="tdc1"></TD>
+<TD class="tdc2">Video Source</TD>
+<TD class="tdc3">[CGI_STA_SRC]</TD>
+</TR>
+</TABLE>
+<TABLE>
+<TR>
+<TD><b>Network</b></TD>
+</TR>                                                                         	
+</TABLE>
+<TABLE>
+<TR>
+<TD class="tdc1"></TD>
+<TD class="tdc2">IP Address</TD>
+<TD class="tdc3">[CGI_STA_IP1].[CGI_STA_IP2].[CGI_STA_IP3].[CGI_STA_IP4]</TD>
+</TR>
+<TR>
+<TD class="tdc1"></TD>
+<TD class="tdc2">Subnet Mask</TD>
+<TD class="tdc3">[CGI_STA_SM1].[CGI_STA_SM2].[CGI_STA_SM3].[CGI_STA_SM4]</TD>
+</TR>
+<TR>
+<TD class="tdc1"></TD>
+<TD class="tdc2">Default Gateway</TD>
+<TD class="tdc3">[CGI_STA_GW1].[CGI_STA_GW2].[CGI_STA_GW3].[CGI_STA_GW4]</TD>
+</TR>
+<TR>
+<TD class="tdc1"></TD>
+<TD class="tdc2">DNS</TD>
+<TD class="tdc3">[CGI_STA_DNS1].[CGI_STA_DNS2].[CGI_STA_DNS3].[CGI_STA_DNS4]</TD>
+</TR>
+<TR>
+<TD class="tdc1"></TD>
+<TD class="tdc2">MAC Address</TD>
+<TD class="tdc3">[CGI_SET_MAC]</TD>
+</TR>
+</TABLE>
+<TABLE>
+<TR>
+<TD><b>Other</b></TD>
+</TR>
+<TR>
+<TD><b>Information</b></TD>
+</TR>
+</TABLE>
+<TABLE>
+<TR>
+<TD class="tdc1"></TD>
+<TD class="tdc2">Scaler F/W Version</TD>
+<TD class="tdc3">[CGI_STA_FW_VER]</TD>
+</TR>
+<TR>
+<TD class="tdc1"></TD>
+<TD class="tdc2">Lan F/W Version</TD>
+<TD class="tdc3">[CGI_K_VER]</TD>
+</TR>
+<TR>
+<TD class="tdc1"></TD>
+<TD class="tdc2">Operation Time</TD>
+<TD class="tdc3">[CGI_STA_OP_TIME_H][CGI_STA_OP_TIME_L]H</TD>
+</TR>
+</TABLE>
+<?CGI_END?>
+</BODY>
+</HTML>

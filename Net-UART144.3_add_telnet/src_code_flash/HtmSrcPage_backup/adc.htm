@@ -1,0 +1,153 @@
+<html>
+<style type='text/css'>
+
+<style type='text/css'>
+form {
+  margin:0px; 
+  padding: 0 5px;
+}
+
+td.tdc1{
+	width:150px;
+	ALIGN="left;
+}
+
+td.tdc2{
+	width:250px;
+	ALIGN="left;
+}
+
+
+</style>
+</style>
+
+<script language="JavaScript">
+
+function CheckEmailAddress(TEXT_ID){
+var obj = document.getElementById(TEXT_ID);
+
+	obj.value=obj.value.replace(/[^\a-\z\A-\Z0-9\@\_\.]/g,'')
+	obj.value=obj.value.substring(0, 30)
+}
+
+function CheckText(TEXT_ID){
+var obj = document.getElementById(TEXT_ID);
+	obj.value=obj.value.replace(/[^\a-\z\A-\Z0-9\@\_\ \.]/g,'')
+	obj.value=obj.value.substring(0, 30)
+}
+
+function MySubmit(FORM_ID){
+	document.getElementById(FORM_ID).submit();
+}
+
+
+
+</script>
+<body>
+
+<div>
+<p><h2>Alert Setting</h2>
+</div>
+<?CGI_ADC?>
+
+
+<TABLE cellSpacing=0 border=1 cellpadding=5>
+<FORM ID="A_SMTP" ACTION="/cgi/adc.cgi" METHOD="GET" >
+<TR>
+<TD class="tdc1"><b>Email Setting</b></TD><TD class="tdc2"></TD><TD class="tdc1"><b>SMTP Setting</b></TD><TD class="tdc2"></TD>
+</TR>
+
+<TR>
+<TD class="tdc1">To</TD>
+<TD class="tdc2">
+<input type="text" name="mai_to_list" style="width:220px" value="[CGI_SMTP_MAILT1]" id="mail_to_list_id" onkeyup="CheckEmailAddress('mail_to_list_id')">
+</TD>
+<TD class="tdc1">Server</TD>
+<TD class="tdc2">
+<input type="text" style="width:220px" name="smtp_srv" id="smtp_srv_id" value="[CGI_SMTP_SERVER]" onkeyup="CheckEmailAddress('smtp_srv_id')">
+</TD>
+</TR>
+<TR>
+<TD class="tdc1">Cc</TD>
+<TD class="tdc2">
+<input type="text" name="cc_to_list" style="width:220px" value="[CGI_SMTP_MAILT2]" id="cc_to_list_id" onkeyup="CheckEmailAddress('cc_to_list_id')">
+</TD>
+<TD class="tdc1">User Name</TD>
+<TD class="tdc2">
+<input type="text" style="width:220px" name="smtp_login" value="[CGI_SMTP_LOGIN_ID]" id="smtp_login_id" onkeyup="CheckText('smtp_login_id')">
+</TD>
+</TR>
+
+<TR>
+<TD class="tdc1">Subject</TD>
+<TD class="tdc2">
+<input type="text" style="width:220px" name="smtp_subject" value="[CGI_SMTP_SBUJECT]" id="smtp_subject_id" onkeyup="CheckText('smtp_subject_id')">
+</TD>
+<TD class="tdc1">Password</TD>
+<TD class="tdc2">
+<input type="text" style="width:220px" name="smtp_pass" value="[CGI_SMTP_PAS]" id="smtp_pass_id" onkeyup="CheckText('smtp_pass_id')">
+</TD>
+</TR>
+
+<TR>
+<TD class="tdc1">From</TD>
+<TD class="tdc2">
+<input type="text" style="width:220px" name="smtp_from" value="[CGI_SMTP_FROM]" id="smtp_from_id" onkeyup="CheckEmailAddress('smtp_from_id')">
+</TD>
+<TD class="tdc1">
+<input type="checkbox" name="sta_rpt" value="1" [CGI_SMTP_ENABLE]>Status Report
+</TD><TD class="tdc2"></TD>
+</TR>
+
+<TR>
+<TD class="tdc1"></TD><TD class="tdc2"></TD>
+<TD class="tdc1">Day of Week</TD>
+<TD class="tdc2">
+<select name="day_sel" >
+  <option value="0" >Sunday</option>
+  <option value="1" >Monday</option>
+  <option value="2" >Tuesday</option>
+  <option value="3" >Wednesday</option>
+  <option value="4" >Thursday</option>
+  <option value="5 ">Friday</option>
+  <option value="6" >Saturday</option>
+  <option value="7" >Everyday</option>
+</select>
+</TD>
+</TR>
+
+<TR>
+<TD class="tdc1"></TD><TD class="tdc2"></TD>
+<TD class="tdc1">Time</TD>
+<TD class="tdc2">
+<input type="text" style="width:70px" value="00">:
+<input type="text" style="width:70px" value="00">
+</TD>
+</TR>
+
+<TR>
+<TD class="tdc1"></TD><TD class="tdc2"></TD>
+<TD class="tdc1">
+<Input type="Button" name="Submit_BT" value="Submit" onclick="MySubmit('A_SMTP')" >
+</TD>
+<TD class="tdc2"></TD>
+</TR>
+</FORM>
+<FORM ID="A_SMTP_TEST" ACTION="/cgi/adc.cgi" METHOD="GET" >
+<TR>
+<TD class="tdc1"></TD><TD class="tdc2"></TD>
+<TD class="tdc1">
+<Input type="Button" name="Test_BT" value="E-Mail Test" onclick="MySubmit('A_SMTP_TEST')">
+<input type="hidden" name="test_act"style="width:20px">
+</TD>
+<TD class="tdc2"></TD>
+</TR>
+</TABLE>
+<BR>
+</FORM>
+<?CGI_END?>
+
+
+</body>
+
+</html>

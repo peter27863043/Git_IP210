@@ -1,0 +1,273 @@
+<html>
+<style type='text/css'>
+form {
+  margin:0px; 
+  padding: 0 5px;
+}
+
+td.tdc1{
+	width:150px;
+	ALIGN="left;
+}
+
+td.tdc2{
+	width:250px;
+	ALIGN="left;
+}
+</style>
+
+<HEAD>
+</HEAD><body>
+<body>
+<script type="text/javascript">
+<!--
+
+function MySubmit(FORM_ID){
+	document.getElementById(FORM_ID).submit();
+}
+
+function MyUPSubmit(FORM_ID,ACT_ID){
+	var objtext = document.getElementById(ACT_ID);
+	objtext.value = "1";
+	document.getElementById(FORM_ID).submit();
+}
+
+function MyDWSubmit(FORM_ID,ACT_ID){
+	var objtext = document.getElementById(ACT_ID);
+	objtext.value = "0";
+	document.getElementById(FORM_ID).submit();
+}
+
+function ValeCheck100(TEXT_ID){
+var obj = document.getElementById(TEXT_ID);
+
+	obj.value=obj.value.replace(/[^\d]/g,'')
+	if(obj.value>98)
+		obj.value="98"
+	if((obj.value=="")||(obj.value==0))
+		obj.value="1"
+}
+
+function MyUPSubmitData(FORM_ID,ACT_ID,VAL_ID,MaxData){
+	var objtext = document.getElementById(ACT_ID);
+	var objtextIn = document.getElementById(VAL_ID);
+	if(objtextIn.value != MaxData) {
+		objtext.value = "1";
+		document.getElementById(FORM_ID).submit();
+	}
+}
+
+function MyDWSubmitData(FORM_ID,ACT_ID,VAL_ID,MinData){
+	var objtext = document.getElementById(ACT_ID);
+	var objtextIn = document.getElementById(VAL_ID);
+	if(objtextIn.value != MinData) {
+		objtext.value = "0";
+		document.getElementById(FORM_ID).submit();
+	}
+}
+
+
+-->
+</script>
+
+<div>
+<p><h2>Screen</h2>
+</div>
+
+<TABLE cellSpacing=0 border=1 cellpadding=5>
+<TR>
+<TD class="tdc1"><b>Display Wall</b></TD><TD class="tdc2"></TD><TD class="tdc1"><b>Aspect</b></TD><TD class="tdc2"></TD>
+</TR>
+
+<TR>
+<TD class="tdc1">H Monitors</TD>
+<TD class="tdc2">
+
+<FORM ID="U_HMS" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('U_HMS')" METHOD="GET"><?CGI_UDP_TEL?>
+<Input type="Button" name="hms_up" value="+" onclick="MyUPSubmitData('U_HMS','hms_ctr','hms_val_id','10')">
+<input type="text"   name="hms_val"style="width:70px" value="[CGI_UDP_TEL_HMS]" readonly id="hms_val_id">
+<Input type="Button" name="hms_dw" value="-" onclick="MyDWSubmitData('U_HMS','hms_ctr','hms_val_id','1')">
+<input type="hidden" name="hms_act"style="width:20px" id="hms_ctr">
+<?CGI_END?></FORM>
+
+
+
+</TD>
+<TD class="tdc1">Aspect Ratio</TD>
+<TD class="tdc2">
+<FORM ID="U_ASP" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('U_ASP')" METHOD="GET"><?CGI_UDP_TEL?>
+<select name="asp_sel">
+  <option value="0" [CGI_UDP_TEL_ASP_1]>Wide</option>
+  <option value="1" [CGI_UDP_TEL_ASP_2]>4:3</option>
+  <option value="2" [CGI_UDP_TEL_ASP_3]>Super Live</option>
+  <option value="3" [CGI_UDP_TEL_ASP_4]>Native</option>
+  <option value="4" [CGI_UDP_TEL_ASP_5]>PC Normal</option>
+  <option value="5" [CGI_UDP_TEL_ASP_6]>Dot by Dot</option>
+  <option value="6" [CGI_UDP_TEL_ASP_7]>PC Wide</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+</TR>
+
+<TR>
+<TD class="tdc1">V Monitors</TD>
+<TD class="tdc2">
+<FORM ID="U_VMS" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('U_VMS')" METHOD="GET"><?CGI_UDP_TEL?>
+<Input type="Button" name="vms_up" value="+" onclick="MyUPSubmitData('U_VMS','vms_ctr','vms_val_id','10')">
+<input type="text"   name="vms_val"style="width:70px" value="[CGI_UDP_TEL_VMS]" readonly id="vms_val_id">
+<Input type="Button" name="vms_dw" value="-" onclick="MyDWSubmitData('U_VMS','vms_ctr','vms_val_id','1')">
+<input type="hidden" name="vms_act"style="width:20px" id="vms_ctr">
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1"></TD>
+<TD class="tdc2"></TD>
+</TR>
+
+<TR>
+<TD class="tdc1">H Position</TD>
+<TD class="tdc2">
+<FORM ID="U_HPS" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('U_HPS')" METHOD="GET"><?CGI_UDP_TEL?>
+<Input type="Button" name="hps_up" value="+" onclick="MyUPSubmit('U_HPS','hps_ctr','hps_val_id','10')">
+<input type="text"   name="hps_val"style="width:70px" value="[CGI_UDP_TEL_HPS]" readonly id="hps_val_id">
+<Input type="Button" name="hps_dw" value="-" onclick="MyDWSubmit('U_HPS','hps_ctr','hps_val_id','1')">
+<input type="hidden" name="hps_act"style="width:20px" id="hps_ctr">
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1"></TD>
+<TD class="tdc2"></TD>
+</TR>
+
+<TR>
+<TD class="tdc1">V Position</TD>
+<TD class="tdc2">
+<FORM ID="U_VPS" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('U_VPS')" METHOD="GET"><?CGI_UDP_TEL?>
+<Input type="Button" name="vps_up" value="+" onclick="MyUPSubmitData('U_VPS','vps_ctr','vps_val_id','10')">
+<input type="text"   name="vps_val"style="width:70px" value="[CGI_UDP_TEL_VPS]" readonly id="vps_val_id">
+<Input type="Button" name="vps_dw" value="-" onclick="MyDWSubmitData('U_VPS','vps_ctr','vps_val_id','1')">
+<input type="hidden" name="vps_act"style="width:20px" id="vps_ctr">
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1"></TD>
+<TD class="tdc2"></TD>
+</TR>
+
+<TR>
+<TD class="tdc1">Frame Comp.</TD>
+<TD class="tdc2">
+<FORM ID="U_FRC" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('U_FRC')" METHOD="GET"><?CGI_UDP_TEL?>
+<select name="frc_sel">
+  <option value="0" [CGI_UDP_TEL_FRC_1]>Off</option>
+  <option value="1" [CGI_UDP_TEL_FRC_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1"></TD>
+<TD class="tdc2"></TD>
+</TR>
+
+<TR>
+<TD class="tdc1">LED</TD>
+<TD class="tdc2">
+<FORM ID="U_LED" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('U_LED')" METHOD="GET"><?CGI_UDP_TEL?>
+<select name="led_sel">
+  <option value="0" [CGI_UDP_TEL_LED_1]>Off</option>
+  <option value="1" [CGI_UDP_TEL_LED_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1"></TD>
+<TD class="tdc2"></TD>
+</TR>
+
+<TR>
+<TD class="tdc1">Power On Delay</TD>
+<TD class="tdc2">
+<FORM ID="U_POD" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('U_POD')" METHOD="GET"><?CGI_UDP_TEL?>
+<select name="pod_sel">
+  <option value="0" [CGI_UDP_TEL_POD_1]>Off</option>
+  <option value="1" [CGI_UDP_TEL_POD_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1"></TD>
+<TD class="tdc2"></TD>
+</TR>
+
+<TR>
+<TD class="tdc1">Contrast Booster</TD>
+<TD class="tdc2">
+<FORM ID="U_CTB" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('U_CTB')" METHOD="GET"><?CGI_UDP_TEL?>
+<select name="ctb_sel">
+  <option value="0" [CGI_UDP_TEL_CTB_1]>Off</option>
+  <option value="1" [CGI_UDP_TEL_CTB_2]>Low</option>
+  <option value="2" [CGI_UDP_TEL_CTB_3]>Middle</option>
+  <option value="3" [CGI_UDP_TEL_CTB_4]>High</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1"></TD>
+<TD class="tdc2"></TD>
+</TR>
+
+<TR>
+<TD class="tdc1">Blue Screen</TD>
+<TD class="tdc2">
+<FORM ID="U_BLS" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('U_BLS')" METHOD="GET"><?CGI_UDP_TEL?>
+<select name="bls_sel">
+  <option value="0" [CGI_UDP_TEL_BLS_1]>Off</option>
+  <option value="1" [CGI_UDP_TEL_BLS_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1"></TD>
+<TD class="tdc2"></TD>
+</TR>
+
+<TR>
+<TD class="tdc1">Freeze</TD>
+<TD class="tdc2">
+<FORM ID="U_FRE" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('U_FRE')" METHOD="GET"><?CGI_UDP_TEL?>
+<select name="fre_sel">
+  <option value="0" [CGI_UDP_TEL_FRE_1]>Off</option>
+  <option value="1" [CGI_UDP_TEL_FRE_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1"></TD>
+<TD class="tdc2"></TD>
+</TR>
+
+<TR>
+<TD class="tdc1">3D Color Management</TD>
+<TD class="tdc2">
+<FORM ID="U_M3D" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('U_M3D')" METHOD="GET"><?CGI_UDP_TEL?>
+<select name="m3d_sel">
+  <option value="0" [CGI_UDP_TEL_M3D_1]>Off</option>
+  <option value="1" [CGI_UDP_TEL_M3D_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1"></TD>
+<TD class="tdc2"></TD>
+</TR>
+
+<TR>
+<TD class="tdc1">Active Backlight Control</TD>
+<TD class="tdc2">
+<FORM ID="U_ABC" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('U_ABC')" METHOD="GET"><?CGI_UDP_TEL?>
+<select name="abc_sel">
+  <option value="0" [CGI_UDP_TEL_ABC_1]>Off</option>
+  <option value="1" [CGI_UDP_TEL_ABC_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1"></TD>
+<TD class="tdc2"></TD>
+</TR>
+
+
+</TABLE>
+
+<br>
+</body>
+</html>

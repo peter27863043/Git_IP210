@@ -1,0 +1,172 @@
+<html>
+<style type='text/css'>
+form {
+  margin:0px; 
+  padding: 0 5px;
+}
+
+td.tdc1{
+	width:150px;
+	text-align:left;
+}
+
+td.tdc2{
+	width:250px;
+	text-align:left;
+}
+</style>
+<HEAD>
+<script language="JavaScript">
+function MySubmit(FORM_ID){
+	document.getElementById(FORM_ID).submit();
+}
+
+function MyUPSubmit(FORM_ID,ACT_ID){
+	var objtext = document.getElementById(ACT_ID);
+	objtext.value = "1";
+	document.getElementById(FORM_ID).submit();
+}
+
+function MyDWSubmit(FORM_ID,ACT_ID){
+	var objtext = document.getElementById(ACT_ID);
+	objtext.value = "0";
+	document.getElementById(FORM_ID).submit();
+}
+
+function ValeCheck100(TEXT_ID){
+var obj = document.getElementById(TEXT_ID);
+
+	obj.value=obj.value.replace(/[^\d]/g,'')
+	if(obj.value>98)
+		obj.value="98"
+	if((obj.value=="")||(obj.value==0))
+		obj.value="1"
+}
+</script>
+</HEAD>
+<body>
+<div>
+<p><h2>Setting</h2>
+</div>
+<TABLE cellSpacing=0 border=1 cellpadding=5>
+<TR>
+<TD class="tdc1"><b>Setting</b></TD><TD class="tdc2"></TD><TD class="tdc1"><b></b></TD><TD class="tdc2"></TD>
+</TR>
+<TR>
+<TD class="tdc1">Monitor ID</TD>
+<TD class="tdc2">
+<FORM ID="A_MID" ACTION="/cgi/uart.cgi" onchange="MySubmit('A_MID')" METHOD="GET"><?CGI_UART?>
+<input type="text" onkeyup="ValeCheck100('mid_val_id')" id= "mid_val_id" name="mid_val" style="width:70px" value="[CGI_UART_MID]" >
+<Input type="Button" name="mid_dw" value="SET" onclick="MySubmit('A_MID')">
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">Anti Image Retention</TD>
+<TD class="tdc2">
+<FORM ID="A_IMR" ACTION="/cgi/uart.cgi" METHOD="GET"><?CGI_UART?>
+<select name="imr_sel" onchange="MySubmit('A_IMR')" >
+  <option value="0" [CGI_UART_IMR_1]>Off</option>
+  <option value="1" [CGI_UART_IMR_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+</TR>
+<TR>
+<TD class="tdc1">Power Save</TD>
+<TD class="tdc2">
+<FORM ID="A_PWS" ACTION="/cgi/uart.cgi" METHOD="GET"><?CGI_UART?>
+<select name="pws_sel" onchange="MySubmit('A_PWS')" >
+  <option value="0" [CGI_UART_PWS_1]>Low</option>
+  <option value="1" [CGI_UART_PWS_2]>High</option>
+  <option value="2" [CGI_UART_PWS_3]>Off</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">OSD Info Box</TD>
+<TD class="tdc2">
+<FORM ID="A_OSD" ACTION="/cgi/uart.cgi" METHOD="GET"><?CGI_UART?>
+<select name="osd_sel" onchange="MySubmit('A_OSD')" >
+  <option value="0" [CGI_UART_OSD_1]>Off</option>
+  <option value="1" [CGI_UART_OSD_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+</TR>
+<TR>
+<TD class="tdc1">Ambient Light Sensor</TD>
+<TD class="tdc2">
+<FORM ID="A_LTS" ACTION="/cgi/uart.cgi" METHOD="GET"><?CGI_UART?>
+<select name="lts_sel" onchange="MySubmit('A_LTS')" >
+  <option value="0" [CGI_UART_LTS_1]>Off</option>
+  <option value="1" [CGI_UART_LTS_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">Touch Feature </TD>
+<TD class="tdc2">
+<FORM ID="A_TCH" ACTION="/cgi/uart.cgi" METHOD="GET"><?CGI_UART?>
+<select name="tch_sel" onchange="MySubmit('A_TCH')" [CGI_UART_TCH_CONTROL]>
+  <option value="0" [CGI_UART_TCH_1]>Off</option>
+  <option value="1" [CGI_UART_TCH_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+</TR>
+<TR>
+<TD class="tdc1">Language</TD>
+<TD class="tdc2">
+<FORM ID="A_LAG" ACTION="/cgi/uart.cgi" METHOD="GET"><?CGI_UART?>
+<select name="lag_sel" onchange="MySubmit('A_LAG')" >
+  <option value="0"  [CGI_UART_LAG_1]>English</option>
+  <option value="1"  [CGI_UART_LAG_2]>French</option>
+  <option value="2"  [CGI_UART_LAG_3]>German</option>
+  <option value="3"  [CGI_UART_LAG_4]>Dutch</option>
+  <option value="4"  [CGI_UART_LAG_5]>Polish</option>
+  <option value="5"  [CGI_UART_LAG_6]>Russia</option>
+  <option value="6"  [CGI_UART_LAG_7]>Czech</option>
+  <option value="7"  [CGI_UART_LAG_8]>Italian</option>
+  <option value="8"  [CGI_UART_LAG_9]>Japanse</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">
+<FORM ID="A_AUTO_RUN" ACTION="/cgi/uart.cgi" onchange="MySubmit('A_AUTO_RUN')" METHOD="GET"><?CGI_UART?>
+<Input type="Button" name="AAE_dw" onclick="MyUPSubmit('A_AUTO_RUN','aae_ctr')" value="Auto Adjustment Execute" " [CGI_UART_SYNC_AUTO_ADJ]>
+<input type="hidden" name="aae_act"style="width:20px" id="aae_ctr">
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc2"></TD>
+</TR>
+<TR>
+<TD class="tdc1">IR Out</TD>
+<TD class="tdc2">
+<FORM ID="A_IRO" ACTION="/cgi/uart.cgi" METHOD="GET"><?CGI_UART?>
+<select name="iro_sel" onchange="MySubmit('A_IRO')" >
+  <option value="0" [CGI_UART_IRO_1]>Off</option>
+  <option value="1" [CGI_UART_IRO_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">
+
+<FORM ID="A_ALL_RST" ACTION="/cgi/uart.cgi" onchange="MySubmit('A_ALL_RST')" METHOD="GET"><?CGI_UART?>
+<Input type="Button" name="ARE_dw" onclick="MyUPSubmit('A_ALL_RST','are_ctr')" value="Reset to Default" ">
+<input type="hidden" name="are_act"style="width:20px" id="are_ctr">
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc2"></TD>
+</TR>
+<TR>
+<TD class="tdc1">Automatic Power Down</TD>
+<TD class="tdc2">
+<FORM ID="A_APD" ACTION="/cgi/uart.cgi" METHOD="GET"><?CGI_UART?>
+<select name="apd_sel" onchange="MySubmit('A_APD')" >
+  <option value="0" [CGI_UART_APD_1]>Off</option>
+  <option value="1" [CGI_UART_APD_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1"></TD>
+<TD class="tdc2"></TD>
+</TR>
+</TABLE>
+</body></html>

@@ -1,0 +1,2243 @@
+### uVision2 Project, (C) Keil Software
+### Do not modify !
+
+Target (WebCtrl), 0x0000 // Tools: 'MCS-51'
+
+Group (Main)
+Group (Sys)
+Group (FileSys)
+Group (uIP)
+Group (HttpServer)
+Group (cbkfunc)
+Group (utility)
+Group (net_uart)
+Group (NetCmd)
+Group (smtp)
+Group (snmp_trap)
+
+File 1,1,<..\..\src_code\main\main.c><main.c> 0x0 
+File 1,2,<..\..\src_code\main\patch_info.a51><patch_info.a51> 0x0 
+File 1,1,<..\..\src_code\main\ee_process.c><ee_process.c> 0x0 
+File 1,1,<..\..\src_code_flash\main\firmware_rev.c><firmware_rev.c> 0x0 
+File 1,2,<..\..\src_code_flash\main\L51_BANK.A51><L51_BANK.A51> 0x0 
+File 1,2,<..\..\src_code_flash\main\STARTUP.A51><STARTUP.A51> 0x0 
+File 1,1,<..\..\src_code\main\ee_default.c><ee_default.c> 0x0 
+File 2,1,<..\..\src_code\Sys\dma.c><dma.c> 0x0 
+File 2,1,<..\..\src_code\Sys\eeprom.c><eeprom.c> 0x0 
+File 2,1,<..\..\src_code\Sys\serial.c><serial.c> 0x0 
+File 2,1,<..\..\src_code\Sys\MACdriver.c><MACdriver.c> 0x0 
+File 2,1,<..\..\src_code\Sys\timer.c><timer.c> 0x0 
+File 2,1,<..\..\src_code\Sys\uart.c><uart.c> 0x0 
+File 2,1,<..\..\src_code\Sys\MDC_MDIO.c><MDC_MDIO.c> 0x0 
+File 2,1,<..\..\src_code\Sys\os_cbk.c><os_cbk.c> 0x0 
+File 2,1,<..\..\src_code\Sys\vtag.c><vtag.c> 0x0 
+File 3,1,<..\..\src_code\FileSys\fs32.c><fs32.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles0.c><htmfiles0.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles1.c><htmfiles1.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles2.c><htmfiles2.c> 0x0 
+File 3,1,<..\..\src_code\FileSys\htmfiles3.c><htmfiles3.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles4.c><htmfiles4.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles5.c><htmfiles5.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles6.c><htmfiles6.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles7.c><htmfiles7.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles8.c><htmfiles8.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles9.c><htmfiles9.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles10.c><htmfiles10.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles11.c><htmfiles11.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles12.c><htmfiles12.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles13.c><htmfiles13.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles14.c><htmfiles14.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles15.c><htmfiles15.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles16.c><htmfiles16.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles17.c><htmfiles17.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles18.c><htmfiles18.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles19.c><htmfiles19.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles20.c><htmfiles20.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles21.c><htmfiles21.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles22.c><htmfiles22.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles23.c><htmfiles23.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles24.c><htmfiles24.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles25.c><htmfiles25.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles26.c><htmfiles26.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles27.c><htmfiles27.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles28.c><htmfiles28.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles29.c><htmfiles29.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles30.c><htmfiles30.c> 0x0 
+File 3,1,<..\..\src_code_flash\FileSys\htmfiles31.c><htmfiles31.c> 0x0 
+File 4,1,<..\..\src_code\uIP\uip.c><uip.c> 0x0 
+File 4,1,<..\..\src_code\uIP\uip_arp.c><uip_arp.c> 0x0 
+File 4,1,<..\..\src_code\uIP\muip.c><muip.c> 0x0 
+File 5,1,<..\..\src_code\HttpServer\cgi.c><cgi.c> 0x0 
+File 5,1,<..\..\src_code\HttpServer\cgiutil.c><cgiutil.c> 0x0 
+File 5,1,<..\..\src_code\HttpServer\challenge.c><challenge.c> 0x0 
+File 5,1,<..\..\src_code\HttpServer\cookie.c><cookie.c> 0x0 
+File 5,1,<..\..\src_code\HttpServer\httpd.c><httpd.c> 0x0 
+File 5,1,<..\..\src_code\HttpServer\application.c><application.c> 0x0 
+File 5,1,<..\..\src_code\HttpServer\httpd_app.c><httpd_app.c> 0x0 
+File 5,1,<..\..\src_code\HttpServer\checksum.c><checksum.c> 0x0 
+File 6,1,<..\..\src_code\cbkfunc\loginCbk.c><loginCbk.c> 0x0 
+File 6,1,<..\..\src_code\cbkfunc\errormsgCbk.c><errormsgCbk.c> 0x0 
+File 6,1,<..\..\src_code\cbkfunc\uartCbk.c><uartCbk.c> 0x0 
+File 6,1,<..\..\src_code\cbkfunc\telnetCbk.c><telnetCbk.c> 0x0 
+File 6,1,<..\..\src_code\cbkfunc\setDefCbk.c><setDefCbk.c> 0x0 
+File 6,1,<..\..\src_code\cbkfunc\setIPCbk.c><setIPCbk.c> 0x0 
+File 6,1,<..\..\src_code\cbkfunc\setPASSCbk.c><setPASSCbk.c> 0x0 
+File 6,1,<..\..\src_code\cbkfunc\statusCbk.c><statusCbk.c> 0x0 
+File 6,1,<..\..\src_code\cbkfunc\smtpCbk.c><smtpCbk.c> 0x0 
+File 6,1,<..\..\src_code_flash\cbkfunc\fw_upCbk.c><fw_upCbk.c> 0x0 
+File 6,1,<..\..\src_code\cbkfunc\adcCbk.c><adcCbk.c> 0x0 
+File 6,1,<..\..\src_code\cbkfunc\udp_telCbk.c><udp_telCbk.c> 0x0 
+File 6,1,<..\..\src_code\cbkfunc\didoCbk.c><didoCbk.c> 0x0 
+File 6,1,<..\..\src_code\cbkfunc\CommandLine.c><CommandLine.c> 0x0 
+File 6,1,<..\..\src_code\cbkfunc\noserviceCbk.c><noserviceCbk.c> 0x0 
+File 6,1,<..\..\src_code\cbkfunc\noservice2Cbk.c><noservice2Cbk.c> 0x0 
+File 6,1,<..\..\src_code\cbkfunc\noservice6Cbk.c><noservice6Cbk.c> 0x0 
+File 6,1,<..\..\src_code\cbkfunc\noservice3Cbk.c><noservice3Cbk.c> 0x0 
+File 6,1,<..\..\src_code\cbkfunc\noservice4Cbk.c><noservice4Cbk.c> 0x0 
+File 6,1,<..\..\src_code\cbkfunc\noservice5Cbk.c><noservice5Cbk.c> 0x0 
+File 7,1,<..\..\src_code\utility\utility.c><utility.c> 0x0 
+File 8,1,<..\..\src_code\net_uart\udp.c><udp.c> 0x0 
+File 8,1,<..\..\src_code\net_uart\dhcpc.c><dhcpc.c> 0x0 
+File 8,1,<..\..\src_code\net_uart\gpio.c><gpio.c> 0x0 
+File 8,1,<..\..\src_code\net_uart\dns.c><dns.c> 0x0 
+File 8,1,<..\..\src_code\net_uart\wdg.c><wdg.c> 0x0 
+File 8,1,<..\..\src_code\net_uart\netuart_ctrl.c><netuart_ctrl.c> 0x0 
+File 8,1,<..\..\src_code\net_uart\dido.c><dido.c> 0x0 
+File 8,4,<..\..\Project\WebCtrl_flash_2M\LIB\NETUART.LIB><NETUART.LIB> 0x5109095A 
+File 8,4,<..\..\Project\WebCtrl_flash_2M\LIB\UDP_TEL.LIB><UDP_TEL.LIB> 0x5109095A 
+File 8,1,<..\..\src_code\net_uart\telnet.c><telnet.c> 0x5631861E 
+File 9,1,<..\..\src_code\NetCmd\net_cmd.c><net_cmd.c> 0x0 
+File 10,1,<..\..\src_code\smtp\smtp.c><smtp.c> 0x0 
+File 10,1,<..\..\src_code\smtp\base64.c><base64.c> 0x0 
+File 10,1,<..\..\src_code\smtp\cram_md5.c><cram_md5.c> 0x0 
+File 11,1,<..\..\src_code\snmp_trap\snmp_trap.c><snmp_trap.c> 0x0 
+
+
+Options 1,0,0  // Target 'WebCtrl'
+ Device (8052 (all Variants))
+ Vendor (Generic)
+ Cpu (IRAM(0-0xFF) IROM(0-0x1FFF) CLOCK(12000000))
+ FlashUt ()
+ StupF ("LIB\STARTUP.A51" ("Standard 8051 Startup Code"))
+ FlashDR ()
+ DevID ()
+ Rgf (REG52.H)
+ Mem ()
+ C ()
+ A ()
+ RL ()
+ OH ()
+ DBC_IFX ()
+ DBC_CMS ()
+ DBC_AMS ()
+ DBC_LMS ()
+ UseEnv=0
+ EnvBin ()
+ EnvInc ()
+ EnvLib ()
+ EnvReg ()
+ OrgReg ()
+ TgStat=16
+ OutDir (.\obj\)
+ OutName (NetUART)
+ GenApp=1
+ GenLib=0
+ GenHex=1
+ Debug=1
+ Browse=1
+ LstDir (.\)
+ HexSel=0
+ MG32K=0
+ TGMORE=0
+ RunUsr 0 0 <>
+ RunUsr 1 0 <.\8b.bat .\exe>
+ BrunUsr 0 0 <>
+ BrunUsr 1 0 <>
+ SVCSID <>
+ MODEL5=2
+ RTOS5=0
+ ROMSZ5=2
+ DHOLD5=0
+ XHOLD5=0
+ T51FL=8272
+ XT51FL=0
+ CBANKS5=4
+ XBANKS5=0
+ RCB51 { 0,0,80,0,0,0,255,0,0 }
+ RXB51 { 0,0,0,0,0,0,0,0,0 }
+ OCM51 { 0,0,0,0,0,0,80,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ OCR51 { 0,0,0,0,0,0,59,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IRO51 { 1,0,0,0,0,0,32,0,0 }
+ IRA51 { 0,0,0,0,0,0,1,0,0 }
+ XRA51 { 0,0,0,0,0,0,0,0,0 }
+ XRA512 { 0,0,0,0,0,0,0,0,0 }
+ IROM512 { 0,0,0,0,0,0,0,0,0 }
+ C51FL=21630208
+ C51VA=0
+ C51MSC (IV(0x2000))
+ C51DEF (_BUF_OPT,SYSTEM_CLOCK_59M=1,WEB_CONTROL,EEPROM_P3_6_7=1,FLASH_512,FLASH_2M)
+ C51UDF ()
+ INCC5 (..\..\src_code\uIP\;..\..\src_code\include\;..\..\src_code\HttpServer\;..\..\src_code\FileSys\;..\..\src_code\Sys;..\..\src_code\utility;..\..\src_code\main;..\..\src_code\HtmCfiles\;..\..\src_code\net_uart\)
+ AX51FL=4
+ AX51MSC ()
+ AX51SET ()
+ AX51RST ()
+ INCA5 (..\..\src_code\include\)
+ PropFld { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=1
+ AlwaysBuild=0
+ GenAsm=0
+ AsmAsm=0
+ PublicsOnly=0
+ StopCode=3
+ CustArgs ()
+ LibMods ()
+ BankNo=65535
+ LX51FL=292
+ LX51OVL ()
+ LX51MSC (NOOVERLAY,\~BANK0(?CO?htmfiles0 (0x5000),?CO?firmware_rev (0x6000))\~BANK1(?CO?htmfiles1 (0x5000))\~BANK2(?CO?htmfiles2 (0x5000))\~BANK3(?CO?htmfiles3 (0x5000))\~BANK4(?CO?htmfiles4 (0x5000))\~BANK5(?CO?htmfiles5 (0x5000))\~BANK6(?CO?htmfiles6 (0x5000))\~BANK7(?CO?htmfiles7 (0x5000))\~BANK8(?CO?htmfiles8 (0x5000))\~BANK9(?CO?htmfiles9 (0x5000))\~BANK10(?CO?htmfiles10 (0x5000))\~BANK11(?CO?htmfiles11 (0x5000))\~BANK12(?CO?htmfiles12 (0x5000))\~BANK13(?CO?htmfiles13 (0x5000))\~BANK14(?CO?htmfiles14 (0x5000))\~BANK15(?CO?htmfiles15 (0x5000))\~BANK16(?CO?htmfiles16 (0x5000))\~BANK17(?CO?htmfiles17 (0x5000))\~BANK18(?CO?htmfiles18 (0x5000))\~BANK19(?CO?htmfiles19 (0x5000))\~BANK20(?CO?htmfiles20 (0x5000))\~BANK21(?CO?htmfiles21 (0x5000))\~BANK22(?CO?htmfiles22 (0x5000))\~BANK23(?CO?htmfiles23 (0x5000))\~BANK24(?CO?htmfiles24 (0x5000))\~BANK25(?CO?htmfiles25 (0x5000))\~BANK26(?CO?htmfiles26 (0x5000))\~BANK27(?CO?htmfiles27 (0x5000))\~BANK28(?CO?htmfiles28 (0x5000))\~BANK29(?CO?htmfiles29 (0x5000))\~BANK30(?CO?htmfiles30 (0x5000))\~BANK31(?CO?htmfiles31 (0x5000)))
+ LX51DWN ()
+ LX51LFI ()
+ LX51ASN ()
+ LX51RES ()
+ LX51CCL ()
+ LX51UCL ()
+ LX51CSC ()
+ LX51UCS ()
+ LX51COB (0X0000-0X4FFF)
+ LX51XDB (0X0000-0X3AFF)
+ LX51PDB ()
+ LX51BIB ()
+ LX51DAB ()
+ LX51IDB ()
+ LX51PRC ()
+ LX51STK ()
+ LX51COS ()
+ LX51XDS ()
+ LX51BIS ()
+ LX51DAS ()
+ LX51IDS ()
+  OPTDL (S8051.DLL)()(DP51.DLL)(-p52)(S8051.DLL)()(TP51.DLL)(-p52)
+  OPTDBG 44029,-1,()()()()()()()()()() (BIN\MON51.DLL)()()()
+ FLASH1 { 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ FLASH2 ()
+ FLASH3 ("" ())
+ FLASH4 ()
+EndOpt
+
+Options 1,1,0  // Group 'Main'
+ PropFld { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+ AX51FL=170
+ AX51MSC ()
+ AX51SET ()
+ AX51RST ()
+ INCA5 ()
+EndOpt
+
+Options 1,2,0  // Group 'Sys'
+ PropFld { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+ AX51FL=170
+ AX51MSC ()
+ AX51SET ()
+ AX51RST ()
+ INCA5 ()
+EndOpt
+
+Options 1,3,0  // Group 'FileSys'
+ PropFld { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+ AX51FL=170
+ AX51MSC ()
+ AX51SET ()
+ AX51RST ()
+ INCA5 ()
+EndOpt
+
+Options 1,4,0  // Group 'uIP'
+ PropFld { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+ AX51FL=170
+ AX51MSC ()
+ AX51SET ()
+ AX51RST ()
+ INCA5 ()
+EndOpt
+
+Options 1,5,0  // Group 'HttpServer'
+ PropFld { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+ AX51FL=170
+ AX51MSC ()
+ AX51SET ()
+ AX51RST ()
+ INCA5 ()
+EndOpt
+
+Options 1,6,0  // Group 'cbkfunc'
+ PropFld { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+ AX51FL=170
+ AX51MSC ()
+ AX51SET ()
+ AX51RST ()
+ INCA5 ()
+EndOpt
+
+Options 1,7,0  // Group 'utility'
+ PropFld { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+ AX51FL=170
+ AX51MSC ()
+ AX51SET ()
+ AX51RST ()
+ INCA5 ()
+EndOpt
+
+Options 1,8,0  // Group 'net_uart'
+ PropFld { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=3
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+ AX51FL=170
+ AX51MSC ()
+ AX51SET ()
+ AX51RST ()
+ INCA5 ()
+EndOpt
+
+Options 1,9,0  // Group 'NetCmd'
+ PropFld { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=3
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+ AX51FL=170
+ AX51MSC ()
+ AX51SET ()
+ AX51RST ()
+ INCA5 ()
+EndOpt
+
+Options 1,10,0  // Group 'smtp'
+ PropFld { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=3
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+ AX51FL=170
+ AX51MSC ()
+ AX51SET ()
+ AX51RST ()
+ INCA5 ()
+EndOpt
+
+Options 1,11,0  // Group 'snmp_trap'
+ PropFld { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=3
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+ AX51FL=170
+ AX51MSC ()
+ AX51SET ()
+ AX51RST ()
+ INCA5 ()
+EndOpt
+
+Options 1,1,1  // File 'main.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,1,2  // File 'patch_info.a51'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ AX51FL=170
+ AX51MSC ()
+ AX51SET ()
+ AX51RST ()
+ INCA5 ()
+EndOpt
+
+Options 1,1,3  // File 'ee_process.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,1,4  // File 'firmware_rev.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=1
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,1,5  // File 'L51_BANK.A51'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=0
+ AX51FL=170
+ AX51MSC ()
+ AX51SET ()
+ AX51RST ()
+ INCA5 ()
+EndOpt
+
+Options 1,1,6  // File 'STARTUP.A51'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=0
+ AX51FL=170
+ AX51MSC ()
+ AX51SET ()
+ AX51RST ()
+ INCA5 ()
+EndOpt
+
+Options 1,2,8  // File 'dma.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,2,9  // File 'eeprom.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,2,10  // File 'serial.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,2,11  // File 'MACdriver.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,2,12  // File 'timer.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,2,13  // File 'uart.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,2,14  // File 'MDC_MDIO.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,2,15  // File 'os_cbk.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,2,16  // File 'vtag.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,17  // File 'fs32.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,18  // File 'htmfiles0.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=1
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,19  // File 'htmfiles1.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,20  // File 'htmfiles2.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=3
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,21  // File 'htmfiles3.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=4
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,22  // File 'htmfiles4.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=5
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,23  // File 'htmfiles5.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=6
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,24  // File 'htmfiles6.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=7
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,25  // File 'htmfiles7.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=8
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,26  // File 'htmfiles8.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=9
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,27  // File 'htmfiles9.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=10
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,28  // File 'htmfiles10.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=11
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,29  // File 'htmfiles11.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=12
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,30  // File 'htmfiles12.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=13
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,31  // File 'htmfiles13.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=14
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,32  // File 'htmfiles14.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=15
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,33  // File 'htmfiles15.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=16
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,34  // File 'htmfiles16.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=17
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,35  // File 'htmfiles17.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=18
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,36  // File 'htmfiles18.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=19
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,37  // File 'htmfiles19.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=20
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,38  // File 'htmfiles20.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=21
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,39  // File 'htmfiles21.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=22
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,40  // File 'htmfiles22.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=23
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,41  // File 'htmfiles23.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=24
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,42  // File 'htmfiles24.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=25
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,43  // File 'htmfiles25.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=26
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,44  // File 'htmfiles26.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=27
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,45  // File 'htmfiles27.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=28
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,46  // File 'htmfiles28.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=29
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,47  // File 'htmfiles29.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=30
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,48  // File 'htmfiles30.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=31
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,3,49  // File 'htmfiles31.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=32
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,4,50  // File 'uip.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,4,51  // File 'uip_arp.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=7
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,5,53  // File 'cgi.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,5,54  // File 'cgiutil.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,5,55  // File 'challenge.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,5,56  // File 'cookie.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,5,57  // File 'httpd.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,5,58  // File 'application.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,5,59  // File 'httpd_app.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,5,60  // File 'checksum.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=6
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,6,61  // File 'loginCbk.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,6,62  // File 'errormsgCbk.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,6,63  // File 'uartCbk.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=13
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,6,64  // File 'telnetCbk.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=11
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,6,65  // File 'setDefCbk.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=6
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,6,66  // File 'setIPCbk.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,6,67  // File 'setPASSCbk.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,6,68  // File 'statusCbk.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,6,69  // File 'smtpCbk.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,6,70  // File 'fw_upCbk.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,6,71  // File 'adcCbk.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=15
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,6,72  // File 'udp_telCbk.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=12
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,6,73  // File 'didoCbk.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,6,74  // File 'CommandLine.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=7
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,6,75  // File 'noserviceCbk.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=13
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,6,76  // File 'noservice2Cbk.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=13
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,6,77  // File 'noservice6Cbk.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=13
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,6,78  // File 'noservice3Cbk.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=13
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,6,79  // File 'noservice4Cbk.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=13
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,6,80  // File 'noservice5Cbk.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=13
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,7,81  // File 'utility.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=2
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,8,82  // File 'udp.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=3
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,8,83  // File 'dhcpc.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=3
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,8,84  // File 'gpio.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=3
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,8,85  // File 'dns.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=3
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,8,86  // File 'wdg.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=3
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,8,88  // File 'dido.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=6
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,8,89  // File 'NETUART.LIB'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=3
+EndOpt
+
+Options 1,8,90  // File 'UDP_TEL.LIB'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=3
+EndOpt
+
+Options 1,8,91  // File 'telnet.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=3
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,9,92  // File 'net_cmd.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=6
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,10,93  // File 'smtp.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=3
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,10,94  // File 'base64.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=3
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,10,95  // File 'cram_md5.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=3
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+
+Options 1,11,96  // File 'snmp_trap.c'
+ PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=2
+ AlwaysBuild=2
+ GenAsm=2
+ AsmAsm=2
+ PublicsOnly=2
+ StopCode=11
+ CustArgs ()
+ LibMods ()
+ BankNo=3
+ C51FL=177119914
+ C51VA=0
+ C51MSC ()
+ C51DEF ()
+ C51UDF ()
+ INCC5 ()
+EndOpt
+

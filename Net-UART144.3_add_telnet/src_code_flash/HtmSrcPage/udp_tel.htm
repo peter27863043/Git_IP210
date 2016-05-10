@@ -1,0 +1,310 @@
+<html>
+<style type='text/css'>
+form {
+  margin:0px; 
+  padding: 0 5px;
+}                                                              
+
+td.tdc1{
+	width:150px;
+	text-align:left;
+}
+
+td.tdc2{
+	width:250px;
+	text-align:left;
+}
+</style>
+
+<body>
+<script type="text/javascript">
+<!--
+function MySubmit(FORM_ID){
+	document.getElementById(FORM_ID).submit();
+}
+
+function MyUPSubmit(FORM_ID,ACT_ID){
+	var objtext = document.getElementById(ACT_ID);
+	objtext.value = "1";
+	document.getElementById(FORM_ID).submit();
+}
+
+function MyDWSubmit(FORM_ID,ACT_ID){
+	var objtext = document.getElementById(ACT_ID);
+	objtext.value = "0";
+	document.getElementById(FORM_ID).submit();
+}
+
+function ValeCheck100(TEXT_ID){
+var obj = document.getElementById(TEXT_ID);
+
+	obj.value=obj.value.replace(/[^\d]/g,'');
+	if(obj.value>98)
+		obj.value="98";
+	if((obj.value=="")||(obj.value==0))
+		obj.value="1";
+}
+
+function MyUPSubmitData(FORM_ID,ACT_ID,VAL_ID,MaxData){
+	var objtext = document.getElementById(ACT_ID);
+	var objtextIn = document.getElementById(VAL_ID);
+	if(objtextIn.value != MaxData) {
+		objtext.value = "1";
+		document.getElementById(FORM_ID).submit();
+	}
+}
+
+function MyDWSubmitData(FORM_ID,ACT_ID,VAL_ID,MinData){
+	var objtext = document.getElementById(ACT_ID);
+	var objtextIn = document.getElementById(VAL_ID);
+	if(objtextIn.value != MinData) {
+		objtext.value = "0";
+		document.getElementById(FORM_ID).submit();
+	}
+}
+
+function MyUPSubmitData_H(FORM_ID,ACT_ID,VAL_ID,MaxData){
+	var objtext = document.getElementById(ACT_ID);
+	var objtextIn = document.getElementById(VAL_ID); 
+	var objtextHM = document.getElementById("hms_val_id");
+	if(objtextIn.value < objtextHM.value) {
+		objtext.value = "1";
+		document.getElementById(FORM_ID).submit();
+	}
+}
+
+function MyUPSubmitData_V(FORM_ID,ACT_ID,VAL_ID,MaxData){
+	var objtext = document.getElementById(ACT_ID);
+	var objtextIn = document.getElementById(VAL_ID); 
+	var objtextVM = document.getElementById("vms_val_id");
+	if(objtextIn.value < objtextVM.value) {
+		objtext.value = "1";
+		document.getElementById(FORM_ID).submit();
+	}
+}
+
+function ValeCheck10(TEXT_ID){
+var obj = document.getElementById(TEXT_ID);
+
+	obj.value=obj.value.replace(/[^\d]/g,'');
+	if(obj.value>10)
+		obj.value=10;
+
+	if(obj.value==0)
+		obj.value=1;
+	
+	if(obj.value=="")
+		obj.value=1;
+}
+
+function ValeCheck10_Limit(TEXT_ID,TEXTID_LIMIT){
+var obj   = document.getElementById(TEXT_ID);
+var obj_L = document.getElementById(TEXTID_LIMIT);
+	obj.value=obj.value.replace(/[^\d]/g,'');
+  
+  if(obj.value > obj_L.value)   {
+    obj.value=obj_L.value;
+  }
+    
+  //alert(obj_L.value)
+    
+	if(obj.value>10)
+		obj.value=10;
+
+	if(obj.value==0)
+		obj.value=1;
+	
+	if(obj.value=="")
+		obj.value=1;
+}
+
+
+function ValeCheck10_H_Limit(TEXT_ID){
+var obj   = document.getElementById(TEXT_ID);
+var obj_L = document.getElementById('hms_val_id');   
+var AA,BB;
+	obj.value=obj.value.replace(/[^\d]/g,'');
+  
+    
+  //alert(obj_L.value)
+  AA=Number(obj.value);
+  BB=Number(obj_L.value);
+  
+  if(AA > BB) 
+    obj.value=obj_L.value;
+        
+	else if(obj.value>10)
+		     obj.value=10;
+
+	else if(obj.value==0)
+		      obj.value=1;
+	
+	else if(obj.value=="")
+		      obj.value=1;
+        
+}
+
+
+function ValeCheck10_V_Limit(TEXT_ID){
+var obj   = document.getElementById(TEXT_ID);
+var obj_L = document.getElementById('vms_val_id');
+var AA,BB;
+	obj.value=obj.value.replace(/[^\d]/g,'');
+  
+  AA=Number(obj.value);
+  BB=Number(obj_L.value);
+  
+  if(AA > BB) 
+     obj.value=obj_L.value;
+     
+	else if(obj.value>10)
+		obj.value=10;
+
+	else if(obj.value==0)
+		obj.value=1;
+	
+	else if(obj.value=="")
+		obj.value=1;
+}
+
+
+
+-->
+</script>
+<div>
+<p><h2>Application</h2>
+</div>
+<TABLE cellSpacing=0 border=1 cellpadding=5>
+<TR>
+<TD class="tdc1"><b>Display Wall</b></TD><TD class="tdc2"></TD>
+<TD class="tdc1">Clock Display</TD>
+<TD class="tdc2">
+<FORM ID="A_CDP" ACTION="/cgi/udp_tel.cgi" METHOD="GET"><?CGI_UDP_TEL?>
+<select name="cdp_sel" onchange="MySubmit('A_CDP')" >
+  <option value="0" [CGI_UDP_TEL_CDP_1]>Off</option>
+  <option value="1" [CGI_UDP_TEL_CDP_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+</TR>
+<TR>
+<TD class="tdc1">H Monitors</TD>
+<TD class="tdc2">
+<FORM ID="U_HMS" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('U_HMS')" METHOD="GET"><?CGI_UDP_TEL?>
+<Input type="Button" name="hms_up" value="+" onclick="MyUPSubmitData('U_HMS','hms_ctr','hms_val_id','10')">
+<input type="text"   name="hms_val"style="width:70px" value="[CGI_UDP_TEL_HMS]" id="hms_val_id" onkeyup="ValeCheck10('hms_val_id')">
+<Input type="Button" name="hms_dw" value="-" onclick="MyDWSubmitData('U_HMS','hms_ctr','hms_val_id','1')">
+<input type="hidden" name="hms_act"style="width:20px" id="hms_ctr">
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">Aspect</TD>
+<TD class="tdc2">
+<FORM ID="U_ASP" ACTION="/cgi/udp_tel.cgi" METHOD="GET"><?CGI_UDP_TEL?>
+<select name="asp_sel" onchange="MySubmit('U_ASP')" onchange="MySubmit('U_ASP')" [CGI_UDP_TEL_SYNC_ASPCT]>
+  <option value="0" [CGI_UDP_TEL_ASP_1]>Zoom</option>
+  <option value="1" [CGI_UDP_TEL_ASP_2]>4:3</option>
+  <option value="2" [CGI_UDP_TEL_ASP_3]>Wide Zoom</option>
+  <option value="3" [CGI_UDP_TEL_ASP_4]>Normal</option>
+  <option value="4" [CGI_UDP_TEL_ASP_5]>Real</option>
+  <option value="5" [CGI_UDP_TEL_ASP_6]>Full</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+</TR>
+<TR>
+<TD class="tdc1">V Monitors</TD>
+<TD class="tdc2">
+<FORM ID="U_VMS" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('U_VMS')" METHOD="GET"><?CGI_UDP_TEL?>
+<Input type="Button" name="vms_up" value="+" onclick="MyUPSubmitData('U_VMS','vms_ctr','vms_val_id','10')">
+<input type="text"   name="vms_val"style="width:70px" value="[CGI_UDP_TEL_VMS]" id="vms_val_id" onkeyup="ValeCheck10('vms_val_id')">
+<Input type="Button" name="vms_dw" value="-" onclick="MyDWSubmitData('U_VMS','vms_ctr','vms_val_id','1')">
+<input type="hidden" name="vms_act"style="width:20px" id="vms_ctr">
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">Freeze</TD>
+<TD class="tdc2">
+<FORM ID="U_FRE" ACTION="/cgi/udp_tel.cgi" METHOD="GET"><?CGI_UDP_TEL?>
+<select name="fre_sel" onchange="MySubmit('U_FRE')" [CGI_UDP_TEL_SYNC]>
+  <option value="0" [CGI_UDP_TEL_FRE_1]>Off</option>
+  <option value="1" [CGI_UDP_TEL_FRE_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+</TR>
+<TR>
+<TD class="tdc1">H Position</TD>
+<TD class="tdc2">
+<FORM ID="U_HPS" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('U_HPS')" METHOD="GET"><?CGI_UDP_TEL?>
+<Input type="Button" name="hps_up" value="+" onclick="MyUPSubmitData_H('U_HPS','hps_ctr','hps_val_id','10')" id="hps_up_id" [CGI_UDP_TEL_TOUCH_H]>
+<input type="text"   name="hps_val" style="width:70px" value="[CGI_UDP_TEL_HPS]" id="hps_val_id" onkeyup="ValeCheck10_H_Limit('hps_val_id')" [CGI_UDP_TEL_TOUCH_H]>
+<Input type="Button" name="hps_dw" value="-" onclick="MyDWSubmitData('U_HPS','hps_ctr','hps_val_id','1')" id="hps_dw_id" [CGI_UDP_TEL_TOUCH_H]>
+<input type="hidden" name="hps_act" style="width:20px" id="hps_ctr">
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">Blue Screen</TD>
+<TD class="tdc2">
+<FORM ID="U_BLS" ACTION="/cgi/udp_tel.cgi" METHOD="GET"><?CGI_UDP_TEL?>
+<select name="bls_sel" onchange="MySubmit('U_BLS')" >
+  <option value="0" [CGI_UDP_TEL_BLS_1]>Off</option>
+  <option value="1" [CGI_UDP_TEL_BLS_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+</TR>
+<TR>
+<TD class="tdc1">V Position</TD>
+<TD class="tdc2">
+<FORM ID="U_VPS" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('U_VPS')" METHOD="GET"><?CGI_UDP_TEL?>
+<Input type="Button" name="vps_up" value="+" onclick="MyUPSubmitData_V('U_VPS','vps_ctr','vps_val_id','10')" id="vps_up_id" [CGI_UDP_TEL_TOUCH_V]>
+<input type="text"   name="vps_val" style="width:70px" value="[CGI_UDP_TEL_VPS]" id="vps_val_id" onkeyup="ValeCheck10_V_Limit('vps_val_id')" [CGI_UDP_TEL_TOUCH_V]>
+<Input type="Button" name="vps_dw" value="-" onclick="MyDWSubmitData('U_VPS','vps_ctr','vps_val_id','1')" id="vps_dw_id" [CGI_UDP_TEL_TOUCH_V]>
+<input type="hidden" name="vps_act" style="width:20px" id="vps_ctr">
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1"></TD>
+<TD class="tdc2"></TD>
+</TR>
+<TR>
+<TD class="tdc1">Frame Comp.</TD>
+<TD class="tdc2">
+<FORM ID="U_FRC" ACTION="/cgi/udp_tel.cgi" METHOD="GET"><?CGI_UDP_TEL?>
+<select name="frc_sel" id="frc_sel_id" onchange="MySubmit('U_FRC')" [CGI_UDP_TEL_TOUCH_HV]>
+  <option value="0" [CGI_UDP_TEL_FRC_1]>Off</option>
+  <option value="1" [CGI_UDP_TEL_FRC_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1"></TD>
+<TD class="tdc2"></TD>
+</TR>
+<TR>
+<TD class="tdc1">LED</TD>
+<TD class="tdc2">
+<FORM ID="U_LED" ACTION="/cgi/udp_tel.cgi" METHOD="GET"><?CGI_UDP_TEL?>
+<select name="led_sel" id="led_sel_id" onchange="MySubmit('U_LED')">
+  <option value="0" [CGI_UDP_TEL_LED_1]>Off</option>
+  <option value="1" [CGI_UDP_TEL_LED_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1"></TD>
+<TD class="tdc2"></TD>
+</TR>
+<TR>
+<TD class="tdc1">Power On Delay</TD>
+<TD class="tdc2">
+<FORM ID="U_POD" ACTION="/cgi/udp_tel.cgi" METHOD="GET"><?CGI_UDP_TEL?>
+<select name="pod_sel" id="pod_sel_id" onchange="MySubmit('U_POD')" [CGI_UDP_TEL_TOUCH_HV]>
+  <option value="0" [CGI_UDP_TEL_POD_1]>Off</option>
+  <option value="1" [CGI_UDP_TEL_POD_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1"></TD>
+<TD class="tdc2"></TD>
+</TR>
+</TABLE>
+<br>
+
+</body>
+</html>

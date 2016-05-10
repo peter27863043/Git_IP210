@@ -1,0 +1,338 @@
+<html>
+<style type='text/css'>
+form {
+  margin:0px; 
+  padding: 0 5px;
+}
+
+td.tdc1{
+	width:150px;
+	ALIGN="left;
+}
+
+td.tdc2{
+	width:250px;
+	ALIGN="left;
+}
+</style>
+<HEAD>
+<script language="JavaScript">
+function MySubmit(FORM_ID){
+	document.getElementById(FORM_ID).submit();
+}
+
+function MyUPSubmit(FORM_ID,ACT_ID){
+	var objtext = document.getElementById(ACT_ID);
+	objtext.value = "1";
+	document.getElementById(FORM_ID).submit();
+}
+
+function MyDWSubmit(FORM_ID,ACT_ID){
+	var objtext = document.getElementById(ACT_ID);
+	objtext.value = "0";
+	document.getElementById(FORM_ID).submit();
+}
+
+function ValeCheck100(TEXT_ID){
+var obj = document.getElementById(TEXT_ID);
+
+	obj.value=obj.value.replace(/[^\d]/g,'')
+	if(obj.value>98)
+		obj.value="98"
+	if((obj.value=="")||(obj.value==0))
+		obj.value="1"
+}
+</script>
+</HEAD>
+<body>
+<div>
+<p><h2>Setting</h2>
+</div>
+
+<TABLE cellSpacing=0 border=1 cellpadding=5>
+<TR>
+<TD class="tdc1"><b>Setting</b></TD><TD class="tdc2"></TD><TD class="tdc1"><b></b></TD><TD class="tdc2"></TD>
+</TR>
+
+<TR>
+<TD class="tdc1">Monitor ID</TD>
+<TD class="tdc2">
+<FORM ID="A_MID" ACTION="/cgi/uart.cgi" onchange="MySubmit('A_MID')" METHOD="GET"><?CGI_UART?>
+<input type="text" onkeyup="ValeCheck100('mid_val_id')" id= "mid_val_id" name="mid_val"style="width:70px" value="[CGI_UART_MID]" >
+<Input type="Button" name="mid_dw" value="SET" onclick="MySubmit('A_MID')">
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">Panel Lock</TD>
+<TD class="tdc2">
+<FORM ID="U_PLK" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('U_PLK')" METHOD="GET"><?CGI_UART?>
+<select name="plk_sel">
+  <option value="0" [CGI_UART_PLK_1]>Off</option>
+  <option value="1" [CGI_UART_PLK_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+</TR>
+<TR>
+<TD class="tdc1">Power Save</TD>
+<TD class="tdc2">
+<FORM ID="A_PWS" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('A_PWS')" METHOD="GET"><?CGI_UART?>
+<select name="pws_sel">
+  <option value="0" [CGI_UART_PWS_1]>Off</option>
+  <option value="1" [CGI_UART_PWS_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">Image Retention</TD>
+<TD class="tdc2">
+<FORM ID="A_IMR" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('A_IMR')" METHOD="GET"><?CGI_UART?>
+<select name="imr_sel">
+  <option value="0" [CGI_UART_IMR_1]>Off</option>
+  <option value="1" [CGI_UART_IMR_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+</TR>
+<TR>
+<TD class="tdc1">Ambient Light Sensor</TD>
+<TD class="tdc2">
+<FORM ID="A_LTS" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('A_LTS')" METHOD="GET"><?CGI_UART?>
+<select name="lts_sel">
+  <option value="0" [CGI_UART_LTS_1]>Off</option>
+  <option value="1" [CGI_UART_LTS_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">OSD Info Box</TD>
+<TD class="tdc2">
+<FORM ID="A_OSD" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('A_OSD')" METHOD="GET"><?CGI_UART?>
+<select name="osd_sel">
+  <option value="0" [CGI_UART_OSD_1]>Off</option>
+  <option value="1" [CGI_UART_OSD_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+</TR>
+<TR>
+<TD class="tdc1">Language</TD>
+<TD class="tdc2">
+<FORM ID="A_LAG" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('A_LAG')" METHOD="GET"><?CGI_UART?>
+<select name="lag_sel">
+  <option value="0"  [CGI_UART_LAG_1]>English</option>
+  <option value="1"  [CGI_UART_LAG_2]>Chinese</option>
+  <option value="2"  [CGI_UART_LAG_3]>Malay</option>
+  <option value="3"  [CGI_UART_LAG_4]>Thai</option>
+  <option value="4"  [CGI_UART_LAG_5]>Vietnamese</option>
+  <option value="5"  [CGI_UART_LAG_6]>Russian</option>
+  <option value="6"  [CGI_UART_LAG_7]>Arbic</option>
+  <option value="7"  [CGI_UART_LAG_8]>Farsi</option>
+  <option value="8"  [CGI_UART_LAG_9]>French</option>
+  <option value="9"  [CGI_UART_LAG_10]>Indonesian</option>
+  <option value="10" [CGI_UART_LAG_11]>Hebrew</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">Adaptive contrast</TD>
+<TD class="tdc2">
+<FORM ID="A_ACT" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('A_ACT')" METHOD="GET"><?CGI_UART?>
+<select name="act_sel">
+  <option value="0" [CGI_UART_ACT_1]>Off</option>
+  <option value="1" [CGI_UART_ACT_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+</TR>
+<TR>
+<TD class="tdc1">IR Out</TD>
+<TD class="tdc2">
+<FORM ID="A_IRO" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('A_IRO')" METHOD="GET"><?CGI_UART?>
+<select name="iro_sel">
+  <option value="0" [CGI_UART_IRO_1]>Off</option>
+  <option value="1" [CGI_UART_IRO_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">Over Scan</TD>
+<TD class="tdc2">
+<FORM ID="A_OVS" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('A_OVS')" METHOD="GET"><?CGI_UART?>
+<select name="ovs_sel">
+  <option value="0" [CGI_UART_OVS_1]>Off</option>
+  <option value="1" [CGI_UART_OVS_2]>On</option>
+  <option value="2" [CGI_UART_OVS_3]>Auto</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+</TR>
+<TR>
+<TD class="tdc1">IR Control</TD>
+<TD class="tdc2">
+<FORM ID="A_IRC" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('A_IRC')" METHOD="GET"><?CGI_UART?>
+<select name="irc_sel">
+  <option value="0" [CGI_UART_IRC_1]>Disable</option>
+  <option value="1" [CGI_UART_IRC_2]>Enable</option>
+  <option value="2" [CGI_UART_IRC_3]>Passthrough Master</option>
+  <option value="3" [CGI_UART_IRC_4]>Passthrough Slave</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">Touch Feature</TD>
+<TD class="tdc2">
+<FORM ID="A_TCH" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('A_TCH')" METHOD="GET"><?CGI_UART?>
+<select name="tch_sel">
+  <option value="0" [CGI_UART_TCH_1]>Off</option>
+  <option value="1" [CGI_UART_TCH_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+</TR>
+<TR>
+<TD class="tdc1">Button& IR Control</TD>
+<TD class="tdc2">
+<FORM ID="A_BIR" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('A_BIR')" METHOD="GET"><?CGI_UART?>
+<select name="bir_sel">
+  <option value="0" [CGI_UART_BIR_1]>Disable</option>
+  <option value="1" [CGI_UART_BIR_2]>Enable</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">Clock Display</TD>
+<TD class="tdc2">
+<FORM ID="A_CDP" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('A_CDP')" METHOD="GET"><?CGI_UART?>
+<select name="cdp_sel">
+  <option value="0" [CGI_UART_CDP_1]>Off</option>
+  <option value="1" [CGI_UART_CDP_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+</TR>
+<TR>
+<TD class="tdc1">Automatic Power Down</TD>
+<TD class="tdc2">
+<FORM ID="A_APD" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('A_APD')" METHOD="GET"><?CGI_UART?>
+<select name="apd_sel">
+  <option value="0" [CGI_UART_APD_1]>Off</option>
+  <option value="1" [CGI_UART_APD_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">OSD Rotation</TD>
+<TD class="tdc2">
+<FORM ID="A_OSR" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('A_OSR')" METHOD="GET"><?CGI_UART?>
+<select name="osr_sel">
+  <option value="0" [CGI_UART_OSR_1]>Landscape</option>
+  <option value="1" [CGI_UART_OSR_2]>Portrait</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+</TR>
+
+<TR>
+<TD class="tdc1">Power Saving Indicator</TD>
+<TD class="tdc2">
+<FORM ID="A_PSI" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('A_PSI')" METHOD="GET"><?CGI_UART?>
+<select name="psi_sel">
+  <option value="0" [CGI_UART_PSI_1]>Off</option>
+  <option value="1" [CGI_UART_PSI_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">Input Color Format</TD>
+<TD class="tdc2">
+<FORM ID="A_ICF" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('A_ICF')" METHOD="GET"><?CGI_UART?>
+<select name="icf_sel">
+  <option value="0" [CGI_UART_ICF_1]>RGB</option>
+  <option value="1" [CGI_UART_ICF_2]>YPbPr</option>
+  <option value="1" [CGI_UART_ICF_2]>Auto DP 12MST</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+</TR>
+<TR>
+<TD class="tdc1">No Signal Power Down</TD>
+<TD class="tdc2">
+<FORM ID="A_NSP" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('A_NSP')" METHOD="GET"><?CGI_UART?>
+<select name="nsp_sel">
+  <option value="0" [CGI_UART_NSP_1]>HDMIA</option>
+  <option value="1" [CGI_UART_NSP_2]>HDMIB</option>
+  <option value="2" [CGI_UART_NSP_3]>HDMIC</option>
+  <option value="3" [CGI_UART_NSP_4]>HDMID</option>
+  <option value="4" [CGI_UART_NSP_5]>VGA</option>
+  <option value="5" [CGI_UART_NSP_6]>Compoment</option>
+  <option value="6" [CGI_UART_NSP_7]>AV</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">Display Settings</TD>
+<TD class="tdc2">
+<FORM ID="A_DPS" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('A_DPS')" METHOD="GET"><?CGI_UART?>
+<select name="dps_sel">
+  <option value="0" [CGI_UART_DPS_1]>Auto Format</option>
+  <option value="1" [CGI_UART_DPS_2]>4:3 Stretch</option>
+  <option value="1" [CGI_UART_DPS_2]>PC Settings</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+</TR>
+
+<TR>
+<TD class="tdc1">Auto Adjustment</TD>
+<TD class="tdc2">
+<FORM ID="A_AAD" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('A_AAD')" METHOD="GET"><?CGI_UART?>
+<select name="aad_sel">
+  <option value="0" [CGI_UART_aad_1]>Off</option>
+  <option value="1" [CGI_UART_aad_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">Display Settings -Auto Format</TD>
+<TD class="tdc2">
+<FORM ID="A_DPA" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('A_DPA')" METHOD="GET"><?CGI_UART?>
+<select name="dpa_sel">
+  <option value="0" [CGI_UART_dpa_1]>Off</option>
+  <option value="1" [CGI_UART_dpa_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+</TR>
+
+<TR>
+<TD class="tdc1">Button Control</TD>
+<TD class="tdc2">
+<FORM ID="A_BTC" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('A_BTC')" METHOD="GET"><?CGI_UART?>
+<select name="btc_sel">
+  <option value="0" [CGI_UART_BTC_1]>disable</option>
+  <option value="1" [CGI_UART_BTC_2]>enable</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">Display Settings -4.3 Strech</TD>
+<TD class="tdc2">
+<FORM ID="A_DPS" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('A_DPS')" METHOD="GET"><?CGI_UART?>
+<select name="dps_sel">
+  <option value="0" [CGI_UART_DPS_1]>Off</option>
+  <option value="1" [CGI_UART_DPS_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+</TR>
+
+<TR>
+<TD class="tdc1"></TD>
+<TD class="tdc2"></TD>
+<TD class="tdc1"></TD>
+<TD class="tdc2">
+<Input type="Button" name="AAE_dw" value="Auto Adjustment Execute" ">
+</TD>
+</TR>
+
+<TR>
+<TD class="tdc1"></TD>
+<TD class="tdc2"></TD>
+<TD class="tdc1"></TD>
+<TD class="tdc2">
+<Input type="Button" name="ARE_dw" value="All Reset" ">
+</TD>
+</TR>
+
+</TABLE>
+
+</body></html>

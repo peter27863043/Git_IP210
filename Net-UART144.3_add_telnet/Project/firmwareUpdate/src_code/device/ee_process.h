@@ -1,0 +1,12 @@
+void LoadEEPROM2EEConfig(void);
+u8_t EEPROMCheckDataAvailable(void);
+u8_t EEPROMLoadDefault(void);
+void EEPROMInit(void);
+void Restore_Default_DataRate();
+void Restore_Default_VLANGroup();
+void Restore_Default_FTTH_OFF_Port();
+void Restore_Default_Trunk();
+void Restore_Switch();
+void Restore_Web();
+void EEP_to_REG(u16_t RegAddr);
+void Restore_Reg_from_EEPROM();

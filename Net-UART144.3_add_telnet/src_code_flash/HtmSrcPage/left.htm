@@ -1,0 +1,124 @@
+<HTML>
+<HEAD base target="main">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=">
+<TITLE>Site Map</TITLE>
+</HEAD>
+<body topmargin=5 leftmargin=0 bgcolor=#ffffff marginwidth="0" marginheight="0">
+<script language="javascript">
+oColor='141A54';
+newColor='FF3300';	
+if(document.onmouseover)
+{
+  if(window.event.toElement.tagName == 'A')
+  {
+     	window.event.toElement.style.color = newColor;
+			window.event.toElement.style.fontWeight ='normal';
+  }
+}
+if(document.onmouseout)
+{
+   	if(window.event.fromElement.tagName == 'A')
+   	{
+   	   window.event.fromElement.style.color = oColor;
+	   	 window.event.fromElement.style.fontWeight ='normal';
+   	}
+}
+
+function ToggleMainSelect(heading)
+{
+	document.getElementById("M01").style.color = 'white';
+	document.getElementById("M04").style.color = 'white';
+	document.getElementById("M05").style.color = 'white';
+	document.getElementById("M06").style.color = 'white';
+	document.getElementById("M07").style.color = 'white';
+	document.getElementById("M08").style.color = 'white';
+	document.getElementById("M09").style.color = 'white';
+	document.getElementById("M10").style.color = 'white';
+	document.getElementById(heading).style.color = "#CC0000";
+	document.getElementById("SysSubmenu").style.display='none';
+}
+
+function ClearMainSelect(heading)
+{
+	document.getElementById("M01").style.color = 'white';
+	document.getElementById("M04").style.color = 'white';
+	document.getElementById("M05").style.color = 'white';
+	document.getElementById("M06").style.color = 'white';
+	document.getElementById("M07").style.color = 'white';
+	document.getElementById("M08").style.color = 'white';
+	document.getElementById("M09").style.color = 'white';
+	document.getElementById("M10").style.color = 'white';
+	document.getElementById(heading).style.color = "#CC0000";
+}
+
+
+
+function ToggleDisplay(heading,imgs)
+{
+  if(document.getElementById(heading).style.display =='none')
+  {
+		document.getElementById(heading).style.display='';
+  }
+	else
+	{
+		document.getElementById(heading).style.display='none';
+	}
+	ClearMainSelect(heading);
+	document.getElementById(imgs).style.color = "#CC0000";
+}
+
+
+
+</script>
+<br>
+<div ID="Main1" style="cursor:hand;width: 160; height:25px;line-height:25px;background-color:#888888;border: 2px solid #FFFFFF;vertical-align: middle;">&nbsp;
+<b><a ID="M01" onmouseup="ToggleMainSelect('M01')" href="Status.htm" STYLE="text-decoration:none;color:#CC0000" target="main">INFORMATION</a></b></div>
+
+<div ID="Main4" style="cursor:hand;width: 160; height:25px;line-height:25px;background-color:#888888;border: 2px solid #FFFFFF;vertical-align: middle;">&nbsp;
+ <b><a ID="M04" onmouseup="ToggleMainSelect('M04')" href="telnet.htm" STYLE="text-decoration:none;color:#FFFFFF" target="main">PICTURE&SOUND</a></b>
+</div>
+
+<div ID="Main5" style="cursor:hand;width: 160; height:25px;line-height:25px;background-color:#888888;border: 2px solid #FFFFFF;vertical-align: middle;">&nbsp;
+<b><a ID="M05" onmouseup="ToggleMainSelect('M05')" href="udp_tel.htm" STYLE="text-decoration:none;color:#FFFFFF" target="main">APPLICATION</a></b></div>
+</div>
+
+<div ID="Main6" style="cursor:hand;width: 160; height:25px;line-height:25px;background-color:#888888;border: 2px solid #FFFFFF;vertical-align: middle;">&nbsp;
+ <b><a ID="M06" onmouseup="ToggleMainSelect('M06')" href="uart.htm" STYLE="text-decoration:none;color:#FFFFFF" target="main">SETTING</a></b>
+</div>
+
+<div ID="Main7" style="cursor:hand;width: 160; height:25px;line-height:25px;background-color:#888888;border: 2px solid #FFFFFF;vertical-align: middle;">&nbsp;
+ <b><a ID="M07" onmouseup="ToggleMainSelect('M07')" href="smtp.htm" STYLE="text-decoration:none;color:#FFFFFF" target="main" topmargin=5 >SCHEDULE</a></b>
+</div>
+
+<div ID="Main8" style="cursor:hand;width: 160; height:25px;line-height:25px;background-color:#888888;border: 2px solid #FFFFFF;vertical-align: middle;">&nbsp;
+ <b><a ID="M08" onmouseup="ToggleMainSelect('M08')" href="adc.htm" STYLE="text-decoration:none;color:#FFFFFF" target="main">MAIL REPORT</a></b>
+</div>
+
+<div ID="Main9" style="cursor:hand;width: 160; height:25px;line-height:25px;background-color:#888888;border: 2px solid #FFFFFF;vertical-align: middle;">&nbsp;
+ <b><a ID="M09" onmouseup="ToggleMainSelect('M09')" href="dido.htm" STYLE="text-decoration:none;color:#FFFFFF" target="main">NETWORK</a></b>
+</div>
+
+<div ID="Main10" style="cursor:hand;width: 160; height:25px;line-height:25px;background-color:#888888;border: 2px solid #FFFFFF;vertical-align: middle;">&nbsp;
+<b><a ID="M10" onmouseup="ToggleDisplay('SysSubmenu','M10')"  STYLE="text-decoration:none;color:#FFFFFF" target="main">SYSTEM</a></b>
+</div>
+<div ID="SysSubmenu">
+<script>
+document.getElementById("SysSubmenu").style.display='none';
+</script>
+    <table border="0" cellpadding="2" cellspacing="2" width="150" align="center">
+    <tr>
+        <td><a href="setPASS.htm" target="main">Authentication Configuration</a></td>
+    </tr>
+    <tr>
+        <td><a href="fw_up.htm" target="main">Firmware update</a></td>
+    </tr>
+    <tr>
+        <td><a href="fu_up.htm" target="main">Boot Loader upgrade</a></td>
+    </tr>  
+     <tr>
+        <td><a href="setDef.htm" target="main">Load default setting</a></td>
+    </tr>
+  </table>  
+</div>
+</BODY>
+</HTML>

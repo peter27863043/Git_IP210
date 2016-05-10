@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+<script language="JavaScript">
+function CheckPAS(form)
+{
+	var AID="PW"+1;
+	objs=document.getElementById(AID);
+	var BID="PW"+2;
+	objt=document.getElementById(BID);
+	if(objs.value != objt.value)
+	{
+		alert("Please check the Password!");
+		return false;
+	}
+	return true;
+}
+</script>
+</HEAD>
+<BODY onpaste="return false"><p><H2>Authentication Configuration</h2><HR></p>
+<FORM ACTION="/cgi/setting_pass.cgi" onSubmit="return CheckPAS(this);" METHOD="GET">
+<TABLE cellSpacing=0 width=100% border=1 cellpadding=5>
+<TR align="center"><TD ALIGN="center" >Setting</TD><TD ALIGN="center" >Value</TD></TR>
+<?CGI_SET_STATUS?><TR><TD ALIGN="center">Username</TD><TD ALIGN="left"><INPUT TYPE="TEXT" NAME="UN" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\w\_\-]/g,''))"  onkeyup="value=value.replace(/[^\w\_\-]/g,'')" style="ime-mode:disabled" MAXLENGTH=15 value="[CGI_SET_UN]" size=15>max:15</TD></TR></TR>
+<TR><TD ALIGN="center">Password<BR>Confirm</TD><TD ALIGN="left">
+<INPUT TYPE="password" NAME="PW" ID="PW1" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\w\_\-]/g,''))"  onkeyup="value=value.replace(/[^\w\_\-]/g,'')" style="ime-mode:disabled" MAXLENGTH=15 value="[CGI_SET_PW]" size=15>max:15<BR>
+<INPUT TYPE="password" NAME="PW" ID="PW2" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\w\_\-]/g,''))"  onkeyup="value=value.replace(/[^\w\_\-]/g,'')" style="ime-mode:disabled" MAXLENGTH=15 value="[CGI_SET_PW]" size=15></TD></TR><?CGI_END?><TR><TD ALIGN="center" COLSPAN="4">
+<P ALIGN="center"><INPUT TYPE="Submit" NAME="Modify" VALUE="Update"></P></TD></TR></TABLE></FORM></BODY>Note:<BR>&nbsp &nbsp &nbsp Comment name only can use  &quot;0-9&quot;,&quot;a-z&quot;,&quot;A-Z&quot;</HTML>

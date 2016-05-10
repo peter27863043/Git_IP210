@@ -1,0 +1,1 @@
+Please run b_all.bat when changing among projects, which is to make sure the correctness of module selections.

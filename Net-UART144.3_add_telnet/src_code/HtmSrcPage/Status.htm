@@ -1,0 +1,25 @@
+<HTML><HEAD><BODY><H2>Administrator Setting</H2><HR><?CGI_SET_STATUS?>
+<FORM ACTION="/cgi/status.cgi" METHOD="GET">
+<TABLE cellSpacing=0 width=100% border=1 cellpadding=5><TR><TD>Kernel Version</TD><TD >[CGI_K_VER]</TD></TR>
+<TR><TD>MAC Address</TD><TD>[CGI_SET_MAC]</TD></TR><TR><TD>Nickname</TD>
+<TD><INPUT TYPE="TEXT" NAME="comment" VALUE="[CGI_NICKNAME]" maxlength=12 size="20"></TD></TR>
+<TD colspan=2>IP Setting</TD></TR><TR>
+<TD>IP Address</TD><TD><INPUT TYPE="TEXT" NAME="IP" value=[CGI_SET_IP1] size=2>.
+<INPUT TYPE="TEXT" NAME="IP" value=[CGI_SET_IP2] size=2>.<INPUT TYPE="TEXT" NAME="IP" value=[CGI_SET_IP3] size=2>.
+<INPUT TYPE="TEXT" NAME="IP" value=[CGI_SET_IP4] size=2></TD></TR><TR><TD>Subnet Mask</TD>
+<TD><INPUT TYPE="TEXT" NAME="SM" value=[CGI_SET_SM1] size=2>.<INPUT TYPE="TEXT" NAME="SM" value=[CGI_SET_SM2] size=2>.
+<INPUT TYPE="TEXT" NAME="SM" value=[CGI_SET_SM3] size=2>.<INPUT TYPE="TEXT" NAME="SM" value=[CGI_SET_SM4] size=2>
+</TD></TR><TR><TD>Gateway</TD><TD>
+<INPUT TYPE="TEXT" NAME="GW" value=[CGI_SET_GW1] size=2>.<INPUT TYPE="TEXT" NAME="GW" value=[CGI_SET_GW2] size=2>.
+<INPUT TYPE="TEXT" NAME="GW" value=[CGI_SET_GW3] size=2>.<INPUT TYPE="TEXT" NAME="GW" value=[CGI_SET_GW4] size=2>
+</TD></TR><TR><TD>IP Configure</TD><TD><input type="radio" value="ip_static" name="ip_from" [CGI_IP_STATIC]>Static
+<input type="radio" value="ip_dhcp" name="ip_from" [CGI_IP_DHCP]>DHCP</TD></TR>
+<TR><TD COLSPAN="2" >
+<TR><TD colspan=2>Password Setting</TD></TR>
+<TR><TD>Username</TD><TD><INPUT TYPE="TEXT" NAME="UN" MAXLENGTH=15 value="[CGI_SET_UN]" size=15> max:15</TD></TR></TR>
+<TR><TD>Password<BR>Confirm</TD><TD><INPUT TYPE="password" NAME="PW" MAXLENGTH=15 value="[CGI_SET_PW]" size=15> max:15<BR>
+<INPUT TYPE="password" NAME="PW" MAXLENGTH=15 value="[CGI_SET_PW]" size=15></TD></TR>
+<TR><TD Align=center colspan=2><INPUT TYPE="Submit" NAME="Modify" VALUE="Update"></TD></TR>
+<TR><TD>Load Default Setting to EEPROM</TD><TD><INPUT TYPE="Submit" NAME="Modify" VALUE="Load"></TD></TR></TABLE><BR>
+Note:<BR>&nbsp &nbsp &nbsp Nickname only can use  &quot;0-9&quot;,&quot;a-z&quot;,&quot;A-Z&quot;,&quot;_&quot;,&quot;-&quot;
+</FORM><?CGI_END?></BODY></HTML>

@@ -1,0 +1,45 @@
+
+/* H File is generated from telnet.htm by cod2c.exe v3.04 */
+
+#define CGI_TELNET_STB		0 
+#define CGI_TELNET_SRC_1		1 
+#define CGI_TELNET_SRC_2		2 
+#define CGI_TELNET_SRC_3		3 
+#define CGI_TELNET_SRC_4		4 
+#define CGI_TELNET_SRC_5		5 
+#define CGI_TELNET_SRC_6		6 
+#define CGI_TELNET_SRC_7		7 
+#define CGI_TELNET_SYNC		8 
+#define CGI_TELNET_PIC_1		9 
+#define CGI_TELNET_PIC_2		10 
+#define CGI_TELNET_PIC_3		11 
+#define CGI_TELNET_PIC_4		12 
+#define CGI_TELNET_SM_1		13 
+#define CGI_TELNET_SM_2		14 
+#define CGI_TELNET_SM_3		15 
+#define CGI_TELNET_SM_4		16 
+#define CGI_TELNET_BKL		17 
+#define CGI_TELNET_TRE		18 
+#define CGI_TELNET_CT		19 
+#define CGI_TELNET_BAS		20 
+#define CGI_TELNET_BR		21 
+#define CGI_TELNET_BAL		22 
+#define CGI_TELNET_SR		23 
+#define CGI_TELNET_VOL		24 
+#define CGI_TELNET_COT_1		25 
+#define CGI_TELNET_COT_2		26 
+#define CGI_TELNET_COT_3		27 
+#define CGI_TELNET_COT_4		28 
+#define CGI_TELNET_MUT_1		29 
+#define CGI_TELNET_MUT_2		30 
+#define CGI_TELNET_HUE		31 
+#define CGI_TELNET_HDMI_AUDIO		32 
+#define CGI_TELNET_HMA_1		33 
+#define CGI_TELNET_HMA_2		34 
+#define CGI_TELNET_SAT		35 
+#define CGI_TELNET_CTB_1		36 
+#define CGI_TELNET_CTB_2		37 
+#define CGI_TELNET_CTB_3		38 
+#define CGI_TELNET_CTB_4		39 
+#define CGI_TELNET_ACT_1		40 
+#define CGI_TELNET_ACT_2		41 

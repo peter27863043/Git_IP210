@@ -1,0 +1,461 @@
+<html>
+
+<style type='text/css'>
+form {
+  margin:0px; 
+  padding: 0 5px;
+}
+
+td.tdc1{
+	width:150px;
+	ALIGN="left;
+}
+
+td.tdc2{
+	width:250px;
+	ALIGN="left;
+}
+
+
+</style>
+<body>
+<script type="text/javascript">
+<!--
+var flag=0;
+function CheckAdd()
+{
+	var numericExpression=/^[0-9]+$/;
+	for(k=0;k<4;k++)
+	{
+		var AID="Address"+k;
+		aobj=document.getElementById(AID);
+		if(aobj.value!=0){ flag=1; }
+	}
+	if(flag==0)
+	{ return true; }
+	for(i=0;i<5;i++)
+	{
+		var ID="Address"+i;
+		obj=document.getElementById(ID);
+		if(!obj.value.match(numericExpression))
+		{ return false; }
+		else if(i==4)
+		{
+				if((obj.value>65535)||(obj.value<=0)) return false;
+	  }
+		else if((obj.value>255)||(obj.value<0)) return false;
+	}
+	var CP="cport";
+	cobj=document.getElementById(CP);
+	if(!cobj.value.match(numericExpression)) return false;
+	else if( (cobj.value>65535)||(cobj.value<=0) ) return false;
+	return true;
+}
+function CheckIP(form)
+{
+	if(!CheckAdd())
+	{
+		alert("Please enter valid numeric!");
+		return false;	
+	}
+	else if(flag==0)
+	{ return true; }
+	else if(form.IP3.value==255)
+	{
+		alert("Invalid IP Address, '255' is a Broadcast Address!");
+		return false;
+	}
+	else if(form.IP3.value==0)
+	{
+		alert("Invalid IP Address, '0' is a Net Address!");
+		return false;
+	}
+	else
+	{	return true; }
+}
+
+function disable(dst){
+dst.disabled=true;
+if (dst.type=="text")
+{
+	dst.style.background="#CCCCCC";
+}
+else
+	dst.checked=false;
+}
+function enable(dst){
+dst.disabled=false;
+if (dst.type=="text")
+	dst.style.background="#FFFFFF";
+}
+function check(src){
+	switch(src.id)
+	{
+		case "RF":
+			disable(document.getElementById("cport"));
+		break;	
+		case "CT":
+			enable(document.getElementById("cport"));
+		break;
+		case "RTO":
+			disable(document.getElementById("RF"));
+		break;
+		case "RTF":
+			enable(document.getElementById("RF"));
+		break;
+	}
+}
+
+function MySubmit(FORM_ID){
+	document.getElementById(FORM_ID).submit();
+}
+
+function MyUPSubmit(FORM_ID,ACT_ID){
+	var objtext = document.getElementById(ACT_ID);
+	objtext.value = "1";
+	document.getElementById(FORM_ID).submit();
+}
+
+function MyUPSubmitData(FORM_ID,ACT_ID,VAL_ID,MaxData){
+	var objtext = document.getElementById(ACT_ID);
+	var objtextIn = document.getElementById(VAL_ID);
+	if(objtextIn.value != MaxData) {
+		objtext.value = "1";
+		document.getElementById(FORM_ID).submit();
+	}
+}
+
+
+
+function MyDWSubmit(FORM_ID,ACT_ID){
+	var objtext = document.getElementById(ACT_ID);
+	objtext.value = "0";
+	document.getElementById(FORM_ID).submit();
+}
+
+function MyDWSubmitData(FORM_ID,ACT_ID,VAL_ID,MinData){
+	var objtext = document.getElementById(ACT_ID);
+	var objtextIn = document.getElementById(VAL_ID);
+	if(objtextIn.value != MinData) {
+		objtext.value = "0";
+		document.getElementById(FORM_ID).submit();
+	}
+}
+
+
+
+if(typeof window.addEventListener != "undefined")
+	window.addEventListener("load",check,false);
+else
+	window.attachEvent("onload",check);
+-->
+</script>
+<div>
+<p><h2>Picture and Sound</h2>
+</div>
+<TABLE cellSpacing=0 border=1 cellpadding=5>
+<TR>
+<TD class="tdc1">Power</TD>
+<TD class="tdc2">
+<FORM ID="T_PWR" ACTION="/cgi/telnet.cgi" onchange="MySubmit('T_PWR')" METHOD="GET"><?CGI_TELNET?>
+<INPUT style="width:80px" TYPE="Button" NAME="pwr_off" onclick="MyDWSubmit('T_PWR','pwr_ctr')" VALUE="Standby">&nbsp
+<INPUT style="width:80px" TYPE="Button" NAME="pwr_on"  onclick="MyUPSubmit('T_PWR','pwr_ctr')" VALUE="ON">
+<input type="hidden" name="pwr_act"style="width:20px" id="pwr_ctr">
+</TD>
+<?CGI_END?></FORM>
+</TR>
+<TD class="tdc1">Input Source</TD>
+<TD class="tdc2">
+<FORM ID="T_SRC" ACTION="/cgi/telnet.cgi" onchange="MySubmit('T_SRC')" METHOD="GET"><?CGI_TELNET?>
+<select name="src_sel" >
+  <option value="0" [CGI_TELNET_SRC_1]>HDMIA</option>
+  <option value="1" [CGI_TELNET_SRC_2]>HDMIB</option>
+  <option value="2" [CGI_TELNET_SRC_3]>HDMIC</option>
+  <option value="3" [CGI_TELNET_SRC_4]>HDMID</option>
+  <option value="4" [CGI_TELNET_SRC_5]>VGA</option>
+  <option value="5 "[CGI_TELNET_SRC_6]>Component</option>
+  <option value="6" [CGI_TELNET_SRC_7]>AV</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+</TABLE>
+<BR>
+
+<TABLE cellSpacing=0 border=1 cellpadding=5>
+<TR>
+<TD class="tdc1"><b>Picture</b></TD><TD class="tdc2"></TD><TD class="tdc1"><b>Sound</b></TD><TD class="tdc2"></TD>
+</TR>
+<TR>
+<TD class="tdc1">Picture Mode</TD>
+<TD class="tdc2">
+<FORM ID="T_PIC" ACTION="/cgi/telnet.cgi" onchange="MySubmit('T_PIC')" METHOD="GET"><?CGI_TELNET?>
+<select name="pic_sel">
+  <option value="0" [CGI_TELNET_PIC_1]>Vivid</option>
+  <option value="1" [CGI_TELNET_PIC_2]>Standard</option>
+  <option value="2" [CGI_TELNET_PIC_3]>Cinema</option>
+  <option value="3" [CGI_TELNET_PIC_4]>Custom</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">Sound Mode</TD>
+<TD class="tdc2">
+<FORM ID="T_SM" ACTION="/cgi/telnet.cgi" onchange="MySubmit('T_SM')" METHOD="GET"><?CGI_TELNET?>
+<select name="sm_sel">
+  <option value="0" [CGI_TELNET_SM_1]>Natural</option>
+  <option value="1" [CGI_TELNET_SM_2]>Clear Voice</option>
+  <option value="2" [CGI_TELNET_SM_3]>Dynamic</option>
+  <option value="3" [CGI_TELNET_SM_4]>Custom</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+</TR>
+<TR>
+<TD class="tdc1">Backlight</TD>
+<TD class="tdc2">
+<FORM ID="T_BKL" ACTION="/cgi/telnet.cgi" onchange="MySubmit('T_BKL')" METHOD="GET"><?CGI_TELNET?>
+<Input type="Button" name="bkl_up" value="+" onclick="MyUPSubmitData('T_BKL','bkl_ctr','bkl_val_id','100')">
+<input type="text"   name="bkl_val"style="width:70px" value="[CGI_TELNET_BKL]" readonly id="bkl_val_id">
+<Input type="Button" name="bkl_dw" value="-" onclick="MyDWSubmitData('T_BKL','bkl_ctr','bkl_val_id','0')">
+<input type="hidden" name="bkl_act"style="width:20px" id="bkl_ctr">
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">Treble</TD>
+<TD class="tdc2">
+<FORM ID="T_TRE" ACTION="/cgi/telnet.cgi" onchange="MySubmit('T_TRE')" METHOD="GET"><?CGI_TELNET?>
+<Input type="Button" name="tre_up" value="+" onclick="MyUPSubmitData('T_TRE','tre_ctr','tre_val_id','50')">
+<input type="text"   name="tre_val"style="width:70px" value="[CGI_TELNET_TRE]" readonly id="tre_val_id">
+<Input type="Button" name="tre_dw" value="-" onclick="MyDWSubmitData('T_TRE','tre_ctr','tre_val_id','-50')">
+<input type="hidden" name="tre_act"style="width:20px" id="tre_ctr">
+<?CGI_END?></FORM>
+</TD>
+</TR>
+
+<TR>
+<TD class="tdc1">Contrast</TD>
+<TD class="tdc2">
+<FORM ID="T_CT" ACTION="/cgi/telnet.cgi" onchange="MySubmit('T_CT')" METHOD="GET"><?CGI_TELNET?>
+<Input type="Button" name="ct_up" value="+" onclick="MyUPSubmitData('T_CT','ct_ctr','ct_val_id','100')">
+<input type="text"   name="ct_val"style="width:70px" value="[CGI_TELNET_CT]" readonly id="ct_val_id">
+<Input type="Button" name="ct_dw" value="-" onclick="MyDWSubmit('T_CT','ct_ctr','ct_val_id','0')">
+<input type="hidden" name="ct_act"style="width:20px" id="ct_ctr">
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">Bass</TD>
+<TD class="tdc2">
+<FORM ID="T_BAS" ACTION="/cgi/telnet.cgi" onchange="MySubmit('T_BAS')" METHOD="GET"><?CGI_TELNET?>
+<Input type="Button" name="bas_up" value="+" onclick="MyUPSubmitData('T_BAS','bas_ctr','bas_val_id','50')">
+<input type="text"   name="bas_val"style="width:70px" value="[CGI_TELNET_BAS]" readonly id="bas_val_id">
+<Input type="Button" name="bas_dw" value="-" onclick="MyDWSubmitData('T_BAS','bas_ctr','bas_val_id','-50')">
+<input type="hidden" name="bas_act"style="width:20px" id="bas_ctr">
+<?CGI_END?></FORM>
+</TD>
+</TR>
+
+<TR>
+<TD class="tdc1">Brightness</TD>
+<TD class="tdc2">
+<FORM ID="T_BR" ACTION="/cgi/telnet.cgi" onchange="MySubmit('T_BR')" METHOD="GET"><?CGI_TELNET?>
+<Input type="Button" name="br_up" value="+" onclick="MyUPSubmitData('T_BR','br_ctr','br_val_id','100')">
+<input type="text"   name="br_val"style="width:70px" value="[CGI_TELNET_BR]" readonly id="br_val_id">
+<Input type="Button" name="br_dw" value="-" onclick="MyDWSubmitData('T_BR','br_ctr','br_val_id','0')">
+<input type="hidden" name="br_act"style="width:20px" id="br_ctr">
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">Balance</TD>
+<TD class="tdc2">
+<FORM ID="T_BAL" ACTION="/cgi/telnet.cgi" onchange="MySubmit('T_BAL')" METHOD="GET"><?CGI_TELNET?>
+<Input type="Button" name="bal_up" value="+" onclick="MyUPSubmitData('T_BAL','bal_ctr','bal_val_id','50')">
+<input type="text"   name="bal_val"style="width:70px" value="[CGI_TELNET_BAL]" readonly id="bal_val_id">
+<Input type="Button" name="bal_dw" value="-" onclick="MyDWSubmitData('T_BAL','bal_ctr','bal_val_id','-50')">
+<input type="hidden" name="bal_act"style="width:20px" id="bal_ctr">
+<?CGI_END?></FORM>
+</TD>
+</TR>
+
+<TR>
+<TD class="tdc1">Color</TD>
+<TD class="tdc2">
+<FORM ID="T_CR" ACTION="/cgi/telnet.cgi" onchange="MySubmit('T_CR')" METHOD="GET"><?CGI_TELNET?>
+<Input type="Button" name="cr_up" value="+" onclick="MyUPSubmitData('T_CR','cr_ctr','cr_val_id','100')">
+<input type="text"   name="cr_val"style="width:70px" value="[CGI_TELNET_CR]" readonly id="cr_val_id">
+<Input type="Button" name="cr_dw" value="-" onclick="MyDWSubmitData('T_CR','cr_ctr','cr_val_id','0')">
+<input type="hidden" name="cr_act"style="width:20px" id="cr_ctr">
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">Volume</TD>
+<TD class="tdc2">
+<FORM ID="T_VOL" ACTION="/cgi/telnet.cgi" onchange="MySubmit('T_VOL')" METHOD="GET"><?CGI_TELNET?>
+<Input type="Button" name="vol_up" value="+" onclick="MyUPSubmitData('T_VOL','vol_ctr','vol_val_id','100')">
+<input type="text"   name="vol_val"style="width:70px" value="[CGI_TELNET_VOL]" readonly id="vol_val_id">
+<Input type="Button" name="vol_dw" value="-" onclick="MyDWSubmitData('T_VOL','vol_ctr','vol_val_id','0')">
+<input type="hidden" name="vol_act"style="width:20px" id="vol_ctr">
+<?CGI_END?></FORM>
+</TD>
+</TR>
+
+<TR>
+<TD class="tdc1">Sharpness</TD>
+<TD class="tdc2">
+<FORM ID="T_SR" ACTION="/cgi/telnet.cgi" onchange="MySubmit('T_SR')" METHOD="GET"><?CGI_TELNET?>
+<Input type="Button" name="sr_up" value="+" onclick="MyUPSubmitData('T_SR','sr_ctr','sr_val_id','50')">
+<input type="text"   name="sr_val"style="width:70px" value="[CGI_TELNET_SR]" readonly id="sr_val_id">
+<Input type="Button" name="sr_dw" value="-" onclick="MyDWSubmitData('T_SR','sr_ctr','sr_val_id','-50')">
+<input type="hidden" name="sr_act"style="width:20px" id="sr_ctr">
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">Mute</TD>
+<TD class="tdc2">
+<FORM ID="T_MUT" ACTION="/cgi/telnet.cgi" onchange="MySubmit('T_MUT')" METHOD="GET"><?CGI_TELNET?>
+<select name="mut_sel">
+  <option value="0" [CGI_TELNET_MUT_1]>Off</option>
+  <option value="1" [CGI_TELNET_MUT_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+</TR>
+
+<TR>
+<TD class="tdc1">Color Temp</TD>
+<TD class="tdc2">
+<FORM ID="T_COT" ACTION="/cgi/telnet.cgi" onchange="MySubmit('T_COT')" METHOD="GET"><?CGI_TELNET?>
+<select name="cot_sel">
+  <option value="0" [CGI_TELNET_COT_1]>Cool</option>
+  <option value="1" [CGI_TELNET_COT_2]>Neutral</option>
+  <option value="2" [CGI_TELNET_COT_3]>Warm</option>
+  <option value="3" [CGI_TELNET_COT_4]>Custom</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">Auto Distortion Control</TD>
+<TD class="tdc2">
+<FORM ID="T_AUD" ACTION="/cgi/telnet.cgi" onchange="MySubmit('T_AUD')" METHOD="GET"><?CGI_TELNET?>
+<select name="aud_sel">
+  <option value="0" [CGI_TELNET_AUD_1]>Off</option>
+  <option value="1" [CGI_TELNET_AUD_2]>On</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+</TR>
+
+<TR>
+<TD class="tdc1">Noise Reduction - Auto Clear</TD>
+<TD class="tdc2">
+<FORM ID="T_NRA" ACTION="/cgi/telnet.cgi" onchange="MySubmit('T_NRA')" METHOD="GET"><?CGI_TELNET?>
+<select name="nra_sel">
+  <option value="0" [CGI_TELNET_NRA_1]>Off</option>
+  <option value="1" [CGI_TELNET_NRA_2]>Low</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">Auto Level Offset</TD>
+<TD class="tdc2">
+<FORM ID="T_ALO" ACTION="/cgi/telnet.cgi" onchange="MySubmit('T_ALO')" METHOD="GET"><?CGI_TELNET?>
+<Input type="Button" name="alo_up" value="+" onclick="MyUPSubmitData('T_ALO','alo_ctr','alo_val_id','0')">
+<input type="text"   name="alo_val"style="width:70px" value="[CGI_TELNET_ALO]" readonly id="alo_val_id">
+<Input type="Button" name="alo_dw" value="-" onclick="MyDWSubmitData('T_ALO','alo_ctr','alo_val_id','-11')">
+<input type="hidden" name="alo_act"style="width:20px" id="alo_ctr">
+<?CGI_END?></FORM>
+</TD>
+</TR>
+
+<TR>
+<TD class="tdc1">Noise Reduction - MPEG NR</TD>
+<TD class="tdc2">
+<FORM ID="T_NRM" ACTION="/cgi/telnet.cgi" onchange="MySubmit('T_NRM')" METHOD="GET"><?CGI_TELNET?>
+<select name="nrm_sel">
+  <option value="0" [CGI_TELNET_NRM_1]>Off</option>
+  <option value="1" [CGI_TELNET_NRM_2]>Low</option>
+  <option value="2" [CGI_TELNET_NRM_3]>Mid</option>
+  <option value="3" [CGI_TELNET_NRM_4]>High</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">HDMI Audio</TD>
+<TD class="tdc2">
+<FORM ID="T_HPA" ACTION="/cgi/telnet.cgi" onchange="MySubmit('T_HPA')" METHOD="GET"><?CGI_TELNET?>
+<select name="hpa_sel">
+  <option value="0" [CGI_TELNET_HPA_1]>Digital</option>
+  <option value="1" [CGI_TELNET_HPA_2]>Line-IN</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+</TR>
+
+<TR>
+<TD class="tdc1">Noise Reduction - DNR</TD>
+<TD class="tdc2">
+<FORM ID="T_NRD" ACTION="/cgi/telnet.cgi" onchange="MySubmit('T_NRD')" METHOD="GET"><?CGI_TELNET?>
+<select name="nrd_sel">
+  <option value="0" [CGI_TELNET_NRD_1]>Off</option>
+  <option value="1" [CGI_TELNET_NRD_2]>Low</option>
+  <option value="2" [CGI_TELNET_NRD_3]>Mid</option>
+  <option value="3" [CGI_TELNET_NRD_4]>High</option>
+</select>
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1">
+<FORM ID="T_SUD_RST" ACTION="/cgi/telnet.cgi" onchange="MySubmit('T_SUD_RST')" METHOD="GET"><?CGI_TELNET?>
+<INPUT TYPE="Button" NAME="sud_rst" onclick="MyUPSubmit('T_SUD_RST','sud_rst_ctr')" VALUE="Sound Reset">
+<input type="hidden" name="sud_rst_act"style="width:20px" id="sud_rst_ctr">
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc2"></TD>
+</TR>
+
+<TR>
+<TD class="tdc1">Tint</TD>
+<TD class="tdc2">
+<FORM ID="T_TINT" ACTION="/cgi/telnet.cgi" onchange="MySubmit('T_TINT')" METHOD="GET"><?CGI_TELNET?>
+<Input type="Button" name="tint_up" value="+" onclick="MyUPSubmitData('T_TINT','tint_ctr','tint_val_id','50')">
+<input type="text"   name="tint_val"style="width:70px" value="[CGI_TELNET_TINT]" readonly id="tint_val_id">
+<Input type="Button" name="tint_dw" value="-" onclick="MyDWSubmitData('T_TINT','tint_ctr','tint_val_id','-50')">
+<input type="hidden" name="tint_act"style="width:20px" id="tint_ctr">
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1"></TD>
+<TD class="tdc2"></TD>
+</TR>
+
+<TR>
+<TD class="tdc1">Hue</TD>
+<TD class="tdc2">
+<FORM ID="T_HUE" ACTION="/cgi/telnet.cgi" onchange="MySubmit('T_HUE')" METHOD="GET"><?CGI_TELNET?>
+<Input type="Button" name="hue_up" value="+" onclick="MyUPSubmitData('T_HUE','hue_ctr','hue_val_id','15')">
+<input type="text"   name="hue_val"style="width:70px" value="[CGI_TELNET_HUE]" readonly id="hue_val_id">
+<Input type="Button" name="hue_dw" value="-" onclick="MyDWSubmitData('T_HUE','hue_ctr','hue_val_id','-15')">
+<input type="hidden" name="hue_act"style="width:20px" id="hue_ctr">
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1"></TD>
+<TD class="tdc2"></TD>
+</TR>
+
+<TR>
+<TD class="tdc1">Saturation</TD>
+<TD class="tdc2">
+<FORM ID="T_SAT" ACTION="/cgi/telnet.cgi" onchange="MySubmit('T_SAT')" METHOD="GET"><?CGI_TELNET?>
+<Input type="Button" name="sat_up" value="+" onclick="MyUPSubmitData('T_SAT','sat_ctr','sat_val_id','15')">
+<input type="text"   name="sat_val"style="width:70px" value="[CGI_TELNET_SAT]" readonly id="sat_val_id">
+<Input type="Button" name="sat_dw" value="-" onclick="MyDWSubmitData('T_SAT','sat_ctr','sat_val_id','-15')">
+<input type="hidden" name="sat_act"style="width:20px" id="sat_ctr">
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc1"></TD>
+<TD class="tdc2"></TD>
+</TR>
+
+<TR>
+<TD class="tdc1">
+<FORM ID="T_PIC_RST" ACTION="/cgi/telnet.cgi" onchange="MySubmit('T_PIC_RST')" METHOD="GET"><?CGI_TELNET?>
+<INPUT  TYPE="Button" NAME="pic_rst" onclick="MyUPSubmit('T_PIC_RST','pic_rst_ctr')" VALUE="Picture Reset">
+<input type="hidden" name="pic_rst_act"style="width:20px" id="pic_rst_ctr">
+<?CGI_END?></FORM>
+</TD>
+<TD class="tdc2"></TD>
+<TD class="tdc1"></TD>
+<TD class="tdc2"></TD>
+</TR>
+
+</TABLE>
+</body>
+</html>

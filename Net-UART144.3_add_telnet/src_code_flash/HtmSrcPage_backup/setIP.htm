@@ -1,0 +1,137 @@
+<HTML>
+<HEAD>
+<script language="JavaScript">
+function CheckSubMask(form)
+{
+	var subMask=parseInt(form.SM0.value)*16777216+parseInt(form.SM1.value)*65536+parseInt(form.SM2.value)*256+parseInt(form.SM3.value);
+	var tag=0;
+	for(var i=0;i<32;i++)
+	{
+		if(subMask&0x1) tag=1;
+		else if(tag)
+			return false;
+		subMask>>=1;
+	}
+	return true;
+}
+
+function CheckAdd()
+{
+	var numericExpression=/^[0-9]+$/;
+	for(i=0;i<16;i++)
+	{
+		var ID="Address"+i;
+		obj=document.getElementById(ID);
+		if(!obj.value.match(numericExpression)) return false;
+		else if((obj.value>255)||(obj.value<0)) return false;
+	}
+	return true;
+}
+function CheckTag(form){
+	var Tag="VLID";
+	var tagID;
+	obj=document.getElementById(Tag);
+	tagID=obj.value;
+	tagID=parseInt(tagID,16);
+	if((tagID<1)||(tagID>4094))
+		return false;
+	else
+		return true;
+}
+function CheckIP(form)
+{
+	if(!CheckTag(form)){
+		alert("VLAN ID Range: 0x0001~0x0FFE");
+		return false;
+	}
+	else if(!CheckAdd())
+	{
+		alert("Please enter valid numeric!");
+		return false;	
+	}
+	else if( (form.IP3.value==255)||(form.SM3.value==255)||(form.GW3.value==255)||(form.DNS4.value==255) )
+	{
+		alert("Invalid IP Address, '255' is a Broadcast Address!");
+		return false;
+	}
+	else if( (form.IP3.value==0)||(form.GW3.value==0)||(form.DNS4.value==0) )
+	{
+		alert("Invalid IP Address, '0' is a Net Address!");
+		return false;
+	}
+	else if(!CheckSubMask(form))
+	{
+		alert("Invalid Subnet Mask!");
+		return false;
+	}
+	else
+		return true;
+}
+function disable(dst)
+{
+	dst.readOnly=true;
+	dst.style.background="#CCCCCC";
+}
+function enable(dst)
+{
+	dst.readOnly=false;
+	dst.style.background="#FFFFFF";
+}
+function CheckDHCP()
+{
+	objs=document.getElementsByName("ip_from");
+	if(objs[0].checked==true)
+	{
+		enable(setIP.IP0);enable(setIP.IP1);enable(setIP.IP2);enable(setIP.IP3);
+		enable(setIP.SM0);enable(setIP.SM1);enable(setIP.SM2);enable(setIP.SM3);
+		enable(setIP.GW0);enable(setIP.GW1);enable(setIP.GW2);enable(setIP.GW3);
+		enable(setIP.DNS1);enable(setIP.DNS2);enable(setIP.DNS3);enable(setIP.DNS4);
+	}
+	else if(objs[1].checked==true)
+	{
+		disable(setIP.IP0);disable(setIP.IP1);disable(setIP.IP2);disable(setIP.IP3);
+		disable(setIP.SM0);disable(setIP.SM1);disable(setIP.SM2);disable(setIP.SM3);
+		disable(setIP.GW0);disable(setIP.GW1);disable(setIP.GW2);disable(setIP.GW3);
+		disable(setIP.DNS1);disable(setIP.DNS2);disable(setIP.DNS3);disable(setIP.DNS4);
+	}
+	obj=document.getElementsByName("vlan");
+	if(obj[0].checked==true)
+	{ disable(setIP.vid); }
+	if(obj[1].checked==true)
+	{ enable(setIP.vid); }
+}
+if(typeof window.addEventListener != "undefined")
+	window.addEventListener("load",CheckDHCP,false);
+else
+	window.attachEvent("onload",CheckDHCP);
+</script>
+</HEAD>
+<BODY><p><H2>System IP Configuration</H2><HR>
+<FORM name="setIP" ACTION="/cgi/setting_ip.cgi" onSubmit="return CheckIP(this);" METHOD="GET">
+<TABLE cellSpacing=0 width=100% border=1 cellpadding=5><TR align="center">
+<TD ALIGN="center">Setting</TD><TD ALIGN="center">Value</TD></TR><?CGI_SET_STATUS?><TR>
+<TD ALIGN="center">IP Address</TD><TD ALIGN="center"><INPUT TYPE="TEXT" NAME="IP0" ID="Address0" value=[CGI_SET_IP1] size=2>.
+<INPUT TYPE="TEXT" NAME="IP1" ID="Address1" value=[CGI_SET_IP2] size=2>.<INPUT TYPE="TEXT" NAME="IP2" ID="Address2" value=[CGI_SET_IP3] size=2>.
+<INPUT TYPE="TEXT" NAME="IP3" ID="Address3" value=[CGI_SET_IP4] size=2></TD></TR><TR><TD ALIGN="center">Subnet Mask</TD>
+<TD ALIGN="center"><INPUT TYPE="TEXT" NAME="SM0" ID="Address4" value=[CGI_SET_SM1] size=2>.<INPUT TYPE="TEXT" NAME="SM1" ID="Address5" value=[CGI_SET_SM2] size=2>.
+<INPUT TYPE="TEXT" NAME="SM2" ID="Address6" value=[CGI_SET_SM3] size=2>.<INPUT TYPE="TEXT" NAME="SM3" ID="Address7" value=[CGI_SET_SM4] size=2>
+</TD></TR><TR><TD ALIGN="center">Gateway</TD><TD ALIGN="center">
+<INPUT TYPE="TEXT" NAME="GW0" ID="Address8" value=[CGI_SET_GW1] size=2>.<INPUT TYPE="TEXT" NAME="GW1" ID="Address9" value=[CGI_SET_GW2] size=2>.
+<INPUT TYPE="TEXT" NAME="GW2" ID="Address10" value=[CGI_SET_GW3] size=2>.<INPUT TYPE="TEXT" NAME="GW3" ID="Address11" value=[CGI_SET_GW4] size=2>
+</TD></TR><TR><TD ALIGN="center">DNS</TD><TD ALIGN="center"><INPUT NAME="DNS1" ID="Address12" value=[CGI_SET_DNS1] size=2>.
+<INPUT NAME="DNS2" ID="Address13" value=[CGI_SET_DNS2] size=2>.<INPUT NAME="DNS3" ID="Address14" value=[CGI_SET_DNS3] size=2>.<INPUT NAME="DNS4" ID="Address15" value=[CGI_SET_DNS4] size=2>
+</TD></TR>
+<TR><TD ALIGN="center">IP Configure</TD>
+<TD ALIGN="center"><input type="radio" value="ip_static" name="ip_from" [CGI_IP_STATIC] onClick="CheckDHCP()">Static
+<input type="radio" value="ip_dhcp" name="ip_from" [CGI_IP_DHCP] onClick="CheckDHCP()">DHCP
+</TD></TR>
+<TR>
+<TD ALIGN="center">VLAN Tag</TD>
+<TD ALIGN="center">
+<input type="radio" value="vlan_dis" name="vlan" [CGI_VLAN_DIS] onClick="CheckDHCP()">Disable
+<input type="radio" value="vlan_en" name="vlan" [CGI_VLAN_EN] onClick="CheckDHCP()">Enable : VLAN ID
+<INPUT ID="VLID" TYPE="TEXT" NAME="vid" value=[CGI_VLAN_ID] onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^0-9\a-f\A-F]/g,''))"  onkeyup="value=value.replace(/[^0-9\a-f\A-F]/g,'')" style="width:50" maxlength="4">(Hex:0x01~0x0FFE)
+</TD>
+</TR>
+<?CGI_END?>
+<TR><TD ALIGN="center" COLSPAN="2" ><P ALIGN="center"><INPUT TYPE="Submit" NAME="Modify" VALUE="Update"></P></TD></TR></TABLE></FORM></BODY></HTML>

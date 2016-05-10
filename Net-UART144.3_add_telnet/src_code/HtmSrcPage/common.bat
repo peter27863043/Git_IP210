@@ -1,0 +1,10 @@
+call Cod2C login.htm
+call Cod2C login2.htm
+call Cod2C index.htm
+call Cod2C left.htm
+call Cod2C uart.htm
+call Cod2C telnet.htm
+call Cod2C errormsg.htm
+call Cod2C setDef.htm
+call Cod2C setIP.htm
+call Cod2C dido.htm

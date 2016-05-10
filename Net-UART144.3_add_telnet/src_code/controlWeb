@@ -1,0 +1,16 @@
+
+/* H File is generated from login.htm */
+
+#define CGI_DEVICE_IP		0 
+#define CGI_CHALLENGE_VALUE		1 
+
+/* H File is generated from index.htm */
+
+#define CGI_BAUDRATE		0 
+
+/* H File is generated from errormsg.htm */
+
+#define CGI_TITLE		0 
+#define CGI_ERROR_MESSAGE		1 
+#define CGI_PATH		2 
+

@@ -1,0 +1,22 @@
+
+// Tag file is generated from dido.htm by cod2c.exe v3.04 
+[dido.htm]  
+CGI_IP_DHCP    0
+CGI_IP_STATIC    1
+CGI_DIDO_IP1    2
+CGI_DIDO_IP2    3
+CGI_DIDO_IP3    4
+CGI_DIDO_IP4    5
+CGI_DIDO_SM1    6
+CGI_DIDO_SM2    7
+CGI_DIDO_SM3    8
+CGI_DIDO_SM4    9
+CGI_DIDO_GW1    10
+CGI_DIDO_GW2    11
+CGI_DIDO_GW3    12
+CGI_DIDO_GW4    13
+CGI_DIDO_DNS1    14
+CGI_DIDO_DNS2    15
+CGI_DIDO_DNS3    16
+CGI_DIDO_DNS4    17
+C_TAGSIZE		20    //TagArray 

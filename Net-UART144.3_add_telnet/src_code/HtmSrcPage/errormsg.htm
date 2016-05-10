@@ -1,0 +1,8 @@
+<html><head><script>function send(){setTimeout("top.location='/login.htm'",3000) }
+</script></head><body><?CGI_START?><center>[CGI_LL]<FORM ACTION="[CGI_PATH]" METHOD="GET">[CGI_RR]<table><tr>
+<td><table ALIGN="center" CELLPADDING="10">
+<tr BGCOLOR="#[CGI_COLOR]"><td>
+<div ALIGN="center">[CGI_TITLE]<br>[CGI_ERROR_MESSAGE]</div></td></tr></table>
+<p ALIGN="center"><input TYPE="Submit" NAME="back" VALUE="[CGI_BNAME]" onclick="send()">
+<input type=hidden name="[CGI_NAME]" value="[CGI_VALUE]">
+<?CGI_END?></p></table></center></body></html>

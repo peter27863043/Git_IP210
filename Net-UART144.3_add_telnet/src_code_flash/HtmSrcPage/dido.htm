@@ -1,0 +1,164 @@
+<html>
+<style type='text/css'>
+form {
+  margin:0px; 
+  padding: 0 5px;
+}
+
+td.tdc1{
+	width:150px;
+	text-align:left;
+}
+
+td.tdc2{
+	width:250px;
+	text-align:left;
+}
+
+</style>
+<head>
+<script type="text/javascript">
+function CheckAdd() {
+	var numericExpression=/^[0-9]+$/;
+	var numeric=/^[0-9a-zA-Z_-]+$/;
+	for(i=0;i<3;i++)
+	{
+		var ID="Address"+i;
+		obj=document.getElementById(ID);
+		if(i==0)
+		{if(!obj.value.match(numeric)) return false; }
+		if(i==1 || i==2)
+		{if(!obj.value.match(numericExpression)) return false; }
+	}
+	return true;
+}
+
+function CheckIP(form) {
+	if(!CheckAdd())
+	{
+		alert("Please enter valid numeric!");
+		return false;	
+	}
+	else if( (form.IP3.value==255)||(form.SM3.value==255)||(form.GW3.value==255)||(form.DNS4.value==255) )
+	{
+		alert("Invalid IP Address, '255' is a Broadcast Address!");
+		return false;
+	}
+	else if( (form.IP3.value==0)||(form.GW3.value==0)||(form.DNS4.value==0) )
+	{
+		alert("Invalid IP Address, '0' is a Net Address!");
+		return false;
+	}
+	else if(!CheckSubMask(form))
+	{
+		alert("Invalid Subnet Mask!");
+		return false;
+	}
+	else
+		return true;
+}
+
+function ValeCheck255(TEXT_ID){
+var obj = document.getElementById(TEXT_ID);
+
+	obj.value=obj.value.replace(/[^\d]/g,'');
+	if(obj.value>255)
+		obj.value="1";
+	if(obj.value=="")
+		obj.value="1";
+}
+
+function disable(dst) {
+	dst.readOnly=true;
+	dst.style.background="#CCCCCC";
+}
+
+function enable(dst) {
+	dst.readOnly=false;
+	dst.style.background="#FFFFFF";
+}
+
+function CheckDHCP() {
+	objs=document.getElementsByName("ip_from");
+	
+	if(objs[1].checked==true)
+	{
+		enable(SetIP.IP1); enable(SetIP.IP2); enable(SetIP.IP3); enable(SetIP.IP4);
+		enable(SetIP.SM1); enable(SetIP.SM2); enable(SetIP.SM3); enable(SetIP.SM4);
+		enable(SetIP.GW1); enable(SetIP.GW2); enable(SetIP.GW3); enable(SetIP.GW4);
+		enable(SetIP.DNS1);enable(SetIP.DNS2);enable(SetIP.DNS3);enable(SetIP.DNS4);
+	}
+	else if(objs[0].checked==true)
+	{
+		disable(SetIP.IP1); disable(SetIP.IP2); disable(SetIP.IP3); disable(SetIP.IP4);
+		disable(SetIP.SM1); disable(SetIP.SM2); disable(SetIP.SM3); disable(SetIP.SM4);
+		disable(SetIP.GW1); disable(SetIP.GW2); disable(SetIP.GW3); disable(SetIP.GW4);
+		disable(SetIP.DNS1);disable(SetIP.DNS2);disable(SetIP.DNS3);disable(SetIP.DNS4);
+	}
+	
+}
+
+</script>
+<body>
+<div>
+<p><h2>Network Setting</h2>
+</div>
+<FORM name="SetIP" action="/cgi/dido.cgi" method="get" onSubmit="return CheckIP('SetIP');" ><?cgi_dido?>
+<TABLE cellSpacing=0 border=1 cellpadding=5>
+<TR>
+<TD class="tdc1"><b>Network</b></TD><TD class="tdc2"></TD>
+</TR>
+<TR>
+<TD class="tdc1"><input type="radio" name="ip_from" value="1" [CGI_IP_DHCP]   onClick="CheckDHCP()">Auto</TD>
+<TD class="tdc2"><input type="radio" name="ip_from" value="2" [CGI_IP_STATIC] onClick="CheckDHCP()">Manual</TD>
+</TR>
+<TR>
+<TD class="tdc1">IP Address</TD>
+<TD class="tdc2">
+<INPUT TYPE="TEXT" NAME="IP1" ID="Address0" onkeyup="ValeCheck255('Address0')" value=[CGI_DIDO_IP1] size=2>.
+<INPUT TYPE="TEXT" NAME="IP2" ID="Address1" onkeyup="ValeCheck255('Address1')" value=[CGI_DIDO_IP2] size=2>.
+<INPUT TYPE="TEXT" NAME="IP3" ID="Address2" onkeyup="ValeCheck255('Address2')" value=[CGI_DIDO_IP3] size=2>.
+<INPUT TYPE="TEXT" NAME="IP4" ID="Address3" onkeyup="ValeCheck255('Address3')" value=[CGI_DIDO_IP4] size=2>
+</TD>
+</TR>
+<TR>
+<TD class="tdc1">Subnet Mask</TD>
+<TD class="tdc2">
+<INPUT TYPE="TEXT" NAME="SM1" ID="Address4" onkeyup="ValeCheck255('Address4')" value=[CGI_DIDO_SM1] size=2>.
+<INPUT TYPE="TEXT" NAME="SM2" ID="Address5" onkeyup="ValeCheck255('Address5')" value=[CGI_DIDO_SM2] size=2>.
+<INPUT TYPE="TEXT" NAME="SM3" ID="Address6" onkeyup="ValeCheck255('Address6')" value=[CGI_DIDO_SM3] size=2>.
+<INPUT TYPE="TEXT" NAME="SM4" ID="Address7" onkeyup="ValeCheck255('Address7')" value=[CGI_DIDO_SM4] size=2>
+</TD>
+</TR>
+<TR>
+<TD class="tdc1">Default Gateway</TD>
+<TD class="tdc2">
+<INPUT TYPE="TEXT" NAME="GW1" ID="Address8"  onkeyup="ValeCheck255('Address8')"  value=[CGI_DIDO_GW1] size=2>.
+<INPUT TYPE="TEXT" NAME="GW2" ID="Address9"  onkeyup="ValeCheck255('Address9')"  value=[CGI_DIDO_GW2] size=2>.
+<INPUT TYPE="TEXT" NAME="GW3" ID="Address10" onkeyup="ValeCheck255('Address10')" value=[CGI_DIDO_GW3] size=2>.
+<INPUT TYPE="TEXT" NAME="GW4" ID="Address11" onkeyup="ValeCheck255('Address11')" value=[CGI_DIDO_GW4] size=2>
+</TD>
+</TR>
+<TR>
+<TD class="tdc1">DNS</TD>
+<TD class="tdc2">
+<INPUT TYPE="TEXT" NAME="DNS1" ID="Address12" onkeyup="ValeCheck255('Address12')" value=[CGI_DIDO_DNS1] size=2>.
+<INPUT TYPE="TEXT" NAME="DNS2" ID="Address13" onkeyup="ValeCheck255('Address13')" value=[CGI_DIDO_DNS2] size=2>.
+<INPUT TYPE="TEXT" NAME="DNS3" ID="Address14" onkeyup="ValeCheck255('Address14')" value=[CGI_DIDO_DNS3] size=2>.
+<INPUT TYPE="TEXT" NAME="DNS4" ID="Address15" onkeyup="ValeCheck255('Address15')" value=[CGI_DIDO_DNS4] size=2>
+</TD>
+</TR>
+<TR>
+<TD class="tdc1"></TD>
+<TD class="tdc2"><INPUT TYPE="Submit" NAME="Modify" VALUE="Submit"></TD>
+</TR>
+</TABLE>
+<?cgi_end?>
+</FORM>
+<script type="text/javascript" language="javascript">
+<!-- //
+ CheckDHCP();
+// -->
+</script>
+</body>
+</html>
