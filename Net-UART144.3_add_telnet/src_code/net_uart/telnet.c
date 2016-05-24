@@ -1054,7 +1054,7 @@ void ClearUARTRxBuf()
 				if(UART_newdata_len>0){
 				  for(i=0;i<UART_newdata_len;i++){
 				  	testdata=UartRxBuf.buf[UartRxBuf.wi+i];
-				  	printf("%02x ",testdata);
+				  	//printf("%02x ",testdata);
 				    tv_cmd_data[cmd_in]=UartRxBuf.buf[UartRxBuf.wi+i];
 				    switch(cmd_index){
 						// Get the command Length
@@ -1071,7 +1071,7 @@ void ClearUARTRxBuf()
 									//	buf_data=tv_cmd_data[j];
 									//	printf("%02x ",buf_data);
 									//}
-									printf("\n");
+									//printf("\n");
 									tv_cmd_data[cmd_in]=0;
 									ParsingTVCommand(cmd_len, tv_cmd_data);
 								    cmd_index=0;		
@@ -1081,7 +1081,7 @@ void ClearUARTRxBuf()
 						default: break;
 					}
 				  }	
-				  printf("\n");
+				  //printf("\n");
 				}
 				
 				//RingIncWi(UartRxBuf,UART_newdata_len);

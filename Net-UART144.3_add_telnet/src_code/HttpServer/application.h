@@ -46,6 +46,7 @@
 #define TV_CMD_FREEZE			0x48
 #define TV_CMD_PWR_SAVEING_ID	0x49
 #define TV_CMD_OSD_INFO_BOX		0x5b
+#define TV_CMD_PWR_SAVE_LOW		0x60
 #define TV_CMD_ALL_RESET		0x7e
 #define TV_CMD_PIC_MODE			0x81
 #define TV_CMD_ADAPTIVE_CONT 	0x85
@@ -123,6 +124,7 @@
 #define TV_GET_LANGUAGE			0x78
 #define TV_GET_ASPECT_MODE		0x79
 #define TV_GET_LAN_GET_MODE		0x80
+#define TV_GET_PWR_SAVE_LOW		0x81
 #define TV_GET_TOUCH_FEATURE	0x9e
 #define TV_GET_3D_COLOR			0x9f
 #define TV_GET_ACTIVE_BKL		0xa0

@@ -418,12 +418,12 @@ void application(void)
 		if(rx_over){printf("\n\r1");rx_over=0;}
 #endif
 #endif
-		if(test_delay<2500)
-		  test_delay++;
-		else{
-			test_delay=0;
-			printf(".");
-		}
+		//if(test_delay<2500)
+		//  test_delay++;
+		//else{
+		//	test_delay=0;
+		//	printf(".");
+		//}
 		
 		if(write_ee!=0){
 		  if(write_ee>500)	{	

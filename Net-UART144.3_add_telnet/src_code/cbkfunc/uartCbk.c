@@ -79,7 +79,7 @@ extern u8_t  m_asp_data;
 extern u8_t  m_src_mode_data;
 
 //u8_t  m_asp_mode;
-//u8_t  m_hpa_data;
+u8_t  m_pw_save_mode;
 
 
 u8_t ssi_uart(u8_t varid, data_value *vp)
@@ -131,10 +131,34 @@ u8_t ssi_uart(u8_t varid, data_value *vp)
 		case CGI_UART_PWS_1:
 		case CGI_UART_PWS_2:
 		case CGI_UART_PWS_3:	
+		case CGI_UART_PWS_4:
 			select_chk= varid-CGI_UART_PWS_1;
-			if(select_chk==m_pws_data) { 
-				vp->value.string ="Selected"; 
-			}				
+			if(m_pw_save_mode==1){
+				if(select_chk==2){
+					vp->value.string ="hidden"; 
+				}
+				else{
+				 	 if(select_chk==3)
+					   	select_chk--;
+					  	
+					  if(select_chk==m_pws_data)  
+						vp->value.string ="Selected"; 
+				}
+			}
+			else{
+				if(select_chk<2){
+					vp->value.string ="hidden"; 
+				}
+				else {
+			 	 	if(select_chk>1)
+					   	select_chk--;
+
+					if(select_chk==m_pws_data) 
+						vp->value.string ="Selected"; 
+
+				}
+			}
+								
 			break;
 			
 		case CGI_UART_IMR_1:
@@ -391,6 +415,8 @@ u8_t cgi_uart(u8_t cnt, void *vptr)
 		
 		if(!strcmp(vp->item, "pws_sel")){
 			m_pws_data=atoi(vp->value);
+			if(m_pws_data>1)
+			   m_pws_data--;
 			eCMDStatus=SendTVSetCommand('s',TV_CMD_POWER_SAVE,(m_pws_data));
 		}	
 //		if(!strcmp(vp->item, "plk_sel")){

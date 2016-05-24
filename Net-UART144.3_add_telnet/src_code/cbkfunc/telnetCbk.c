@@ -135,6 +135,8 @@ extern SSMTPData SMTPData;
 
 extern u8_t smtp_send_mail(u8_t MailNo);
 
+extern u8_t  m_pw_save_mode;
+
 
 u8_t code m_GetTVData[]={
  //Info
@@ -752,6 +754,7 @@ void TVStateInitial(void)
 									 init_cmd++;
 								  }
 								  else{
+								    SendTVSetCommand('g', TV_GET_PWR_SAVE_LOW,0); 
 								  	m_eScaler_State=eScaler_Init_Timer;
 									init_cmd=0;
 								  }	
@@ -774,6 +777,7 @@ void TVStateInitial(void)
 									 		init_cmd++;
 								  		}
 								  		else{
+											SendTVSetCommand('g', TV_GET_PWR_SAVE_LOW,0); 
 											SendTVGetTimerCommand(1);
 											SendTVGetTimerCommand(2);
 											SendTVGetTimerCommand(3);
@@ -1070,6 +1074,8 @@ void ParsingTVCommand(u8_t data_len, u8_t *SetValue)
 			//Set command to Update Data
 			Set_to_ACK=1;
 			switch (SetValue[4]){
+				case TV_CMD_PWR_SAVE_LOW	: // Set the power saving mode 
+											  m_pw_save_mode=atoi(&SetValue[5]); break;
 				case TV_CMD_TEMP_ALERT		: //Alert_Message(&ModuleInfo.SMTPInfo.MAIL_MSG[0][0],SetValue[7]);
 											  Send_Status_Report_Message(1,&ModuleInfo.SMTPInfo.MAIL_MSG[0][0]);
 											  smtp_send_mail_test(0);
@@ -1165,6 +1171,8 @@ void ParsingTVCommand(u8_t data_len, u8_t *SetValue)
 		if(SetValue[3]=='r'){
 			//Set command to Update Data
 			switch (SetValue[4]){
+			    case TV_GET_PWR_SAVE_LOW	: // Set the power saving mode 
+											  m_pw_save_mode=atoi(&SetValue[5]); break;
 				case TV_GET_POWER			: m_pwr_data=atoi(&SetValue[5]); break;
 				//Picture&Sound
 				case TV_GET_LAN_GET_MODE 	: m_src_mode_data=atoi(&SetValue[5]); break;
