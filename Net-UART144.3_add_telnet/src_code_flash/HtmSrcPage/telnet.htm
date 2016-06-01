@@ -103,7 +103,7 @@ var obj = document.getElementById(TEXT_ID);
 <FORM ID="T_PWR" ACTION="/cgi/telnet.cgi" onchange="MySubmit('T_PWR')" METHOD="GET"><?CGI_TELNET?>
 <INPUT style="width:80px" TYPE="Button" NAME="pwr_off" onclick="MyDWSubmit('T_PWR','pwr_ctr')" VALUE="Standby">&nbsp
 <INPUT style="width:80px" TYPE="Button" NAME="pwr_on"  onclick="MyUPSubmit('T_PWR','pwr_ctr')" VALUE="ON">
-<input type="hidden" name="pwr_act"style="width:20px" id="pwr_ctr">
+<input type="hidden" name="pwr_act" style="width:20px" id="pwr_ctr">
 </TD>
 <?CGI_END?></FORM>
 </TR>
@@ -112,13 +112,7 @@ var obj = document.getElementById(TEXT_ID);
 <TD class="tdc2">
 <FORM ID="T_SRC" ACTION="/cgi/telnet.cgi" METHOD="GET">
 <select name="src_sel" onchange="MySubmit('T_SRC')" [CGI_TELNET_STB]>
-  <option value="0" [CGI_TELNET_SRC_1]>HDMI1</option>
-  <option value="1" [CGI_TELNET_SRC_2]>HDMI2</option>
-  <option value="2" [CGI_TELNET_SRC_3]>HDMI3</option>
-  <option value="3" [CGI_TELNET_SRC_4]>Mode</option>
-  <option value="4" [CGI_TELNET_SRC_5]>VGA</option>
-  <option value="5 "[CGI_TELNET_SRC_6]>YPbPr</option>
-  <option value="6" [CGI_TELNET_SRC_7]>AV</option>
+<?CGI_TB1_START?><option value="[CGI_TELNET_SRC_VAL]" [CGI_TELNET_SRC_SELECT]>[CGI_TELNET_SRC_DISP]</option><?CGI_TB1_END?>
 </select>
 <?CGI_END?></FORM>
 </TD>

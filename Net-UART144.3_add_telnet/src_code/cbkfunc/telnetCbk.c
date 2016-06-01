@@ -24,14 +24,22 @@ extern u8_t errmsgflag ;
 #include "option.h"
 
 
+#define ROW_SOURCE	10
+u8_t code source_v[7]={0,1,2,3,4,5,6};
+char code source_diso_n[7][6]={"HDMI1","HDMI2","HDMI3","Mode","VGA","YPbPr","AV"};
+
+
 void eepromerr();
 extern struct httpd_info *hs;
 extern u8_t force_reset_countdown;
 extern u8_t DHCP_get_ip;
 
+extern u8_t  m_asp_mode;					// Special mode for select menu	
+extern u8_t  m_pw_save_mode;				// Special mode for select menu
+ u8_t  m_src_mode_data	;					// Special mode for select menu
 
  u8_t  m_sync_data  ;
- u8_t  m_src_mode_data	;
+
  u8_t  m_src_data	;
  u8_t  m_pic_data	;
  u8_t  m_cot_data	;
@@ -79,7 +87,7 @@ extern u8_t  m_pod_data;
 extern u8_t  m_bls_data;
 extern u8_t  m_fre_data;
 extern u8_t  m_asp_data;
-extern u8_t  m_asp_mode;
+
 
 //Setting
 extern u8_t  m_mid_data ;
@@ -135,7 +143,7 @@ extern SSMTPData SMTPData;
 
 extern u8_t smtp_send_mail(u8_t MailNo);
 
-extern u8_t  m_pw_save_mode;
+
 
 
 u8_t code m_GetTVData[]={
@@ -1253,6 +1261,14 @@ u8_t ssi_telnet(u8_t varid, data_value *vp)
 	u16_t select_chk;
 #ifdef MODULE_NET_UART
 
+	switch(hs->row_num)
+	{
+		case ROW_SOURCE+7:
+		return ERROR;
+		
+	}
+
+
 	vp->value.string ="";
     vp->type = string;
     switch (varid)
@@ -1270,23 +1286,31 @@ u8_t ssi_telnet(u8_t varid, data_value *vp)
 				if (m_sync_data==0)
 					vp->value.string ="disabled"; 
 				break;
-		//Normal Tag Process		
-		case CGI_TELNET_SRC_1:
-		case CGI_TELNET_SRC_2:
-		case CGI_TELNET_SRC_3:
-		case CGI_TELNET_SRC_4:
-		case CGI_TELNET_SRC_5:
-		case CGI_TELNET_SRC_6:
-		case CGI_TELNET_SRC_7:	
-				if((m_src_mode_data==1)||((m_src_mode_data==0)&&(varid!=CGI_TELNET_SRC_4))) {
-			 		select_chk= varid-CGI_TELNET_SRC_1;
-			  		if(select_chk==m_src_data) { 
-			  			vp->value.string ="Selected"; 
-			  		}	
-				}
-				else
-					vp->value.string ="hidden"; 
-			  	break;
+
+		//CGI_TB1	-- Source  --
+    	case CGI_TELNET_SRC_VAL:
+				if(hs->row_num==1)
+					hs->row_num=ROW_SOURCE;
+				select_chk= source_v[hs->row_num-ROW_SOURCE];
+				if (m_src_mode_data==0){
+					if((select_chk==3))
+						hs->row_num=ROW_SOURCE+4;
+				}	
+				
+        		vp->value.digits_3_int=source_v[hs->row_num-ROW_SOURCE];
+   		  		vp->type=digits_3_int;    		
+    			break;
+		case CGI_TELNET_SRC_SELECT:
+				select_chk= source_v[hs->row_num-ROW_SOURCE];
+				if(select_chk==m_src_data)
+					vp->value.string="Selected";
+				break;						
+			
+		case CGI_TELNET_SRC_DISP:
+				vp->value.string=source_diso_n[hs->row_num-ROW_SOURCE];
+				break;
+		//CGI_TB1	
+
 
 		case CGI_TELNET_PIC_1:
 		case CGI_TELNET_PIC_2:

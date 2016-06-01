@@ -21,6 +21,11 @@
 #include "..\HttpServer\application.h"
 extern u8_t errmsgflag ;
 
+#define ROW_TM_SOURCE	10
+u8_t code tm_source_v[7]={0,1,2,3,4,5,6};
+char code tm_source_diso_n[7][6]={"HDMI1","HDMI2","HDMI3","Mode","VGA","YPbPr","AV"};
+
+
 
 #ifdef MODULE_SMTP
 extern struct httpd_info *hs;
@@ -103,7 +108,14 @@ u8_t ssi_smtp(u8_t varid, data_value *vp)
    u16_t bit_shift;
 //   u16_t test;
 
-   if(hs->row_num>3)return ERROR;
+   
+   switch(hs->row_num)
+   {
+	   case ROW_TM_SOURCE+7:
+	   return ERROR;
+	   
+   }
+   
    vp->type = string;
    vp->value.string ="";
    switch (varid)
@@ -138,23 +150,50 @@ u8_t ssi_smtp(u8_t varid, data_value *vp)
 	   case CGI_SMTP_TM1_ON_EN:	if(tmier1[6]==1) { vp->value.string ="checked";  }   break;
 	   case CGI_SMTP_TM1_OFF_EN:if(tmier1[7]==1) { vp->value.string ="checked";  }   break;
 
-	   case CGI_SMTP_TM1_SRC1:	   
-	   case CGI_SMTP_TM1_SRC2:
-	   case CGI_SMTP_TM1_SRC3:
-	   case CGI_SMTP_TM1_SRC4:
-	   case CGI_SMTP_TM1_SRC5:
-	   case CGI_SMTP_TM1_SRC6:
-	   case CGI_SMTP_TM1_SRC7:	
-		   if((m_src_mode_data==1)||((m_src_mode_data==0)&&(varid!=CGI_SMTP_TM1_SRC4))) {
-			   select_chk= varid-CGI_SMTP_TM1_SRC1;
-			   if(select_chk==tmier1[8]) { 
-				   vp->value.string ="Selected"; 
+	   //CGI_TB1   -- Source  --
+	   case CGI_SMTP_TM1_VAL:
+	   case CGI_SMTP_TM2_VAL:	
+	   case CGI_SMTP_TM3_VAL:	
+	   case CGI_SMTP_TM4_VAL:	
+			   if(hs->row_num==1)
+				   hs->row_num=ROW_TM_SOURCE;
+			   select_chk= tm_source_v[hs->row_num-ROW_TM_SOURCE];
+			   if (m_src_mode_data==0){
+				   if((select_chk==3))
+					   hs->row_num=ROW_TM_SOURCE+4;
 			   }   
-		   }
-		   else
-			   vp->value.string ="hidden"; 
-		   break;
- 
+			   
+			   vp->value.digits_3_int=tm_source_v[hs->row_num-ROW_TM_SOURCE];
+			   vp->type=digits_3_int;		   
+			   break;
+	   case CGI_SMTP_TM1_SELECT:
+			   select_chk= tm_source_v[hs->row_num-ROW_TM_SOURCE];
+			   if(select_chk==tmier1[8])
+				   vp->value.string="Selected";
+			   break;					   
+	   case CGI_SMTP_TM2_SELECT:
+			   select_chk= tm_source_v[hs->row_num-ROW_TM_SOURCE];
+			   if(select_chk==tmier2[8])
+				   vp->value.string="Selected";
+			   break;
+	   case CGI_SMTP_TM3_SELECT:
+			   select_chk= tm_source_v[hs->row_num-ROW_TM_SOURCE];
+			   if(select_chk==tmier3[8])
+				   vp->value.string="Selected";
+			   break;
+	   case CGI_SMTP_TM4_SELECT:
+			   select_chk= tm_source_v[hs->row_num-ROW_TM_SOURCE];
+			   if(select_chk==tmier4[8])
+				   vp->value.string="Selected";
+			   break;
+	   case CGI_SMTP_TM1_DISP:
+	   case CGI_SMTP_TM2_DISP:
+	   case CGI_SMTP_TM3_DISP:
+	   case CGI_SMTP_TM4_DISP:	
+			   vp->value.string=tm_source_diso_n[hs->row_num-ROW_TM_SOURCE];
+			   break;
+	   //CGI_TB1   
+
 		   
 
 	   // Timer 2 	
@@ -180,23 +219,6 @@ u8_t ssi_smtp(u8_t varid, data_value *vp)
 	   case CGI_SMTP_TM2_ON_EN:	if(tmier2[6]==1) { vp->value.string ="checked";  }   break;
 	   case CGI_SMTP_TM2_OFF_EN:if(tmier2[7]==1) { vp->value.string ="checked";  }   break;
 	   
-	   case CGI_SMTP_TM2_SRC1:	   
-	   case CGI_SMTP_TM2_SRC2:
-	   case CGI_SMTP_TM2_SRC3:
-	   case CGI_SMTP_TM2_SRC4:
-	   case CGI_SMTP_TM2_SRC5:
-	   case CGI_SMTP_TM2_SRC6:
-	   case CGI_SMTP_TM2_SRC7:	
-		   if((m_src_mode_data==1)||((m_src_mode_data==0)&&(varid!=CGI_SMTP_TM2_SRC4))) {
-			   select_chk= varid-CGI_SMTP_TM2_SRC1;
-			   if(select_chk==tmier2[8]) { 
-				   vp->value.string ="Selected"; 
-			   }   
-		   }
-		   else
-			   vp->value.string ="hidden"; 
-		   break;
-
 	   
 	   // Timer 3 	
 	   case CGI_SMTP_TM3_ON_H:	vp->type=digits_3_int; vp->value.digits_3_int=tmier3[0];break;
@@ -221,23 +243,6 @@ u8_t ssi_smtp(u8_t varid, data_value *vp)
 	   case CGI_SMTP_TM3_ON_EN:	if(tmier3[6]==1) { vp->value.string ="checked";  }   break;
 	   case CGI_SMTP_TM3_OFF_EN:if(tmier3[7]==1) { vp->value.string ="checked";  }   break;
 	   
-	   case CGI_SMTP_TM3_SRC1:	   
-	   case CGI_SMTP_TM3_SRC2:
-	   case CGI_SMTP_TM3_SRC3:
-	   case CGI_SMTP_TM3_SRC4:
-	   case CGI_SMTP_TM3_SRC5:
-	   case CGI_SMTP_TM3_SRC6:
-	   case CGI_SMTP_TM3_SRC7:	
-		   if((m_src_mode_data==1)||((m_src_mode_data==0)&&(varid!=CGI_SMTP_TM3_SRC4))) {
-			   select_chk= varid-CGI_SMTP_TM3_SRC1;
-			   if(select_chk==tmier3[8]) { 
-				   vp->value.string ="Selected"; 
-			   }   
-		   }
-		   else
-			   vp->value.string ="hidden"; 
-		   break;
-
 	  
 	  // Timer 4   
 	  case CGI_SMTP_TM4_ON_H:  vp->type=digits_3_int; vp->value.digits_3_int=tmier4[0];break;
@@ -262,23 +267,6 @@ u8_t ssi_smtp(u8_t varid, data_value *vp)
 	  case CGI_SMTP_TM4_ON_EN: if(tmier4[6]==1) { vp->value.string ="checked";	}	break;
 	  case CGI_SMTP_TM4_OFF_EN:if(tmier4[7]==1) { vp->value.string ="checked";	}	break;
 	  
-	  case CGI_SMTP_TM4_SRC1:	  
-	  case CGI_SMTP_TM4_SRC2:
-	  case CGI_SMTP_TM4_SRC3:
-	  case CGI_SMTP_TM4_SRC4:
-	  case CGI_SMTP_TM4_SRC5:
-	  case CGI_SMTP_TM4_SRC6:
-	  case CGI_SMTP_TM4_SRC7:
-		  if((m_src_mode_data==1)||((m_src_mode_data==0)&&(varid!=CGI_SMTP_TM4_SRC4))) {
-			  select_chk= varid-CGI_SMTP_TM4_SRC1;
-			  if(select_chk==tmier4[8]) { 
-				  vp->value.string ="Selected"; 
-			  }   
-		  }
-		  else
-			  vp->value.string ="hidden"; 
-		  break;
-
 	  
 	  default:
 	  	  break;

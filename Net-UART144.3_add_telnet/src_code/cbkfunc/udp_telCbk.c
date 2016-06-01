@@ -20,6 +20,12 @@
 
 #include "..\HttpServer\application.h"
 
+#define ROW_ASPECT	10
+
+u8_t code aspect_v[6]={0,1,2,3,4,5};
+char code aspect_diso_n[6][9]={"Zoom","4:3","Wide Zoom","Normal","Real","Full"};
+
+
 extern u8_t errmsgflag ;
 extern u8_t m_tch_data;
 
@@ -61,7 +67,14 @@ u8_t ssi_udp_tel(u8_t varid, data_value *vp)
 	u16_t ee_port=0;
 	u8_t name_buf[31]=0;
 	u8_t select_chk;	
-	if(hs->row_num>UDP_TEL_MAX_IP_RANGE)return ERROR;
+	
+	switch(hs->row_num)
+	{
+		case ROW_ASPECT+6:
+		return ERROR;
+		
+	}
+	
 	vp->value.string ="";
     vp->type = string;
 	switch(varid)
@@ -136,36 +149,33 @@ u8_t ssi_udp_tel(u8_t varid, data_value *vp)
 				vp->value.string ="Selected"; 
 			}				
 			break;
-		
-		case CGI_UDP_TEL_ASP_1:
-		case CGI_UDP_TEL_ASP_2:
-		case CGI_UDP_TEL_ASP_3:
-		case CGI_UDP_TEL_ASP_4:
-		case CGI_UDP_TEL_ASP_5:
-		case CGI_UDP_TEL_ASP_6:	
-			select_chk= varid-CGI_UDP_TEL_ASP_1;
-			if (m_asp_mode==0){
-				
-				if(varid==CGI_UDP_TEL_ASP_4)
-					vp->value.string ="hidden";	
-				else if(varid==CGI_UDP_TEL_ASP_5)
-					vp->value.string ="hidden";	
-				else if(select_chk==m_asp_data) 
-					vp->value.string ="Selected"; 
-				
-			}
-			else  { 
-				if(varid==CGI_UDP_TEL_ASP_1)
-					vp->value.string ="hidden";	
-				else if(varid==CGI_UDP_TEL_ASP_2)
-					vp->value.string ="hidden";
-				else if(varid==CGI_UDP_TEL_ASP_3)
-					vp->value.string ="hidden";
-				else if(select_chk==m_asp_data) 
-					vp->value.string ="Selected"; 
-			}	
-			break;
-		
+
+		//CGI_TB1	-- Aspect  --
+    	case CGI_UDP_TEL_ASP_VAL:
+				if(hs->row_num==1)
+					hs->row_num=ROW_ASPECT;
+				select_chk= aspect_v[hs->row_num-ROW_ASPECT];
+				if (m_asp_mode==0){
+					if((select_chk==3)||(select_chk==4))
+						hs->row_num=ROW_ASPECT+5;
+				}	
+				else{
+					if((select_chk==0)||(select_chk==1)||(select_chk==2))
+						hs->row_num=ROW_ASPECT+3;
+				}				
+        		vp->value.digits_3_int=aspect_v[hs->row_num-ROW_ASPECT];
+   		  		vp->type=digits_3_int;    		
+    			break;
+		case CGI_UDP_TEL_ASP_SELECT:
+				select_chk= aspect_v[hs->row_num-ROW_ASPECT];
+				if(select_chk==m_asp_data)
+					vp->value.string="Selected";
+				break;						
+			
+		case CGI_UDP_TEL_ASP_DISP:
+				vp->value.string=aspect_diso_n[hs->row_num-ROW_ASPECT];
+				break;
+		//CGI_TB1	
 		case CGI_UDP_TEL_FRE_1:
 		case CGI_UDP_TEL_FRE_2:
 			select_chk= varid-CGI_UDP_TEL_FRE_1;

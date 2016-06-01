@@ -192,21 +192,16 @@ var AA,BB;
 <TD class="tdc2">
 <FORM ID="U_HMS" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('U_HMS')" METHOD="GET"><?CGI_UDP_TEL?>
 <Input type="Button" name="hms_up" value="+" onclick="MyUPSubmitData('U_HMS','hms_ctr','hms_val_id','10')">
-<input type="text"   name="hms_val"style="width:70px" value="[CGI_UDP_TEL_HMS]" id="hms_val_id" onkeyup="ValeCheck10('hms_val_id')">
+<input type="text" name="hms_val" style="width:70px" value="[CGI_UDP_TEL_HMS]" id="hms_val_id" onkeyup="ValeCheck10('hms_val_id')">
 <Input type="Button" name="hms_dw" value="-" onclick="MyDWSubmitData('U_HMS','hms_ctr','hms_val_id','1')">
-<input type="hidden" name="hms_act"style="width:20px" id="hms_ctr">
+<input type="hidden" name="hms_act" style="width:20px" id="hms_ctr">
 <?CGI_END?></FORM>
 </TD>
 <TD class="tdc1">Aspect</TD>
 <TD class="tdc2">
 <FORM ID="U_ASP" ACTION="/cgi/udp_tel.cgi" METHOD="GET"><?CGI_UDP_TEL?>
-<select name="asp_sel" onchange="MySubmit('U_ASP')" onchange="MySubmit('U_ASP')" [CGI_UDP_TEL_SYNC_ASPCT]>
-  <option value="0" [CGI_UDP_TEL_ASP_1]>Zoom</option>
-  <option value="1" [CGI_UDP_TEL_ASP_2]>4:3</option>
-  <option value="2" [CGI_UDP_TEL_ASP_3]>Wide Zoom</option>
-  <option value="3" [CGI_UDP_TEL_ASP_4]>Normal</option>
-  <option value="4" [CGI_UDP_TEL_ASP_5]>Real</option>
-  <option value="5" [CGI_UDP_TEL_ASP_6]>Full</option>
+<select name="asp_sel" onchange="MySubmit('U_ASP')" [CGI_UDP_TEL_SYNC_ASPCT]>
+<?CGI_TB1_START?><option value="[CGI_UDP_TEL_ASP_VAL]" [CGI_UDP_TEL_ASP_SELECT]>[CGI_UDP_TEL_ASP_DISP]</option><?CGI_TB1_END?>
 </select>
 <?CGI_END?></FORM>
 </TD>
@@ -216,9 +211,9 @@ var AA,BB;
 <TD class="tdc2">
 <FORM ID="U_VMS" ACTION="/cgi/udp_tel.cgi" onchange="MySubmit('U_VMS')" METHOD="GET"><?CGI_UDP_TEL?>
 <Input type="Button" name="vms_up" value="+" onclick="MyUPSubmitData('U_VMS','vms_ctr','vms_val_id','10')">
-<input type="text"   name="vms_val"style="width:70px" value="[CGI_UDP_TEL_VMS]" id="vms_val_id" onkeyup="ValeCheck10('vms_val_id')">
+<input type="text" name="vms_val" style="width:70px" value="[CGI_UDP_TEL_VMS]" id="vms_val_id" onkeyup="ValeCheck10('vms_val_id')">
 <Input type="Button" name="vms_dw" value="-" onclick="MyDWSubmitData('U_VMS','vms_ctr','vms_val_id','1')">
-<input type="hidden" name="vms_act"style="width:20px" id="vms_ctr">
+<input type="hidden" name="vms_act" style="width:20px" id="vms_ctr">
 <?CGI_END?></FORM>
 </TD>
 <TD class="tdc1">Freeze</TD>

@@ -35,7 +35,7 @@ u16_t asc_to_hex(char asc[]);
 extern struct httpd_info *hs;
 char s_tmp[5];
 char *itoah(u8_t bv);
-#define ROW_BR          10
+#define ROW_PWR_SAVE    10
 #define ROW_CHAR_BITS   30
 #define ROW_PARITY      50
 #define ROW_STOP_BIT    70
@@ -47,7 +47,8 @@ u8_t code pr_v[5]={8,24,0,56,40};
 char code pr_n[5][6]={"odd","even","none","space","mark"};	
 u8_t code sb_v[2]={0,1};
 char code sb_n[2][9]={"1","1.5 or 2"};		
-u8_t code fc_v[2]={1,0};
+u8_t code pwr_save_v[4]={0,1,2,3};
+char code pwr_diso_n[4][4]={"Low","High","On","Off"};
 char code fc_n[2][9]={"hardware","none"};
 
 #ifdef MODULE_RS485
@@ -85,8 +86,20 @@ u8_t  m_pw_save_mode;
 u8_t ssi_uart(u8_t varid, data_value *vp)
 {
 	u8_t select_chk;	
+
+	// exit from contorl code oxf2
+	switch(hs->row_num)
+	{
+		case ROW_PWR_SAVE+4:
+		return ERROR;
+		
+	}
+
+
 	vp->value.string ="";
 	vp->type = string;
+
+	
     switch (varid)
     {
 //    	case  CGI_UART_HDMI_AUDIO:
@@ -127,40 +140,37 @@ u8_t ssi_uart(u8_t varid, data_value *vp)
 			vp->type=digits_3_int;
 			vp->value.digits_3_int=m_mid_data;
 			break;
-			
-		case CGI_UART_PWS_1:
-		case CGI_UART_PWS_2:
-		case CGI_UART_PWS_3:	
-		case CGI_UART_PWS_4:
-			select_chk= varid-CGI_UART_PWS_1;
-			if(m_pw_save_mode==1){
-				if(select_chk==2){
-					vp->value.string ="hidden"; 
-				}
-				else{
-				 	 if(select_chk==3)
-					   	select_chk--;
-					  	
-					  if(select_chk==m_pws_data)  
-						vp->value.string ="Selected"; 
-				}
-			}
-			else{
-				if(select_chk<2){
-					vp->value.string ="hidden"; 
-				}
+
+		//CGI_TB1	-- Power Saving --
+    	case CGI_UART_PWS_VAL:
+    			if(hs->row_num==1)
+					hs->row_num=ROW_PWR_SAVE;
+				if(m_pw_save_mode==0){
+					if(hs->row_num==ROW_PWR_SAVE) {
+						hs->row_num=ROW_PWR_SAVE+2;
+					}
+				}	
 				else {
-			 	 	if(select_chk>1)
-					   	select_chk--;
-
-					if(select_chk==m_pws_data) 
-						vp->value.string ="Selected"; 
-
+					if(hs->row_num==(ROW_PWR_SAVE+2))
+						hs->row_num=ROW_PWR_SAVE+3;
 				}
-			}
-								
-			break;
+        		vp->value.digits_3_int=pwr_save_v[hs->row_num-ROW_PWR_SAVE];
+   		  		vp->type=digits_3_int;    		
+    			break;
+		case CGI_UART_PWS_SELECT:
+				select_chk= pwr_save_v[hs->row_num-ROW_PWR_SAVE];
+				if(select_chk>1)
+				   select_chk--;	
+				if(select_chk==m_pws_data)
+					vp->value.string=selected;
+				break;						
 			
+    	case CGI_UART_PWS_DISP:    		
+    			vp->value.string=pwr_diso_n[hs->row_num-ROW_PWR_SAVE];
+    			break;
+		//CGI_TB1
+
+						
 		case CGI_UART_IMR_1:
 		case CGI_UART_IMR_2:
 			select_chk= varid-CGI_UART_IMR_1;
