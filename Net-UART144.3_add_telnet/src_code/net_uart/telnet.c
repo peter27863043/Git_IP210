@@ -1067,11 +1067,11 @@ void ClearUARTRxBuf()
 						// Buffering the all command		
 						case 1: cmd_in++;
 								if(cmd_in>=cmd_len){	
-									//for(j=0;j<cmd_len;j++){
-									//	buf_data=tv_cmd_data[j];
-									//	printf("%02x ",buf_data);
-									//}
-									//printf("\n");
+									for(j=0;j<cmd_len;j++){
+										buf_data=tv_cmd_data[j];
+										printf("%02x ",buf_data);
+									}
+									printf("\n");
 									tv_cmd_data[cmd_in]=0;
 									ParsingTVCommand(cmd_len, tv_cmd_data);
 								    cmd_index=0;		

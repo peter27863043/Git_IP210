@@ -28,7 +28,7 @@ void eepromerr();
 extern struct httpd_info *hs;
 extern u8_t force_reset_countdown;
 extern u8_t DHCP_get_ip;
-
+extern u8_t m_touch_mode_data;
 
  u8_t  m_sync_data  ;
  u8_t  m_src_mode_data	;
@@ -755,6 +755,7 @@ void TVStateInitial(void)
 								  }
 								  else{
 								    SendTVSetCommand('g', TV_GET_PWR_SAVE_LOW,0); 
+									SendTVSetCommand('g', TV_GET_TOUCH_FEATURE,0); 
 								  	m_eScaler_State=eScaler_Init_Timer;
 									init_cmd=0;
 								  }	
@@ -778,6 +779,7 @@ void TVStateInitial(void)
 								  		}
 								  		else{
 											SendTVSetCommand('g', TV_GET_PWR_SAVE_LOW,0); 
+											SendTVSetCommand('g', TV_GET_TOUCH_FEATURE,0); 
 											SendTVGetTimerCommand(1);
 											SendTVGetTimerCommand(2);
 											SendTVGetTimerCommand(3);
@@ -1074,6 +1076,8 @@ void ParsingTVCommand(u8_t data_len, u8_t *SetValue)
 			//Set command to Update Data
 			Set_to_ACK=1;
 			switch (SetValue[4]){
+				case TV_CMD_TOUCH_MODE		: m_touch_mode_data=atoi(&SetValue[5]);break;
+					
 				case TV_CMD_PWR_SAVE_LOW	: // Set the power saving mode 
 											  m_pw_save_mode=atoi(&SetValue[5]); break;
 				case TV_CMD_TEMP_ALERT		: //Alert_Message(&ModuleInfo.SMTPInfo.MAIL_MSG[0][0],SetValue[7]);
@@ -1134,8 +1138,8 @@ void ParsingTVCommand(u8_t data_len, u8_t *SetValue)
 				case TV_CMD_ADAPTIVE_CONT	: m_act_data=atoi(&SetValue[5]); break;
 				case TV_CMD_ASPECT			: m_asp_data=atoi(&SetValue[5]); break;
 				case TV_CMD_ASPECT_MODE     : ctemp=atoi(&SetValue[5]); 
-											  if(ctemp==0x03)m_asp_mode =0; else m_asp_mode =1;
-											  printf("Aspect Mode=%d\n",(u16_t)m_asp_mode);
+											  if(ctemp==0x00) m_asp_mode =0; else m_asp_mode =1;
+											  printf("Set Aspect Mode=%d\n",(u16_t)m_asp_mode);
 											  break;
 				//Setting
 				case TV_CMD_MONITOR_ID		: m_mid_data=atoi(&SetValue[5]); break;
@@ -1171,6 +1175,7 @@ void ParsingTVCommand(u8_t data_len, u8_t *SetValue)
 		if(SetValue[3]=='r'){
 			//Set command to Update Data
 			switch (SetValue[4]){
+				case TV_GET_TOUCH_MODE		: m_touch_mode_data=atoi(&SetValue[5]);break;
 			    case TV_GET_PWR_SAVE_LOW	: // Set the power saving mode 
 											  m_pw_save_mode=atoi(&SetValue[5]); break;
 				case TV_GET_POWER			: m_pwr_data=atoi(&SetValue[5]); break;
@@ -1212,7 +1217,8 @@ void ParsingTVCommand(u8_t data_len, u8_t *SetValue)
 				case TV_GET_ADAPTIVE_CONT	: m_act_data=atoi(&SetValue[5]); break;
 				case TV_GET_ASPECT			: m_asp_data=atoi(&SetValue[5]); break;				
 				case TV_GET_ASPECT_MODE     : ctemp=atoi(&SetValue[5]); 
-											  if(ctemp==0x03)m_asp_mode =0; else m_asp_mode =1;
+											  if(ctemp==0x00) m_asp_mode =0; else m_asp_mode =1;
+											  printf("Get Aspect Mode=%d\n",(u16_t)m_asp_mode);
 											  break;
 				//Setting
 				case TV_GET_MONITOR_ID		: m_mid_data=atoi(&SetValue[5]); break;

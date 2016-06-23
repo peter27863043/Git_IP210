@@ -67,6 +67,8 @@ u8_t  m_lag_data	=0;
 u8_t  m_iro_data	=0;
 u8_t  m_tch_data	=0;
 u8_t  m_apd_data	=0;
+u8_t m_touch_mode_data =0;
+
 //u8_t  m_osr_data	=0;
 //u8_t  m_psi_data	=0;
 //u8_t  m_dps_data	=0;
@@ -211,7 +213,7 @@ u8_t ssi_uart(u8_t varid, data_value *vp)
 			break;
 
 		case CGI_UART_TCH_CONTROL:
-			if(m_src_mode_data==0)
+			if(m_touch_mode_data==0)
 				vp->value.string ="disabled";
 			else
 				vp->value.string ="";
