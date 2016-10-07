@@ -701,6 +701,37 @@ void SendTVACK(void)
 	RingIncWi(UartTxBuf,4);
 }
 
+eSCALER_ST SendTVSetLANLinkCommand(u8_t GetCmd,u8_t cData)
+{
+	u16_t k,j;
+	
+		
+	{
+		TVSetCMD[0]='8';
+		TVSetCMD[1]='0';
+		TVSetCMD[2]='1';
+		TVSetCMD[3]='s';
+		TVSetCMD[4]=GetCmd;
+		TVSetCMD[5]='0';
+		TVSetCMD[6]='0';
+		TVSetCMD[7]=cData;
+		TVSetCMD[8]=0;
+	
+		for(j=0;j<8;j++){
+			k=UartTxBuf.wi+j;
+			if(k>=UartTxBuf.MaxLen){
+				k=k-UartTxBuf.MaxLen;	
+			}	
+			UartTxBuf.buf[k]=TVSetCMD[j];
+		}	
+		RingIncWi(UartTxBuf,8); 
+		j=GetCmd;
+		printf("send wi=%d ri=%d tal=%d max=%d cmd=801s_%02x_%s\n",UartTxBuf.wi,UartTxBuf.ri,UartTxBuf.TotalLen,UartTxBuf.MaxLen,j,&TVSetCMD[5]);
+	}	
+	return m_eScaler_State;
+}
+
+
 eSCALER_ST SendTVGetCommand(u8_t GetCmd)
 {
 	u16_t k,j;
@@ -1504,7 +1535,7 @@ temp=(int)vp;
 u8_t cgi_telnet(u8_t cnt, void *vptr)
 {
 	u8_t en_re_rf=0, count=0;
-	eSCALER_ST eCMDStatus=eScaler_RS232_Ready;
+	eSCALER_ST eCMDStatus=eScaler_RS232_Ready; // bug ?????
 	req_data *vp = vptr;
 	int i,wdata;
 	//NetUartTelnetClose();

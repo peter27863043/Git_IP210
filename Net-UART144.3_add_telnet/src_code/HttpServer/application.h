@@ -2,6 +2,7 @@
 //-----------------------------
 //  Define the  TV Set Command Code
 // -----------------------------
+#define TV_CMD_LAN_LINK			0x10
 #define TV_CMD_SYNC				0x20
 #define TV_CMD_POWER 			0x21
 #define TV_CMD_SRC				0x22
@@ -172,10 +173,10 @@
 typedef enum{
 	eScaler_Init,
 	eScaler_Init_check,	
+	eScaler_RS232_No_Service,
 	eScaler_Init_Data,
 	eScaler_Init_Timer,
-	eScaler_Init_Info,
-	eScaler_RS232_No_Service,
+	eScaler_Init_Info,	
 	eScaler_RS232_Ready,
 	eScaler_Standy,
 	eScaler_PowerOn,

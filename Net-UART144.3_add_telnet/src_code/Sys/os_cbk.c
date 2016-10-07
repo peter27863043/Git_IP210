@@ -13,6 +13,7 @@
 #include "netuart_ctrl.h"
 #include "switch.h"
 #include "MDC_MDIO.h"
+#include "Application.h"
 
 #ifdef MODULE_FIRMWARE
 void CPU_GOTO_FFF7H(void);
@@ -79,6 +80,40 @@ void os_initial(){
 	Check_Speed();
 }
 
+extern eSCALER_ST m_eScaler_State;
+extern eSCALER_ST SendTVSetLANLinkCommand(u8_t GetCmd,u8_t cData);
+u8_t link_count;
+u8_t Link_Status_keep;
+
+void Check_Link_1Sec(){
+	u16_t tmp=0;
+
+	if(m_eScaler_State<=eScaler_RS232_No_Service){
+		Link_Status_keep=0xaa;
+		return;
+	}
+	
+	if(link_count>10) {
+		tmp=Read_MDC(PHY_1F, MII_STATUS);
+		if( (tmp&0x0004)!=0 ) {//0:Unlink 1:Link
+			if(Link_Status_keep!=1){
+				Link_Status_keep=1;
+				printf("Link Status 0K\n");
+				SendTVSetLANLinkCommand(TV_CMD_LAN_LINK,'1');
+			}
+		}
+		else{
+			if(Link_Status_keep!=0){
+				Link_Status_keep=0;
+				printf("Link Status NG\n");	
+				SendTVSetLANLinkCommand(TV_CMD_LAN_LINK,'0');
+			}
+		}
+		link_count=0;
+	}
+	else
+		link_count++;	
+}
 #ifndef MODULE_FLASH512
 void Check_Link(){
 	u8_t link_count=0;
@@ -190,7 +225,7 @@ void Check_Speed(){
 void os_loop_100ms(){
 	
 	Check_Speed();
-
+	Check_Link_1Sec();
 	#ifndef MODULE_FLASH512
 		Check_Link();
 	#endif
