@@ -75,10 +75,10 @@ var obj = document.getElementById(TEXT_ID);
 <TD class="tdc2">
 <FORM ID="A_PWS" ACTION="/cgi/uart.cgi" METHOD="GET"><?CGI_UART?>
 <select name="pws_sel" onchange="MySubmit('A_PWS')" >
-  <option value="0" [CGI_UART_PWS_1]>Low</option>
-  <option value="1" [CGI_UART_PWS_2]>High</option>
-  <option value="2" [CGI_UART_PWS_3]>On</option>
-  <option value="3" [CGI_UART_PWS_4]>Off</option>
+  <option value="0" [CGI_UART_PWS_1]>On</option>
+  <option value="0" [CGI_UART_PWS_2]>High</option>
+  <option value="1" [CGI_UART_PWS_3]>Off</option>
+  <option value="2" [CGI_UART_PWS_4]>Low</option>
 </select>
 <?CGI_END?></FORM>
 </TD>

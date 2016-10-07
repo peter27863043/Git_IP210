@@ -129,26 +129,29 @@ u8_t ssi_uart(u8_t varid, data_value *vp)
 			vp->type=digits_3_int;
 			vp->value.digits_3_int=m_mid_data;
 			break;
-			
-		case CGI_UART_PWS_1:
-		case CGI_UART_PWS_2:
-		case CGI_UART_PWS_3:	
-		case CGI_UART_PWS_4:
+									// 2016_06_23
+									// we also modified UART.htm 
+									// we use a triky select menu and then need not  modify cgi_function 
+									// m_pw_save_mode
+									// 000: Power Save no "Low"; "High" ¡÷ "On"
+									// 001: Power Save has "Low"
+		case CGI_UART_PWS_1:		// On
+		case CGI_UART_PWS_2:		// High	High: If Support Power Save Low 
+		case CGI_UART_PWS_3:		// Off
+		case CGI_UART_PWS_4:		// Low	If Support Power Save Low
 			select_chk= varid-CGI_UART_PWS_1;
 			if(m_pw_save_mode==1){
-				if(select_chk==2){
+				if(varid==CGI_UART_PWS_1){
 					vp->value.string ="hidden"; 
 				}
 				else{
-				 	 if(select_chk==3)
-					   	select_chk--;
-					  	
+				 	  select_chk--;					  	
 					  if(select_chk==m_pws_data)  
 						vp->value.string ="Selected"; 
 				}
 			}
 			else{
-				if(select_chk<2){
+				if((varid==CGI_UART_PWS_2)||(varid==CGI_UART_PWS_4)){
 					vp->value.string ="hidden"; 
 				}
 				else {
@@ -157,10 +160,8 @@ u8_t ssi_uart(u8_t varid, data_value *vp)
 
 					if(select_chk==m_pws_data) 
 						vp->value.string ="Selected"; 
-
 				}
 			}
-								
 			break;
 			
 		case CGI_UART_IMR_1:
@@ -417,8 +418,6 @@ u8_t cgi_uart(u8_t cnt, void *vptr)
 		
 		if(!strcmp(vp->item, "pws_sel")){
 			m_pws_data=atoi(vp->value);
-			if(m_pws_data>1)
-			   m_pws_data--;
 			eCMDStatus=SendTVSetCommand('s',TV_CMD_POWER_SAVE,(m_pws_data));
 		}	
 //		if(!strcmp(vp->item, "plk_sel")){
