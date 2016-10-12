@@ -283,20 +283,20 @@ void telnet_init_com()
 	switch(TelnetData.pEEPROM_UART->OP_Mode)
 	{
 		case UART_INFO_OP_M_RS232:
-			P4_0=1;
+			//P4_0=1; for Lan Link Status
 			P4_5=1;
 			break;
 		case UART_INFO_OP_M_RS422:
-			P4_0=0;
+			//P4_0=0; for Lan Link Status
 			P4_5=0;
 			break;
 		case UART_INFO_OP_M_RS485:
-			P4_0=0;
+			//P4_0=0; for Lan Link Status
 			P4_5=0;
 			break;
 	}
 #else//only for RS232
-	P4_0=1;
+	//P4_0=1; for Lan Link Status
 	P4_5=1;
 #endif//#ifdef MODULE_RS485  
   UART_Set_Property();  
@@ -1472,7 +1472,7 @@ void WriteEthRx2UART()
 #ifdef MODULE_RS485
 		if(TelnetData.pEEPROM_UART->OP_Mode==UART_INFO_OP_M_RS485)
 		{
-			P4_0=0x1;
+			//P4_0=0x1; for Lan Link Status
 		}
 #endif
 		tx_fifo_space=UART_Tx_FIFO_Status();
@@ -1850,7 +1850,7 @@ void UART_RS485_Update_TxControl()
 	reg_data = IP210RegRead(REG_UART_LINE_STATUS);
 	if(reg_data&0x40)
 	{
-		P4_0=0;
+		//P4_0=0; for Lan Link Status
 	}
 }
 #endif//#ifdef MODULE_RS485

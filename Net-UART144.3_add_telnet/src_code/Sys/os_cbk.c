@@ -100,6 +100,7 @@ void Check_Link_1Sec(){
 				Link_Status_keep=1;
 				printf("Link Status 0K\n");
 				SendTVSetLANLinkCommand(TV_CMD_LAN_LINK,'1');
+				P4_0=1;
 			}
 		}
 		else{
@@ -107,6 +108,7 @@ void Check_Link_1Sec(){
 				Link_Status_keep=0;
 				printf("Link Status NG\n");	
 				SendTVSetLANLinkCommand(TV_CMD_LAN_LINK,'0');
+				P4_0=0;
 			}
 		}
 		link_count=0;

@@ -1425,7 +1425,7 @@ void command_setting()
 					if(len==3)
 					{
 						NetUARTData.pTelnetData->pEEPROM_UART->OP_Mode = 0;
-						P4_0=1;
+						//P4_0=1; for Lan Link Status
 						P4_5=1;
 						ET0=0x0;
 						result = 0;	z=0;
@@ -1438,7 +1438,7 @@ void command_setting()
 					if(len==3)
 					{
 						NetUARTData.pTelnetData->pEEPROM_UART->OP_Mode = 1;
-						P4_0=0;
+						//P4_0=0; for Lan Link Status
 						P4_5=0;
 						ET0=0x0;
 						result = 0;	z=0;
@@ -1451,7 +1451,7 @@ void command_setting()
 					if(len==3)
 					{
 						NetUARTData.pTelnetData->pEEPROM_UART->OP_Mode = 2;
-						P4_0=0;
+						//P4_0=0; for Lan Link Status
 						P4_5=0;
 						result = 0;	z=0;
 					}

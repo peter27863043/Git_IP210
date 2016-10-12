@@ -18,7 +18,7 @@ GRPOPT 4,(uIP),0,0,0
 GRPOPT 5,(HttpServer),0,0,0
 GRPOPT 6,(cbkfunc),0,0,0
 GRPOPT 7,(utility),0,0,0
-GRPOPT 8,(net_uart),0,0,0
+GRPOPT 8,(net_uart),1,0,0
 GRPOPT 9,(NetCmd),0,0,0
 GRPOPT 10,(smtp),0,0,0
 GRPOPT 11,(snmp_trap),0,0,0
@@ -37,7 +37,7 @@ OPTFFF 2,11,1,0,0,0,0,0,<..\..\src_code\Sys\MACdriver.c><MACdriver.c>
 OPTFFF 2,12,1,369098752,0,0,0,0,<..\..\src_code\Sys\timer.c><timer.c> 
 OPTFFF 2,13,1,402653184,0,0,0,0,<..\..\src_code\Sys\uart.c><uart.c> 
 OPTFFF 2,14,1,855638016,0,0,0,0,<..\..\src_code\Sys\MDC_MDIO.c><MDC_MDIO.c> 
-OPTFFF 2,15,1,452984832,0,82,82,0,<..\..\src_code\Sys\os_cbk.c><os_cbk.c> { 44,0,0,0,0,0,0,0,1,0,0,0,255,255,255,255,255,255,255,255,248,255,255,255,226,255,255,255,100,0,0,0,100,0,0,0,224,2,0,0,119,1,0,0 }
+OPTFFF 2,15,1,117440514,0,88,103,0,<..\..\src_code\Sys\os_cbk.c><os_cbk.c> { 44,0,0,0,2,0,0,0,3,0,0,0,255,255,255,255,255,255,255,255,248,255,255,255,226,255,255,255,100,0,0,0,100,0,0,0,224,2,0,0,119,1,0,0 }
 OPTFFF 2,16,1,0,0,0,0,0,<..\..\src_code\Sys\vtag.c><vtag.c> 
 OPTFFF 3,17,1,0,0,0,0,0,<..\..\src_code\FileSys\fs32.c><fs32.c> 
 OPTFFF 3,18,1,0,0,0,0,0,<..\..\src_code_flash\FileSys\htmfiles0.c><htmfiles0.c> 
@@ -86,7 +86,7 @@ OPTFFF 5,60,1,0,0,0,0,0,<..\..\src_code\HttpServer\checksum.c><checksum.c>
 OPTFFF 6,61,1,301989888,0,0,0,0,<..\..\src_code\cbkfunc\loginCbk.c><loginCbk.c> 
 OPTFFF 6,62,1,0,0,0,0,0,<..\..\src_code\cbkfunc\errormsgCbk.c><errormsgCbk.c> 
 OPTFFF 6,63,1,0,0,0,0,0,<..\..\src_code\cbkfunc\uartCbk.c><uartCbk.c> 
-OPTFFF 6,64,1,1526726658,0,704,711,0,<..\..\src_code\cbkfunc\telnetCbk.c><telnetCbk.c> { 44,0,0,0,2,0,0,0,3,0,0,0,255,255,255,255,255,255,255,255,248,255,255,255,226,255,255,255,125,0,0,0,125,0,0,0,249,2,0,0,144,1,0,0 }
+OPTFFF 6,64,1,218103808,0,704,711,0,<..\..\src_code\cbkfunc\telnetCbk.c><telnetCbk.c> { 44,0,0,0,0,0,0,0,1,0,0,0,255,255,255,255,255,255,255,255,248,255,255,255,226,255,255,255,125,0,0,0,125,0,0,0,249,2,0,0,144,1,0,0 }
 OPTFFF 6,65,1,0,0,0,0,0,<..\..\src_code\cbkfunc\setDefCbk.c><setDefCbk.c> 
 OPTFFF 6,66,1,150994944,0,0,0,0,<..\..\src_code\cbkfunc\setIPCbk.c><setIPCbk.c> 
 OPTFFF 6,67,1,335544320,0,0,0,0,<..\..\src_code\cbkfunc\setPASSCbk.c><setPASSCbk.c> 
