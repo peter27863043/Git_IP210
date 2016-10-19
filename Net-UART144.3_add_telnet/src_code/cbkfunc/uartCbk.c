@@ -135,10 +135,11 @@ u8_t ssi_uart(u8_t varid, data_value *vp)
 									// m_pw_save_mode
 									// 000: Power Save no "Low"; "High" ¡÷ "On"
 									// 001: Power Save has "Low"
-		case CGI_UART_PWS_1:		// On
-		case CGI_UART_PWS_2:		// High	High: If Support Power Save Low 
-		case CGI_UART_PWS_3:		// Off
-		case CGI_UART_PWS_4:		// Low	If Support Power Save Low
+									//        Display    Value	Comment
+		case CGI_UART_PWS_1:		// ==> On    		0 
+		case CGI_UART_PWS_2:		// ==> High		0 		High: If Support Power Save Low 
+		case CGI_UART_PWS_3:		// ==> Off		1
+		case CGI_UART_PWS_4:		// ==> Low		2 		If Support Power Save Low
 			select_chk= varid-CGI_UART_PWS_1;
 			if(m_pw_save_mode==1){
 				if(varid==CGI_UART_PWS_1){
@@ -415,7 +416,12 @@ u8_t cgi_uart(u8_t cnt, void *vptr)
 			m_imr_data=atoi(vp->value);
 			eCMDStatus=SendTVSetCommand('s',TV_CMD_IMAGE_RETENTION,(m_imr_data));
 		}	
-		
+		//<select name="pws_sel" onchange="MySubmit('A_PWS')" >
+  		//<option value="0" [CGI_UART_PWS_1]>On</option>
+  		//<option value="0" [CGI_UART_PWS_2]>High</option>
+  		//<option value="1" [CGI_UART_PWS_3]>Off</option>
+  		//<option value="2" [CGI_UART_PWS_4]>Low</option>
+		//</select>
 		if(!strcmp(vp->item, "pws_sel")){
 			m_pws_data=atoi(vp->value);
 			eCMDStatus=SendTVSetCommand('s',TV_CMD_POWER_SAVE,(m_pws_data));

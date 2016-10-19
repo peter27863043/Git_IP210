@@ -137,6 +137,7 @@ extern u8_t smtp_send_mail(u8_t MailNo);
 
 extern u8_t  m_pw_save_mode;
 
+extern u8_t Link_Status_keep;
 
 u8_t code m_GetTVData[]={
  //Info
@@ -732,6 +733,37 @@ eSCALER_ST SendTVSetLANLinkCommand(u8_t GetCmd,u8_t cData)
 }
 
 
+eSCALER_ST SendTVReplyLANLinkCommand(u8_t GetCmd,u8_t cData)
+{
+	u16_t k,j;
+	
+		
+	{
+		TVSetCMD[0]='8';
+		TVSetCMD[1]='0';
+		TVSetCMD[2]='1';
+		TVSetCMD[3]='r';
+		TVSetCMD[4]=GetCmd;
+		TVSetCMD[5]='0';
+		TVSetCMD[6]='0';
+		TVSetCMD[7]=cData;
+		TVSetCMD[8]=0;
+	
+		for(j=0;j<8;j++){
+			k=UartTxBuf.wi+j;
+			if(k>=UartTxBuf.MaxLen){
+				k=k-UartTxBuf.MaxLen;	
+			}	
+			UartTxBuf.buf[k]=TVSetCMD[j];
+		}	
+		RingIncWi(UartTxBuf,8); 
+		j=GetCmd;
+		printf("send wi=%d ri=%d tal=%d max=%d cmd=801r_%02x_%s\n",UartTxBuf.wi,UartTxBuf.ri,UartTxBuf.TotalLen,UartTxBuf.MaxLen,j,&TVSetCMD[5]);
+	}	
+	return m_eScaler_State;
+}
+
+
 eSCALER_ST SendTVGetCommand(u8_t GetCmd)
 {
 	u16_t k,j;
@@ -1103,6 +1135,16 @@ void ParsingTVCommand(u8_t data_len, u8_t *SetValue)
 		}
 	}	
 	if(data_len==8){
+		if(SetValue[3]=='g'){
+			switch (SetValue[4]){
+				case TV_GET_LAN_LINK		: if(Link_Status_keep==0) 
+												SendTVSetLANLinkCommand(TV_CMD_LAN_LINK,'0');
+											  else
+											  	SendTVSetLANLinkCommand(TV_CMD_LAN_LINK,'1');
+											  break; 
+				default						: Set_to_ACK=0;break;		
+			}	
+		}	
 		if(SetValue[3]=='s'){
 			//Set command to Update Data
 			Set_to_ACK=1;

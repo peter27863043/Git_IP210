@@ -91,6 +91,7 @@
 //  Define the  TV Get Command Code
 // -----------------------------
 #define TV_GET_READY_TST 		0x00
+#define TV_GET_LAN_LINK			0x10
 #define TV_GET_MODEL_INFO 		0x20
 #define TV_GET_TREBLE 			TV_CMD_TREBLE
 #define TV_GET_BASS 			TV_CMD_BASS
