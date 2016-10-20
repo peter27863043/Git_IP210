@@ -129,38 +129,38 @@ u8_t ssi_uart(u8_t varid, data_value *vp)
 			vp->type=digits_3_int;
 			vp->value.digits_3_int=m_mid_data;
 			break;
-									// 2016_06_23
+									// Change to 2016_06_21
 									// we also modified UART.htm 
 									// we use a triky select menu and then need not  modify cgi_function 
 									// m_pw_save_mode
-									// 000: Power Save no "Low"; "High" ¡÷ "On"
-									// 001: Power Save has "Low"
-									//        Display    Value	Comment
-		case CGI_UART_PWS_1:		// ==> On    		0 
+									//<option value="0" [CGI_UART_PWS_1]>Low</option>
+									//<option value="1" [CGI_UART_PWS_2]>High</option>
+									//<option value="1" [CGI_UART_PWS_3]>On</option>
+									//<option value="2" [CGI_UART_PWS_4]>Off</option>
+		case CGI_UART_PWS_1:		// ==> Low    	0 
 		case CGI_UART_PWS_2:		// ==> High		0 		High: If Support Power Save Low 
-		case CGI_UART_PWS_3:		// ==> Off		1
-		case CGI_UART_PWS_4:		// ==> Low		2 		If Support Power Save Low
+		case CGI_UART_PWS_3:		// ==> On		1
+		case CGI_UART_PWS_4:		// ==> Off		2 		If Support Power Save Low
 			select_chk= varid-CGI_UART_PWS_1;
-			if(m_pw_save_mode==1){
-				if(varid==CGI_UART_PWS_1){
+			if(m_pw_save_mode==1){ // Low High Off
+				if(varid==CGI_UART_PWS_3){
 					vp->value.string ="hidden"; 
 				}
 				else{
-				 	  select_chk--;					  	
+					  if(varid>CGI_UART_PWS_3)
+				 	     select_chk--;					  	
 					  if(select_chk==m_pws_data)  
 						vp->value.string ="Selected"; 
 				}
 			}
 			else{
-				if((varid==CGI_UART_PWS_2)||(varid==CGI_UART_PWS_4)){
+				if((varid==CGI_UART_PWS_1)||(varid==CGI_UART_PWS_2)){
 					vp->value.string ="hidden"; 
 				}
 				else {
-			 	 	if(select_chk>1)
 					   	select_chk--;
-
-					if(select_chk==m_pws_data) 
-						vp->value.string ="Selected"; 
+						if(select_chk==m_pws_data) 
+							vp->value.string ="Selected"; 
 				}
 			}
 			break;
@@ -416,12 +416,10 @@ u8_t cgi_uart(u8_t cnt, void *vptr)
 			m_imr_data=atoi(vp->value);
 			eCMDStatus=SendTVSetCommand('s',TV_CMD_IMAGE_RETENTION,(m_imr_data));
 		}	
-		//<select name="pws_sel" onchange="MySubmit('A_PWS')" >
-  		//<option value="0" [CGI_UART_PWS_1]>On</option>
-  		//<option value="0" [CGI_UART_PWS_2]>High</option>
-  		//<option value="1" [CGI_UART_PWS_3]>Off</option>
-  		//<option value="2" [CGI_UART_PWS_4]>Low</option>
-		//</select>
+		//<option value="0" [CGI_UART_PWS_1]>Low</option>
+		//<option value="1" [CGI_UART_PWS_2]>High</option>
+		//<option value="1" [CGI_UART_PWS_3]>On</option>
+		//<option value="2" [CGI_UART_PWS_4]>Off</option>
 		if(!strcmp(vp->item, "pws_sel")){
 			m_pws_data=atoi(vp->value);
 			eCMDStatus=SendTVSetCommand('s',TV_CMD_POWER_SAVE,(m_pws_data));
